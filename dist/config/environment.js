@@ -3,6 +3,8 @@ import path from 'path';
 dotenv.config();
 export const config = {
     docsUrl: process.env.IFS_DOCS_URL || 'https://docs.ifs.com/techdocs/',
+    academyUrl: process.env.IFS_ACADEMY_URL || 'https://resourceportal.ifsacademyworld.com/',
+    communityUrl: process.env.IFS_COMMUNITY_URL || 'https://community.ifs.com/',
     docsVersion: process.env.IFS_DOCS_VERSION || 'ALL',
     workspacePath: process.env.IFS_WORKSPACE_PATH || process.cwd(),
     port: parseInt(process.env.PORT || '3000', 10),

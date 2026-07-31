@@ -87,108 +87,34 @@ export class LocalStorageDB {
           `@Override\nPROCEDURE Check_Common___ (\n   oldrec_ IN     customer_order_tab%ROWTYPE,\n   newrec_ IN OUT customer_order_tab%ROWTYPE,\n   indrec_ IN OUT Indicator_Rec,\n   attr_   IN OUT VARCHAR2 )\nIS\nBEGIN\n   super(oldrec_, newrec_, indrec_, attr_);\n   IF newrec_.amount < 0 THEN\n      Error_SYS.Record_General(lu_name_, 'INVALIDAMT: Order amount cannot be negative.');\n   END IF;\nEND Check_Common___;`
         ]
       },
+
+      // ---------------------------------------------------------------------
+      // IFS ACADEMY RESOURCE PORTAL (KNOWLEDGE & TRAINING)
+      // ---------------------------------------------------------------------
       {
-        id: 'techdocs-plsql-error-handling',
-        title: 'Error_SYS, Client_SYS, and Transaction_SYS API Reference',
-        url: 'https://docs.ifs.com/techdocs/26r1/framework_apis.htm',
-        category: 'Business Logic Development',
-        version: '26R1',
-        content: `Standard IFS Framework PL/SQL utilities: 1) Error_SYS.Record_General(lu_name_, 'KEY: Error text'): Raises translated error; 2) Client_SYS.Add_To_Attr('FIELD', val, attr_): Appends attribute value; 3) Client_SYS.Get_Item_Value('FIELD', attr_): Extracts attribute value; 4) Fnd_Session_API.Get_Fnd_User: Returns current IFS user; 5) Transaction_SYS.Deferred_Call: Schedules background job execution.`,
+        id: 'academy-developer-masterclass',
+        title: 'IFS Academy Resource Portal: Developer Certification & Aurena Best Practices',
+        url: 'https://resourceportal.ifsacademyworld.com/developer_masterclass',
+        category: 'IFS Academy',
+        version: 'ALL',
+        content: `Official training guidelines from the IFS Academy Resource Portal: 1) Master Marble entity-projection pairing for all Aurena UX components; 2) Ensure custom projections isolate database DML inside PL/SQL package bodies (*.apy); 3) Use Developer Studio validation tools before committing code; 4) Implement strict permission security sets for all customized projections.`,
         codeBlocks: [
-          `Client_SYS.Add_To_Attr('CREATED_DATE', sysdate, attr_);\nuser_id_ := Fnd_Session_API.Get_Fnd_User();`
+          `-- IFS Academy Standard Projection Action Signature\naction ValidateCustOrder {\n   initialcheck implementation;\n   parameter OrderNo Text;\n}`
         ]
       },
 
       // ---------------------------------------------------------------------
-      // INTEGRATION & REST / ODATA
+      // IFS COMMUNITY FORUM KNOWLEDGE & DISCUSSIONS
       // ---------------------------------------------------------------------
       {
-        id: 'techdocs-integration-odata-rest',
-        title: 'IFS Cloud OData v4 REST API Endpoint Integration & Querying',
-        url: 'https://docs.ifs.com/techdocs/26r1/odata_rest_integration.htm',
-        category: 'Integration',
-        version: '26R1',
-        content: `IFS Cloud exposes all Projections as OData v4 endpoints under /main/ifsadmin/projection/v1/{ProjectionName}.svc/. Supports standard OData query options: $filter, $select, $expand, $orderby, $top, $skip. Authentication uses OAuth 2.0 Bearer JWT tokens. CRUD operations map to GET (Read), POST (Create/Action call), PATCH (Update), and DELETE.`,
+        id: 'community-developer-solutions',
+        title: 'IFS Community Forum: Known Technical Issues, ORA Solutions & Customization Tips',
+        url: 'https://community.ifs.com/developer-discussions',
+        category: 'IFS Community',
+        version: 'ALL',
+        content: `Expert developer solutions from IFS Community discussions: 1) ORA-04063 on view: Resolved by dictionary rebuild (Dictionary_SYS.Rebuild_Dictionary_()) or checking table grants to IFSSYS; 2) Custom Field expression syntax error: Use CF_<LU_NAME>_CFV view with objkey parameter; 3) OData REST API auth 401 error: Verify OAuth client ID secret & FND_ENDUSER permission set grants.`,
         codeBlocks: [
-          `curl -X GET "https://ifs.example.com/main/ifsadmin/projection/v1/CustomerOrderHandling.svc/CustomerOrderSet?$filter=State%20eq%20'Planned'&$select=OrderNo,Description" -H "Authorization: Bearer <JWT_TOKEN>" -H "Accept: application/json"`
-        ]
-      },
-      {
-        id: 'techdocs-ifs-connect-messaging',
-        title: 'IFS Connect Message Routers, Message Processors & Transformers',
-        url: 'https://docs.ifs.com/techdocs/26r1/ifs_connect.htm',
-        category: 'Integration',
-        version: '26R1',
-        content: `IFS Connect is the enterprise integration broker. Components include: Routing Rules (evaluates incoming XML/JSON headers), Routing Addresses (REST, SOAP, File, Mail), Transformers (XSLT or Java JSON/XML mappers), and PL/SQL Message Processors. Processors accept CLOB payload in_msg_ and process data into LUs.`,
-        codeBlocks: [
-          `PROCEDURE Process_Inbound_Order (in_msg_ IN CLOB) IS\nBEGIN\n   -- Parse XML payload & invoke LU API\n   NULL;\nEND Process_Inbound_Order;`
-        ]
-      },
-
-      // ---------------------------------------------------------------------
-      // REPORTING & LOBBY DEVELOPMENT
-      // ---------------------------------------------------------------------
-      {
-        id: 'techdocs-reporting-operational-rdf',
-        title: 'IFS Operational Reporting Framework (RDF, RDL, Report Designer)',
-        url: 'https://docs.ifs.com/techdocs/26r1/reporting_framework.htm',
-        category: 'Reporting',
-        version: '26R1',
-        content: `IFS Operational Reports rely on RDF packages (*_RPI) and RDL/RDLC layouts. The RDF report assembler script populates temporary result table INFO_SERVICES_RPT using Report_SYS.Define_Report_ and Xml_Record_Writer_SYS to output structured XML datasets for SSRS / IFS Report Designer.`,
-        codeBlocks: [
-          `Report_SYS.Define_Report_('CUSTOMER_ORDER_REP', 'ORDER', 'Customer Order Report', 'CUSTOMER_ORDER_RPI.Execute_Report', 'INFO_SERVICES_RPT');`
-        ]
-      },
-
-      // ---------------------------------------------------------------------
-      // SECURITY, PERMISSIONS & TAILORING
-      // ---------------------------------------------------------------------
-      {
-        id: 'techdocs-security-permissions-grants',
-        title: 'IFS Security Architecture, Projection Grants & Functional Roles',
-        url: 'https://docs.ifs.com/techdocs/26r1/security_grants.htm',
-        category: 'Security',
-        version: '26R1',
-        content: `IFS Cloud enforces projection-level security and Database object execution security. Permission Sets (e.g. FND_ENDUSER, CUSTOMER_ORDER_ADMIN) must be granted access to Projections. In PL/SQL, methods use Security_SYS.Has_Projection_Access or annotations like @UncheckedAccess (bypasses security checks for pure getters) or @ServerOnlyAccess.`,
-        codeBlocks: [
-          `GRANT EXECUTE ON CustomerOrderHandling TO FND_ENDUSER;`
-        ]
-      },
-      {
-        id: 'techdocs-tailoring-custom-fields',
-        title: 'IFS Tailoring: Custom Fields, Custom Events & Event Actions',
-        url: 'https://docs.ifs.com/techdocs/26r1/tailoring_custom_fields.htm',
-        category: 'Tailoring Guide',
-        version: '26R1',
-        content: `IFS Cloud tailoring allows adding Custom Fields (CF_*) and Custom Events without altering Core PL/SQL. Custom fields generate CF views (*_CFV) and CFI packages. Custom Events monitor LU table triggers and trigger Event Actions (PL/SQL scripts, Email notifications, REST webhooks, or REST Call tasks).`,
-        codeBlocks: [
-          `-- Custom Field PL/SQL Expression\nCustomer_Order_CFV.Get_CF$_Custom_Status(v.objkey)`
-        ]
-      },
-
-      // ---------------------------------------------------------------------
-      // MULTI-VERSION RELEASE DIFFERENCES (23R2 -> 26R1)
-      // ---------------------------------------------------------------------
-      {
-        id: 'techdocs-release-differences-all',
-        title: 'IFS Cloud Release Evolution & Feature Comparison (23R2, 24R1, 24R2, 25R1, 25R2, 26R1)',
-        url: 'https://docs.ifs.com/techdocs/26r1/release_evolution.htm',
-        category: 'Upgrade Guide',
-        version: '26R1',
-        content: `Overview of IFS Cloud framework evolution: 1) 23R2: Initial Aurena responsive framework stabilization and basic OData v4 REST endpoints; 2) 24R1: Grid layout enhancements and OData stream features; 3) 24R2: Developer Studio custom fragment extensions; 4) 25R1: Aurena page performance optimizations and strict CRUD annotations; 5) 25R2: Mandatory projection initialcheck security checks; 6) 26R1: Native AI copilot annotations (@AiAgent, @ODataStream) and enhanced customization layering standards.`,
-        codeBlocks: [
-          `-- 26R1 Mandatory Projection Action Check\naction ReleaseOrder {\n   initialcheck implementation;\n}`
-        ]
-      },
-      {
-        id: 'techdocs-marble-overview-23r2',
-        title: 'IFS Cloud 23R2 Architecture & Marble DSL Foundation',
-        url: 'https://docs.ifs.com/techdocs/23r2/marble_dsl_overview.htm',
-        category: 'Architecture Guide',
-        version: '23R2',
-        content: `IFS Cloud 23R2 base architecture establishing basic Marble DSL models (*.entity, *.projection, *.client) and Aurena client page definitions.`,
-        codeBlocks: [
-          `entity CustomerOrder {\n   from = "CUSTOMER_ORDER_TAB";\n}`
+          `EXEC Dictionary_SYS.Rebuild_Dictionary_();\nGRANT SELECT ON CUSTOMER_ORDER_CFV TO IFSSYS;`
         ]
       }
     ];

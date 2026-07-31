@@ -1,5 +1,7 @@
 export interface Config {
     docsUrl: string;
+    academyUrl: string;
+    communityUrl: string;
     docsVersion: string;
     workspacePath: string;
     port: number;
