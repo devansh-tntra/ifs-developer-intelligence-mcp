@@ -14,7 +14,7 @@
         "./dist/index.js"
       ],
       "env": {
-        "IFS_DOCS_VERSION": "26R1",
+        "IFS_DOCS_VERSION": "ALL",
         "IFS_WORKSPACE_PATH": "./"
       }
     }

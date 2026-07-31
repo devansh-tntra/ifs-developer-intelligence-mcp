@@ -16,7 +16,7 @@ export interface Config {
 
 export const config: Config = {
   docsUrl: process.env.IFS_DOCS_URL || 'https://docs.ifs.com/techdocs/',
-  docsVersion: process.env.IFS_DOCS_VERSION || '26R1',
+  docsVersion: process.env.IFS_DOCS_VERSION || 'ALL',
   workspacePath: process.env.IFS_WORKSPACE_PATH || process.cwd(),
   port: parseInt(process.env.PORT || '3000', 10),
   transport: (process.env.MCP_TRANSPORT as 'stdio' | 'sse') || 'stdio',
