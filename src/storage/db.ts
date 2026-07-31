@@ -167,17 +167,28 @@ export class LocalStorageDB {
       },
 
       // ---------------------------------------------------------------------
-      // MULTI-VERSION RELEASE DIFFERENCES (24R1 -> 26R1)
+      // MULTI-VERSION RELEASE DIFFERENCES (23R2 -> 26R1)
       // ---------------------------------------------------------------------
       {
         id: 'techdocs-release-differences-all',
-        title: 'IFS Cloud Release Evolution & Feature Comparison (24R1, 24R2, 25R1, 25R2, 26R1)',
+        title: 'IFS Cloud Release Evolution & Feature Comparison (23R2, 24R1, 24R2, 25R1, 25R2, 26R1)',
         url: 'https://docs.ifs.com/techdocs/26r1/release_evolution.htm',
         category: 'Upgrade Guide',
         version: '26R1',
-        content: `Overview of IFS Cloud framework evolution: 1) 24R1: OData v4 REST foundation and initial Aurena client grid controls; 2) 24R2: Developer Studio custom fragment extensions; 3) 25R1: Aurena page performance enhancements and strict CRUD annotation checks; 4) 25R2: Projection initialcheck mandatory security checks; 5) 26R1: Native AI copilot annotations (@AiAgent, @ODataStream) and enhanced customization layering standards.`,
+        content: `Overview of IFS Cloud framework evolution: 1) 23R2: Initial Aurena responsive framework stabilization and basic OData v4 REST endpoints; 2) 24R1: Grid layout enhancements and OData stream features; 3) 24R2: Developer Studio custom fragment extensions; 4) 25R1: Aurena page performance optimizations and strict CRUD annotations; 5) 25R2: Mandatory projection initialcheck security checks; 6) 26R1: Native AI copilot annotations (@AiAgent, @ODataStream) and enhanced customization layering standards.`,
         codeBlocks: [
           `-- 26R1 Mandatory Projection Action Check\naction ReleaseOrder {\n   initialcheck implementation;\n}`
+        ]
+      },
+      {
+        id: 'techdocs-marble-overview-23r2',
+        title: 'IFS Cloud 23R2 Architecture & Marble DSL Foundation',
+        url: 'https://docs.ifs.com/techdocs/23r2/marble_dsl_overview.htm',
+        category: 'Architecture Guide',
+        version: '23R2',
+        content: `IFS Cloud 23R2 base architecture establishing basic Marble DSL models (*.entity, *.projection, *.client) and Aurena client page definitions.`,
+        codeBlocks: [
+          `entity CustomerOrder {\n   from = "CUSTOMER_ORDER_TAB";\n}`
         ]
       }
     ];
