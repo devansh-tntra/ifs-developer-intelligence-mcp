@@ -3,7 +3,7 @@ export declare class LocalStorageDB {
     private docChunks;
     private workspaceAssets;
     constructor();
-    private seedMultiVersionKnowledge;
+    private seedComprehensiveTechDocs;
     addDocChunk(chunk: DocChunk): void;
     addWorkspaceAsset(asset: WorkspaceAsset): void;
     searchDocChunks(query: string, version?: string): DocChunk[];
