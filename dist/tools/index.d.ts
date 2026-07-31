@@ -16,8 +16,44 @@ export declare const ALL_MCP_TOOLS: ({
         version?: string;
     }) => Promise<{
         query: string;
+        searchedVersions: string;
         count: number;
         results: import("../rag/hybridSearch.js").HybridSearchResult[];
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: import("zod").ZodObject<{
+        concept: import("zod").ZodString;
+        fromVersion: import("zod").ZodString;
+        toVersion: import("zod").ZodString;
+    }, "strip", import("zod").ZodTypeAny, {
+        concept: string;
+        fromVersion: string;
+        toVersion: string;
+    }, {
+        concept: string;
+        fromVersion: string;
+        toVersion: string;
+    }>;
+    execute: (args: {
+        concept: string;
+        fromVersion: string;
+        toVersion: string;
+    }) => Promise<{
+        concept: string;
+        comparison: {
+            fromVersion: {
+                version: string;
+                matchesFound: number;
+                summary: string;
+            };
+            toVersion: {
+                version: string;
+                matchesFound: number;
+                summary: string;
+            };
+        };
     }>;
 } | {
     name: string;
@@ -39,13 +75,17 @@ export declare const ALL_MCP_TOOLS: ({
     description: string;
     parameters: import("zod").ZodObject<{
         topic: import("zod").ZodString;
+        version: import("zod").ZodOptional<import("zod").ZodString>;
     }, "strip", import("zod").ZodTypeAny, {
         topic: string;
+        version?: string | undefined;
     }, {
         topic: string;
+        version?: string | undefined;
     }>;
     execute: (args: {
         topic: string;
+        version?: string;
     }) => Promise<{
         summary: string;
         topic?: undefined;
@@ -96,6 +136,7 @@ export declare const ALL_MCP_TOOLS: ({
         count: number;
         snippets: {
             title: string;
+            version: string;
             code: string;
         }[];
     }>;

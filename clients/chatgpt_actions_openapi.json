@@ -2,13 +2,13 @@
   "openapi": "3.1.0",
   "info": {
     "title": "IFS Developer Intelligence API",
-    "description": "ChatGPT Action OpenAPI 3.1.0 specification for IFS Cloud Development Intelligence MCP Server",
+    "description": "ChatGPT Action OpenAPI 3.1.0 specification for IFS Cloud Multi-Version Development Intelligence MCP Server",
     "version": "1.0.0"
   },
   "servers": [
     {
       "url": "https://hot-schools-punch.loca.lt/api",
-      "description": "Live Public HTTPS Tunnel Server"
+      "description": "IFS MCP Server API"
     }
   ],
   "paths": {
@@ -64,6 +64,10 @@
                 "type": "object",
                 "properties": {
                   "query": { "type": "string", "description": "Search query or concept" },
+                  "version": { "type": "string", "description": "IFS release version filter (e.g. ALL, 24R1, 24R2, 25R1, 25R2, 26R1)" },
+                  "concept": { "type": "string", "description": "IFS concept to compare across versions" },
+                  "fromVersion": { "type": "string", "description": "Base version e.g. 25R2" },
+                  "toVersion": { "type": "string", "description": "Target version e.g. 26R1" },
                   "code": { "type": "string", "description": "Code snippet or file content" },
                   "errorCode": { "type": "string", "description": "Oracle or IFS error code" },
                   "luName": { "type": "string", "description": "IFS Logical Unit name" },

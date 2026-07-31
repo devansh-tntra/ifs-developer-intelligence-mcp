@@ -17,8 +17,44 @@ export declare const docsTools: ({
         version?: string;
     }) => Promise<{
         query: string;
+        searchedVersions: string;
         count: number;
         results: import("../rag/hybridSearch.js").HybridSearchResult[];
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: z.ZodObject<{
+        concept: z.ZodString;
+        fromVersion: z.ZodString;
+        toVersion: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        concept: string;
+        fromVersion: string;
+        toVersion: string;
+    }, {
+        concept: string;
+        fromVersion: string;
+        toVersion: string;
+    }>;
+    execute: (args: {
+        concept: string;
+        fromVersion: string;
+        toVersion: string;
+    }) => Promise<{
+        concept: string;
+        comparison: {
+            fromVersion: {
+                version: string;
+                matchesFound: number;
+                summary: string;
+            };
+            toVersion: {
+                version: string;
+                matchesFound: number;
+                summary: string;
+            };
+        };
     }>;
 } | {
     name: string;
@@ -40,13 +76,17 @@ export declare const docsTools: ({
     description: string;
     parameters: z.ZodObject<{
         topic: z.ZodString;
+        version: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
         topic: string;
+        version?: string | undefined;
     }, {
         topic: string;
+        version?: string | undefined;
     }>;
     execute: (args: {
         topic: string;
+        version?: string;
     }) => Promise<{
         summary: string;
         topic?: undefined;
@@ -97,6 +137,7 @@ export declare const docsTools: ({
         count: number;
         snippets: {
             title: string;
+            version: string;
             code: string;
         }[];
     }>;
