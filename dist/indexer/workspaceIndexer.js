@@ -3,16 +3,17 @@ import path from 'path';
 import { glob } from 'glob';
 import { db } from '../storage/db.js';
 export async function indexWorkspaceDirectory(targetDir) {
-    if (!fs.existsSync(targetDir)) {
-        console.warn(`Workspace path does not exist: ${targetDir}`);
-        return 0;
+    let dirToScan = targetDir;
+    if (!fs.existsSync(dirToScan)) {
+        console.log(`[IFS-MCP] Workspace path '${targetDir}' not found on cloud instance. Falling back to project root: ${process.cwd()}`);
+        dirToScan = process.cwd();
     }
     const pattern = '**/*.{entity,projection,client,page,fragment,model,plsql,views,storage,api,apy,sql,ddl,dml,xml,json,yaml,rdl,rdf,config,md}';
     try {
-        const files = await glob(pattern, { cwd: targetDir, nodir: true, ignore: ['**/node_modules/**', '**/dist/**', '**/.git/**'] });
+        const files = await glob(pattern, { cwd: dirToScan, nodir: true, ignore: ['**/node_modules/**', '**/dist/**', '**/.git/**'] });
         let indexedCount = 0;
         for (const relPath of files) {
-            const fullPath = path.join(targetDir, relPath);
+            const fullPath = path.join(dirToScan, relPath);
             const ext = path.extname(fullPath).toLowerCase().replace('.', '');
             const filename = path.basename(fullPath);
             let assetType = 'other';
@@ -50,7 +51,7 @@ export async function indexWorkspaceDirectory(targetDir) {
         return indexedCount;
     }
     catch (err) {
-        console.error(`Error indexing workspace directory ${targetDir}:`, err);
+        console.error(`Error indexing workspace directory ${dirToScan}:`, err);
         return 0;
     }
 }
