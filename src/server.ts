@@ -98,7 +98,12 @@ export async function startStdioServer() {
 export async function startSseServer() {
   const app = express();
   app.use(cors());
-  app.use(express.json());
+  app.use(express.json({ limit: '2mb' }));
+
+  // Lightweight health check endpoint for Render keep-alive / UptimeRobot
+  app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok', uptime: process.uptime(), timestamp: new Date().toISOString() });
+  });
 
   const server = await createMcpServer();
   let sseTransport: SSEServerTransport | null = null;
@@ -117,7 +122,7 @@ export async function startSseServer() {
   });
 
   app.get('/', (req, res) => {
-    res.send('<h1>IFS Developer Intelligence MCP Server</h1><p>Status: Running</p><p><a href="/api/tools">View API Tools JSON</a></p>');
+    res.send('<h1>IFS Developer Intelligence MCP Server</h1><p>Status: Active (Render Optimized)</p><p><a href="/health">Health Endpoint</a> | <a href="/api/tools">View API Tools JSON</a></p>');
   });
 
   app.get('/api/tools', async (req, res) => {
@@ -140,8 +145,8 @@ export async function startSseServer() {
   const startListening = (port: number) => {
     const httpServer = app.listen(port, () => {
       console.log(`[IFS-MCP] IFS Developer Intelligence Server running on HTTP/SSE port ${port}`);
+      console.log(`[IFS-MCP] Health Check Endpoint: http://localhost:${port}/health`);
       console.log(`[IFS-MCP] SSE Endpoint: http://localhost:${port}/sse`);
-      console.log(`[IFS-MCP] REST / ChatGPT Actions Endpoint: http://localhost:${port}/api/tools`);
     });
 
     httpServer.on('error', (err: any) => {
