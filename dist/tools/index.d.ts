@@ -144,6 +144,48 @@ export declare const ALL_MCP_TOOLS: ({
     name: string;
     description: string;
     parameters: import("zod").ZodObject<{
+        procedureName: import("zod").ZodString;
+        tableName: import("zod").ZodString;
+        whereClause: import("zod").ZodString;
+    }, "strip", import("zod").ZodTypeAny, {
+        procedureName: string;
+        tableName: string;
+        whereClause: string;
+    }, {
+        procedureName: string;
+        tableName: string;
+        whereClause: string;
+    }>;
+    execute: (args: {
+        procedureName: string;
+        tableName: string;
+        whereClause: string;
+    }) => Promise<{
+        code: string;
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: import("zod").ZodObject<{
+        procedureName: import("zod").ZodString;
+        logTableName: import("zod").ZodString;
+    }, "strip", import("zod").ZodTypeAny, {
+        procedureName: string;
+        logTableName: string;
+    }, {
+        procedureName: string;
+        logTableName: string;
+    }>;
+    execute: (args: {
+        procedureName: string;
+        logTableName: string;
+    }) => Promise<{
+        code: string;
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: import("zod").ZodObject<{
         luName: import("zod").ZodString;
         methodName: import("zod").ZodString;
         description: import("zod").ZodString;
@@ -171,13 +213,13 @@ export declare const ALL_MCP_TOOLS: ({
         component: import("zod").ZodString;
         tableName: import("zod").ZodString;
     }, "strip", import("zod").ZodTypeAny, {
+        tableName: string;
         luName: string;
         component: string;
-        tableName: string;
     }, {
+        tableName: string;
         luName: string;
         component: string;
-        tableName: string;
     }>;
     execute: (args: {
         luName: string;
@@ -197,12 +239,12 @@ export declare const ALL_MCP_TOOLS: ({
         whereClause: import("zod").ZodString;
     }, "strip", import("zod").ZodTypeAny, {
         tableName: string;
-        cursorName: string;
         whereClause: string;
+        cursorName: string;
     }, {
         tableName: string;
-        cursorName: string;
         whereClause: string;
+        cursorName: string;
     }>;
     execute: (args: {
         cursorName: string;
@@ -291,12 +333,12 @@ export declare const ALL_MCP_TOOLS: ({
         component: import("zod").ZodString;
         tableName: import("zod").ZodString;
     }, "strip", import("zod").ZodTypeAny, {
-        component: string;
         tableName: string;
+        component: string;
         entityName: string;
     }, {
-        component: string;
         tableName: string;
+        component: string;
         entityName: string;
     }>;
     execute: (args: {
@@ -879,6 +921,29 @@ export declare const ALL_MCP_TOOLS: ({
     name: string;
     description: string;
     parameters: import("zod").ZodObject<{
+        reportName: import("zod").ZodString;
+        parentBlock: import("zod").ZodString;
+        childBlock: import("zod").ZodString;
+    }, "strip", import("zod").ZodTypeAny, {
+        reportName: string;
+        parentBlock: string;
+        childBlock: string;
+    }, {
+        reportName: string;
+        parentBlock: string;
+        childBlock: string;
+    }>;
+    execute: (args: {
+        reportName: string;
+        parentBlock: string;
+        childBlock: string;
+    }) => Promise<{
+        code: string;
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: import("zod").ZodObject<{
         reportTitle: import("zod").ZodString;
     }, "strip", import("zod").ZodTypeAny, {
         reportTitle: string;
@@ -1097,6 +1162,39 @@ export declare const ALL_MCP_TOOLS: ({
         wizardName: string;
     }) => Promise<{
         wizardGuide: string;
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: import("zod").ZodObject<{
+        task: import("zod").ZodString;
+    }, "strip", import("zod").ZodTypeAny, {
+        task: string;
+    }, {
+        task: string;
+    }>;
+    execute: (args: {
+        task: string;
+    }) => Promise<{
+        task: string;
+        dbaScript: string;
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: import("zod").ZodObject<{
+        sqlQuery: import("zod").ZodString;
+    }, "strip", import("zod").ZodTypeAny, {
+        sqlQuery: string;
+    }, {
+        sqlQuery: string;
+    }>;
+    execute: (args: {
+        sqlQuery: string;
+    }) => Promise<{
+        query: string;
+        executionPlanGuide: string;
+        tuningTips: string[];
     }>;
 } | {
     name: string;

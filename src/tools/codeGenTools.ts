@@ -8,6 +8,81 @@ import {
 
 export const codeGenTools = [
   {
+    name: 'generate_bulk_plsql',
+    description: 'Generate high-performance PL/SQL procedure using BULK COLLECT LIMIT 1000 and FORALL batch operations for high-volume database updates.',
+    parameters: z.object({
+      procedureName: z.string().describe('Procedure name (e.g. Bulk_Approve_Orders)'),
+      tableName: z.string().describe('Target table name (e.g. CUSTOMER_ORDER_TAB)'),
+      whereClause: z.string().describe('WHERE filter condition')
+    }),
+    execute: async (args: { procedureName: string; tableName: string; whereClause: string }) => {
+      return {
+        code: `
+-----------------------------------------------------------------------------
+-- High-Performance Bulk Operations Procedure
+-- Table: ${args.tableName}
+-----------------------------------------------------------------------------
+PROCEDURE ${args.procedureName}
+IS
+   CURSOR get_records_ IS
+      SELECT rowid, rowversion
+        FROM ${args.tableName}
+       WHERE ${args.whereClause};
+
+   TYPE Rowid_Tab IS TABLE OF ROWID INDEX BY PLS_INTEGER;
+   rowid_list_ Rowid_Tab;
+BEGIN
+   OPEN get_records_;
+   LOOP
+      FETCH get_records_ BULK COLLECT INTO rowid_list_ LIMIT 1000;
+      EXIT WHEN rowid_list_.COUNT = 0;
+
+      FORALL i_ IN 1..rowid_list_.COUNT
+         UPDATE ${args.tableName}
+            SET state = 'Approved',
+                rowversion = sysdate
+          WHERE rowid = rowid_list_(i_);
+   END LOOP;
+   CLOSE get_records_;
+END ${args.procedureName};
+`
+      };
+    }
+  },
+  {
+    name: 'generate_autonomous_transaction',
+    description: 'Generate PL/SQL logging/auditing procedure using PRAGMA AUTONOMOUS_TRANSACTION.',
+    parameters: z.object({
+      procedureName: z.string().describe('Procedure name (e.g. Log_Audit_Trail)'),
+      logTableName: z.string().describe('Audit/Log table name')
+    }),
+    execute: async (args: { procedureName: string; logTableName: string }) => {
+      return {
+        code: `
+-----------------------------------------------------------------------------
+-- Autonomous Transaction Audit Procedure
+-----------------------------------------------------------------------------
+PROCEDURE ${args.procedureName} (
+   source_lu_ IN VARCHAR2,
+   message_   IN VARCHAR2 )
+IS
+   PRAGMA AUTONOMOUS_TRANSACTION;
+BEGIN
+   INSERT INTO ${args.logTableName} (
+      log_id, source_lu, log_message, created_date, created_by
+   ) VALUES (
+      sys_guid(), source_lu_, message_, sysdate, Fnd_Session_API.Get_Fnd_User()
+   );
+   COMMIT;
+EXCEPTION
+   WHEN OTHERS THEN
+      ROLLBACK;
+END ${args.procedureName};
+`
+      };
+    }
+  },
+  {
     name: 'generate_plsql',
     description: 'Generate standard IFS PL/SQL business logic procedure or function block.',
     parameters: z.object({

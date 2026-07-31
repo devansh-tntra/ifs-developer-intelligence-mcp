@@ -3,6 +3,29 @@ export declare const reportingTools: ({
     name: string;
     description: string;
     parameters: z.ZodObject<{
+        reportName: z.ZodString;
+        parentBlock: z.ZodString;
+        childBlock: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        reportName: string;
+        parentBlock: string;
+        childBlock: string;
+    }, {
+        reportName: string;
+        parentBlock: string;
+        childBlock: string;
+    }>;
+    execute: (args: {
+        reportName: string;
+        parentBlock: string;
+        childBlock: string;
+    }) => Promise<{
+        code: string;
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: z.ZodObject<{
         reportTitle: z.ZodString;
     }, "strip", z.ZodTypeAny, {
         reportTitle: string;

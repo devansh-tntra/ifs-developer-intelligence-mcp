@@ -1,6 +1,51 @@
 import { z } from 'zod';
 export const databaseTools = [
     {
+        name: 'oracle_dba_help',
+        description: 'Provide Oracle DBA administration SQL scripts for invalid object compilation, index rebuilds, table locks, session inspection, and tablespaces.',
+        parameters: z.object({
+            task: z.string().describe('DBA task e.g. "compile invalid objects", "check locks", "rebuild indexes", "rebuild dictionary"')
+        }),
+        execute: async (args) => {
+            const taskLower = args.task.toLowerCase();
+            let script = '';
+            if (taskLower.includes('compile') || taskLower.includes('invalid')) {
+                script = `-- Recompile All Invalid PL/SQL Packages & Views in Schema\nEXEC DBMS_UTILITY.compile_schema(schema => USER, compile_all => FALSE);\n-- Or using IFS Dictionary Utility:\nEXEC Dictionary_SYS.Rebuild_Dictionary_();`;
+            }
+            else if (taskLower.includes('lock') || taskLower.includes('session')) {
+                script = `-- Query Active Oracle Session Locks & Blocked Transactions\nSELECT s.sid, s.serial#, s.username, s.program, l.mode_held, o.object_name\n  FROM v$session s, v$lock l, dba_objects o\n WHERE s.sid = l.sid AND l.id1 = o.object_id AND o.owner = USER;`;
+            }
+            else if (taskLower.includes('rebuild') || taskLower.includes('index')) {
+                script = `-- Identify Fragmented Indexes & Rebuild Script\nSELECT 'ALTER INDEX ' || index_name || ' REBUILD ONLINE;' AS rebuild_sql\n  FROM user_indexes WHERE status = 'UNUSABLE';`;
+            }
+            else {
+                script = `-- General Oracle DBA Diagnostic\nSELECT name, open_mode, log_mode FROM v$database;\nEXEC Dictionary_SYS.Rebuild_Dictionary_();`;
+            }
+            return {
+                task: args.task,
+                dbaScript: script
+            };
+        }
+    },
+    {
+        name: 'explain_execution_plan',
+        description: 'Provide Oracle SQL execution plan tuning recommendations (DBMS_XPLAN, index hints, cost analysis).',
+        parameters: z.object({
+            sqlQuery: z.string().describe('SQL query string to analyze')
+        }),
+        execute: async (args) => {
+            return {
+                query: args.sqlQuery,
+                executionPlanGuide: `EXPLAIN PLAN FOR ${args.sqlQuery};\nSELECT * FROM TABLE(DBMS_XPLAN.DISPLAY());`,
+                tuningTips: [
+                    '1. Ensure joined columns have indexes on foreign key columns.',
+                    '2. Check for FULL TABLE SCAN on large _TAB tables.',
+                    '3. Avoid wrapping indexed columns with functions in WHERE clause (e.g. UPPER(order_no)).'
+                ]
+            };
+        }
+    },
+    {
         name: 'analyze_schema',
         description: 'Analyze Oracle database table or view structure for an IFS LU.',
         parameters: z.object({

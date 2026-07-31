@@ -2,6 +2,46 @@ import { z } from 'zod';
 
 export const reportingTools = [
   {
+    name: 'generate_xml_report_writer',
+    description: 'Generate Xml_Record_Writer_SYS PL/SQL code block for building nested XML report data trees in IFS Operational Report RDF packages.',
+    parameters: z.object({
+      reportName: z.string().describe('Report name e.g. CUSTOMER_ORDER_REP'),
+      parentBlock: z.string().describe('Parent XML block element name e.g. ORDERS'),
+      childBlock: z.string().describe('Child XML block element name e.g. ORDER_LINE')
+    }),
+    execute: async (args: { reportName: string; parentBlock: string; childBlock: string }) => {
+      return {
+        code: `
+-----------------------------------------------------------------------------
+-- Xml_Record_Writer_SYS Nested XML Dataset Assembler
+-----------------------------------------------------------------------------
+Xml_Record_Writer_SYS.Create_Report_Header(xml_, '${args.reportName}', '${args.reportName}');
+Xml_Record_Writer_SYS.Start_Element(xml_, '${args.parentBlock}');
+
+FOR head_rec_ IN get_headers_ LOOP
+   Xml_Record_Writer_SYS.Start_Element(xml_, 'ORDER');
+   Xml_Record_Writer_SYS.Add_Element(xml_, 'ORDER_NO', head_rec_.order_no);
+   Xml_Record_Writer_SYS.Add_Element(xml_, 'DESCRIPTION', head_rec_.description);
+
+   Xml_Record_Writer_SYS.Start_Element(xml_, '${args.childBlock}S');
+   FOR line_rec_ IN get_lines_(head_rec_.order_no) LOOP
+      Xml_Record_Writer_SYS.Start_Element(xml_, '${args.childBlock}');
+      Xml_Record_Writer_SYS.Add_Element(xml_, 'LINE_NO', line_rec_.line_no);
+      Xml_Record_Writer_SYS.Add_Element(xml_, 'PRICE', line_rec_.sale_unit_price);
+      Xml_Record_Writer_SYS.End_Element(xml_, '${args.childBlock}');
+   END LOOP;
+   Xml_Record_Writer_SYS.End_Element(xml_, '${args.childBlock}S');
+
+   Xml_Record_Writer_SYS.End_Element(xml_, 'ORDER');
+END LOOP;
+
+Xml_Record_Writer_SYS.End_Element(xml_, '${args.parentBlock}');
+Xml_Record_Writer_SYS.End_String(xml_, '${args.reportName}');
+`
+      };
+    }
+  },
+  {
     name: 'generate_rdl',
     description: 'Generate Microsoft SSRS / IFS Report Designer layout RDL XML snippet.',
     parameters: z.object({

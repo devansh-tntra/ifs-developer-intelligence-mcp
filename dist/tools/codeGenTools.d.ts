@@ -3,6 +3,48 @@ export declare const codeGenTools: ({
     name: string;
     description: string;
     parameters: z.ZodObject<{
+        procedureName: z.ZodString;
+        tableName: z.ZodString;
+        whereClause: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        procedureName: string;
+        tableName: string;
+        whereClause: string;
+    }, {
+        procedureName: string;
+        tableName: string;
+        whereClause: string;
+    }>;
+    execute: (args: {
+        procedureName: string;
+        tableName: string;
+        whereClause: string;
+    }) => Promise<{
+        code: string;
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: z.ZodObject<{
+        procedureName: z.ZodString;
+        logTableName: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        procedureName: string;
+        logTableName: string;
+    }, {
+        procedureName: string;
+        logTableName: string;
+    }>;
+    execute: (args: {
+        procedureName: string;
+        logTableName: string;
+    }) => Promise<{
+        code: string;
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: z.ZodObject<{
         luName: z.ZodString;
         methodName: z.ZodString;
         description: z.ZodString;
@@ -30,13 +72,13 @@ export declare const codeGenTools: ({
         component: z.ZodString;
         tableName: z.ZodString;
     }, "strip", z.ZodTypeAny, {
+        tableName: string;
         luName: string;
         component: string;
-        tableName: string;
     }, {
+        tableName: string;
         luName: string;
         component: string;
-        tableName: string;
     }>;
     execute: (args: {
         luName: string;
@@ -56,12 +98,12 @@ export declare const codeGenTools: ({
         whereClause: z.ZodString;
     }, "strip", z.ZodTypeAny, {
         tableName: string;
-        cursorName: string;
         whereClause: string;
+        cursorName: string;
     }, {
         tableName: string;
-        cursorName: string;
         whereClause: string;
+        cursorName: string;
     }>;
     execute: (args: {
         cursorName: string;
@@ -150,12 +192,12 @@ export declare const codeGenTools: ({
         component: z.ZodString;
         tableName: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        component: string;
         tableName: string;
+        component: string;
         entityName: string;
     }, {
-        component: string;
         tableName: string;
+        component: string;
         entityName: string;
     }>;
     execute: (args: {

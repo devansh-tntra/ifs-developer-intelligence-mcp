@@ -3,6 +3,39 @@ export declare const databaseTools: ({
     name: string;
     description: string;
     parameters: z.ZodObject<{
+        task: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        task: string;
+    }, {
+        task: string;
+    }>;
+    execute: (args: {
+        task: string;
+    }) => Promise<{
+        task: string;
+        dbaScript: string;
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: z.ZodObject<{
+        sqlQuery: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        sqlQuery: string;
+    }, {
+        sqlQuery: string;
+    }>;
+    execute: (args: {
+        sqlQuery: string;
+    }) => Promise<{
+        query: string;
+        executionPlanGuide: string;
+        tuningTips: string[];
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: z.ZodObject<{
         tableName: z.ZodString;
     }, "strip", z.ZodTypeAny, {
         tableName: string;
