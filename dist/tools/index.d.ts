@@ -1461,4 +1461,96 @@ export declare const ALL_MCP_TOOLS: ({
     execute: (args: {
         jsonContent: string;
     }) => Promise<any>;
+} | {
+    name: string;
+    description: string;
+    parameters: import("zod").ZodObject<{
+        objectName: import("zod").ZodString;
+    }, "strip", import("zod").ZodTypeAny, {
+        objectName: string;
+    }, {
+        objectName: string;
+    }>;
+    execute: (args: {
+        objectName: string;
+    }) => Promise<import("../engine/dependencyGraphEngine.js").ImpactAnalysisResult>;
+} | {
+    name: string;
+    description: string;
+    parameters: import("zod").ZodObject<{
+        errorMessage: import("zod").ZodString;
+    }, "strip", import("zod").ZodTypeAny, {
+        errorMessage: string;
+    }, {
+        errorMessage: string;
+    }>;
+    execute: (args: {
+        errorMessage: string;
+    }) => Promise<import("../engine/rootCauseEngine.js").RootCauseReport>;
+} | {
+    name: string;
+    description: string;
+    parameters: import("zod").ZodObject<{
+        codeSnippet: import("zod").ZodString;
+        fileType: import("zod").ZodOptional<import("zod").ZodString>;
+    }, "strip", import("zod").ZodTypeAny, {
+        codeSnippet: string;
+        fileType?: string | undefined;
+    }, {
+        codeSnippet: string;
+        fileType?: string | undefined;
+    }>;
+    execute: (args: {
+        codeSnippet: string;
+        fileType?: string;
+    }) => Promise<import("../engine/qualityGateEngine.js").QualityGateReport>;
+} | {
+    name: string;
+    description: string;
+    parameters: import("zod").ZodObject<{
+        topic: import("zod").ZodString;
+        version: import("zod").ZodOptional<import("zod").ZodString>;
+    }, "strip", import("zod").ZodTypeAny, {
+        topic: string;
+        version?: string | undefined;
+    }, {
+        topic: string;
+        version?: string | undefined;
+    }>;
+    execute: (args: {
+        topic: string;
+        version?: string;
+    }) => Promise<{
+        consensus: import("../engine/consensusEngine.js").ConsensusResult;
+        confidence: import("../engine/confidenceEngine.js").ConfidenceEvaluation;
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: import("zod").ZodObject<{
+        queryPrompt: import("zod").ZodString;
+        targetObject: import("zod").ZodOptional<import("zod").ZodString>;
+        errorMessage: import("zod").ZodOptional<import("zod").ZodString>;
+        codeSnippet: import("zod").ZodOptional<import("zod").ZodString>;
+        version: import("zod").ZodOptional<import("zod").ZodString>;
+    }, "strip", import("zod").ZodTypeAny, {
+        queryPrompt: string;
+        version?: string | undefined;
+        targetObject?: string | undefined;
+        errorMessage?: string | undefined;
+        codeSnippet?: string | undefined;
+    }, {
+        queryPrompt: string;
+        version?: string | undefined;
+        targetObject?: string | undefined;
+        errorMessage?: string | undefined;
+        codeSnippet?: string | undefined;
+    }>;
+    execute: (args: {
+        queryPrompt: string;
+        targetObject?: string;
+        errorMessage?: string;
+        codeSnippet?: string;
+        version?: string;
+    }) => Promise<import("../engine/multiAgentOrchestrator.js").CopilotOrchestratorResponse>;
 })[];

@@ -11,6 +11,7 @@ import { devStudioTools } from './devStudioTools.js';
 import { databaseTools } from './databaseTools.js';
 import { gitTools } from './gitTools.js';
 import { knowledgeTools } from './knowledgeTools.js';
+import { copilotTools } from './copilotTools.js';
 export const ALL_MCP_TOOLS = [
     ...docsTools,
     ...codeGenTools,
@@ -24,6 +25,7 @@ export const ALL_MCP_TOOLS = [
     ...devStudioTools,
     ...databaseTools,
     ...gitTools,
-    ...knowledgeTools
+    ...knowledgeTools,
+    ...copilotTools
 ];
 //# sourceMappingURL=index.js.map
