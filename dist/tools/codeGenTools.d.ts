@@ -3,6 +3,27 @@ export declare const codeGenTools: ({
     name: string;
     description: string;
     parameters: z.ZodObject<{
+        unitName: z.ZodString;
+        testType: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        unitName: string;
+        testType: string;
+    }, {
+        unitName: string;
+        testType: string;
+    }>;
+    execute: (args: {
+        unitName: string;
+        testType: string;
+    }) => Promise<{
+        unitName: string;
+        testType: string;
+        testCode: string;
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: z.ZodObject<{
         procedureName: z.ZodString;
         tableName: z.ZodString;
         whereClause: z.ZodString;

@@ -144,6 +144,27 @@ export declare const ALL_MCP_TOOLS: ({
     name: string;
     description: string;
     parameters: import("zod").ZodObject<{
+        unitName: import("zod").ZodString;
+        testType: import("zod").ZodString;
+    }, "strip", import("zod").ZodTypeAny, {
+        unitName: string;
+        testType: string;
+    }, {
+        unitName: string;
+        testType: string;
+    }>;
+    execute: (args: {
+        unitName: string;
+        testType: string;
+    }) => Promise<{
+        unitName: string;
+        testType: string;
+        testCode: string;
+    }>;
+} | {
+    name: string;
+    description: string;
+    parameters: import("zod").ZodObject<{
         procedureName: import("zod").ZodString;
         tableName: import("zod").ZodString;
         whereClause: import("zod").ZodString;

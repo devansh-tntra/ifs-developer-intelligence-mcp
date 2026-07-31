@@ -5,6 +5,9 @@ import { performDeepRootCauseAnalysis } from '../src/engine/rootCauseEngine.js';
 import { analyzeObjectImpact } from '../src/engine/dependencyGraphEngine.js';
 import { evaluateQualityGate } from '../src/engine/qualityGateEngine.js';
 import { processCopilotRequest } from '../src/engine/multiAgentOrchestrator.js';
+import { telemetryEngine } from '../src/engine/telemetryEngine.js';
+import { expandQuerySynonyms } from '../src/rag/semanticSynonyms.js';
+import { performHybridSearch } from '../src/rag/hybridSearch.js';
 
 describe('IFS Copilot Enterprise vNext Engines', () => {
   it('should compute consensus and confidence score', () => {
@@ -51,5 +54,27 @@ describe('IFS Copilot Enterprise vNext Engines', () => {
     expect(response.agentReports.length).toBeGreaterThanOrEqual(2);
     expect(response.confidence.confidencePercentage).toBeGreaterThanOrEqual(50);
     expect(response.synthesizedRecommendation).toContain('Synthesized analysis complete');
+  });
+
+  it('should track telemetry metrics correctly', () => {
+    telemetryEngine.recordRequest();
+    telemetryEngine.recordToolExecution('search_docs', 15, true);
+    const metrics = telemetryEngine.getMetrics();
+
+    expect(metrics.totalRequestsHandled).toBeGreaterThan(0);
+    expect(metrics.toolSuccessRatePercentage).toBe(100);
+    expect(metrics.toolUsageBreakdown['search_docs']).toBeGreaterThan(0);
+  });
+
+  it('should expand domain semantic synonyms', () => {
+    const synonyms = expandQuerySynonyms('VAT calculation');
+    expect(synonyms).toContain('tax');
+    expect(synonyms).toContain('tax_calculation_api');
+  });
+
+  it('should perform RRF hybrid search with score ranking', () => {
+    const results = performHybridSearch('Marble DSL syntax', '26R1', 3);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results[0].score).toBeGreaterThan(0);
   });
 });

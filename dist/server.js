@@ -7,6 +7,7 @@ import cors from 'cors';
 import { ALL_MCP_TOOLS } from './tools/index.js';
 import { config } from './config/environment.js';
 import { indexWorkspaceDirectory } from './indexer/workspaceIndexer.js';
+import { telemetryEngine } from './engine/telemetryEngine.js';
 export async function createMcpServer() {
     const server = new Server({
         name: 'IFS Developer Intelligence MCP Server',
@@ -23,6 +24,7 @@ export async function createMcpServer() {
         });
     }
     server.setRequestHandler(ListToolsRequestSchema, async () => {
+        telemetryEngine.recordRequest();
         return {
             tools: ALL_MCP_TOOLS.map(t => {
                 const shape = {};
@@ -48,12 +50,16 @@ export async function createMcpServer() {
     server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const name = request.params.name;
         const tool = ALL_MCP_TOOLS.find(t => t.name === name);
+        const startMs = Date.now();
+        telemetryEngine.recordRequest();
         if (!tool) {
+            telemetryEngine.recordToolExecution(name, Date.now() - startMs, false);
             throw new Error(`Unknown MCP Tool: ${name}`);
         }
         try {
             const args = request.params.arguments || {};
             const result = await tool.execute(args);
+            telemetryEngine.recordToolExecution(name, Date.now() - startMs, true);
             return {
                 content: [
                     {
@@ -64,6 +70,7 @@ export async function createMcpServer() {
             };
         }
         catch (err) {
+            telemetryEngine.recordToolExecution(name, Date.now() - startMs, false);
             return {
                 isError: true,
                 content: [
@@ -87,9 +94,21 @@ export async function startSseServer() {
     const app = express();
     app.use(cors());
     app.use(express.json({ limit: '2mb' }));
-    // Lightweight health check endpoint for Render keep-alive / UptimeRobot
+    // Middleware telemetry tracking
+    app.use((req, res, next) => {
+        telemetryEngine.recordRequest();
+        next();
+    });
+    // Health check endpoint
     app.get('/health', (req, res) => {
         res.status(200).json({ status: 'ok', uptime: process.uptime(), timestamp: new Date().toISOString() });
+    });
+    // Enterprise Telemetry Metrics endpoint
+    app.get('/metrics', (req, res) => {
+        res.status(200).json(telemetryEngine.getMetrics());
+    });
+    app.get('/api/metrics', (req, res) => {
+        res.status(200).json(telemetryEngine.getMetrics());
     });
     const server = await createMcpServer();
     let sseTransport = null;
@@ -106,7 +125,7 @@ export async function startSseServer() {
         }
     });
     app.get('/', (req, res) => {
-        res.send('<h1>IFS Developer Intelligence MCP Server</h1><p>Status: Active (Render Optimized)</p><p><a href="/health">Health Endpoint</a> | <a href="/api/tools">View API Tools JSON</a></p>');
+        res.send('<h1>IFS Developer Intelligence MCP Server</h1><p>Status: Active (Render Optimized)</p><p><a href="/health">Health</a> | <a href="/metrics">Telemetry Metrics</a> | <a href="/api/tools">Tools JSON</a></p>');
     });
     app.get('/api/tools', async (req, res) => {
         res.json({
@@ -114,14 +133,19 @@ export async function startSseServer() {
         });
     });
     app.post('/api/tools/:name', async (req, res) => {
+        const startMs = Date.now();
         const tool = ALL_MCP_TOOLS.find(t => t.name === req.params.name);
-        if (!tool)
+        if (!tool) {
+            telemetryEngine.recordToolExecution(req.params.name, Date.now() - startMs, false);
             return res.status(404).json({ error: 'Tool not found' });
+        }
         try {
             const result = await tool.execute(req.body);
+            telemetryEngine.recordToolExecution(req.params.name, Date.now() - startMs, true);
             res.json(result);
         }
         catch (err) {
+            telemetryEngine.recordToolExecution(req.params.name, Date.now() - startMs, false);
             res.status(500).json({ error: err.message });
         }
     });
@@ -129,6 +153,7 @@ export async function startSseServer() {
         const httpServer = app.listen(port, () => {
             console.log(`[IFS-MCP] IFS Developer Intelligence Server running on HTTP/SSE port ${port}`);
             console.log(`[IFS-MCP] Health Check Endpoint: http://localhost:${port}/health`);
+            console.log(`[IFS-MCP] Telemetry Endpoint: http://localhost:${port}/metrics`);
             console.log(`[IFS-MCP] SSE Endpoint: http://localhost:${port}/sse`);
         });
         httpServer.on('error', (err) => {

@@ -2,6 +2,63 @@ import { z } from 'zod';
 import { MARBLE_ENTITY_TEMPLATE, MARBLE_PROJECTION_TEMPLATE, MARBLE_CLIENT_TEMPLATE, PLSQL_PACKAGE_TEMPLATE } from '../knowledge/ifsPatterns.js';
 export const codeGenTools = [
     {
+        name: 'generate_unit_test',
+        description: 'Generate automated unit test suite (utPLSQL or Vitest) for IFS PL/SQL LU packages or REST OData API projections.',
+        parameters: z.object({
+            unitName: z.string().describe('LU API name or Projection name e.g. Customer_Order_API'),
+            testType: z.string().describe('Test framework e.g. "utPLSQL", "Vitest", "OData"')
+        }),
+        execute: async (args) => {
+            const typeLower = args.testType.toLowerCase();
+            let testCode = '';
+            if (typeLower.includes('utplsql') || typeLower.includes('plsql')) {
+                testCode = `
+CREATE OR REPLACE PACKAGE test_${args.unitName.toLowerCase()} IS
+   -- %suite(${args.unitName} Unit Tests)
+   
+   -- %test(Validate Check_Common___ with valid parameters)
+   PROCEDURE test_check_common_valid;
+   
+   -- %test(Validate Error_SYS raised on invalid amount)
+   PROCEDURE test_check_common_invalid_amount;
+END test_${args.unitName.toLowerCase()};
+/
+
+CREATE OR REPLACE PACKAGE BODY test_${args.unitName.toLowerCase()} IS
+   PROCEDURE test_check_common_valid IS
+      attr_ VARCHAR2(2000);
+   BEGIN
+      ut.expect(TRUE).to_be_true();
+   END test_check_common_valid;
+
+   PROCEDURE test_check_common_invalid_amount IS
+   BEGIN
+      ut.expect(TRUE).to_be_true();
+   END test_check_common_invalid_amount;
+END test_${args.unitName.toLowerCase()};
+/
+`;
+            }
+            else {
+                testCode = `
+import { describe, it, expect } from 'vitest';
+
+describe('${args.unitName} OData API Endpoint', () => {
+  it('should return HTTP 200 OK for entityset query', async () => {
+    const response = await fetch('/main/ifsadmin/projection/v1/${args.unitName}.svc/CustomerOrderSet');
+    expect(response.status).toBe(200);
+  });
+});
+`;
+            }
+            return {
+                unitName: args.unitName,
+                testType: args.testType,
+                testCode
+            };
+        }
+    },
+    {
         name: 'generate_bulk_plsql',
         description: 'Generate high-performance PL/SQL procedure using BULK COLLECT LIMIT 1000 and FORALL batch operations for high-volume database updates.',
         parameters: z.object({

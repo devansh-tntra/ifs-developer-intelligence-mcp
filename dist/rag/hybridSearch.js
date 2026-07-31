@@ -1,36 +1,45 @@
 import { db } from '../storage/db.js';
 import { vectorStore } from '../storage/vectorStore.js';
+import { expandQuerySynonyms } from './semanticSynonyms.js';
 export function performHybridSearch(query, version, limit = 5) {
-    const bm25Docs = db.searchDocChunks(query, version);
+    const synonyms = expandQuerySynonyms(query);
+    const expandedQuery = synonyms.join(' ');
+    const bm25Docs = db.searchDocChunks(expandedQuery, version);
     const allDocs = db.getAllDocChunks();
     const combinedResults = [];
-    for (const doc of allDocs) {
-        if (version && doc.version !== version)
+    const kRrf = 60; // Reciprocal Rank Fusion constant
+    // 1. Documentation RAG with Reciprocal Rank Fusion
+    for (let i = 0; i < allDocs.length; i++) {
+        const doc = allDocs[i];
+        if (version && version !== 'ALL' && doc.version.toLowerCase() !== version.toLowerCase())
             continue;
-        const bm25Score = bm25Docs.find(d => d.id === doc.id)?.score || 0;
-        const vectorScore = vectorStore.computeCosineSimilarity(doc.content, query);
-        // Hybrid score formula: BM25 (0.5) + Vector Similarity (0.5)
-        const hybridScore = (bm25Score * 0.5) + (vectorScore * 10 * 0.5);
-        if (hybridScore > 0.1) {
+        const bm25RankIndex = bm25Docs.findIndex(d => d.id === doc.id);
+        const vectorScore = vectorStore.computeCosineSimilarity(doc.content, expandedQuery);
+        const bm25RrfScore = bm25RankIndex >= 0 ? (1 / (kRrf + bm25RankIndex + 1)) : 0;
+        const vectorRrfScore = vectorScore > 0 ? (1 / (kRrf + Math.round((1 - vectorScore) * 10) + 1)) : 0;
+        const finalRrfScore = bm25RrfScore + vectorRrfScore;
+        if (finalRrfScore > 0.001 || bm25RankIndex >= 0) {
             combinedResults.push({
                 doc,
                 sourceType: 'documentation',
                 title: doc.title,
                 snippet: doc.content.slice(0, 300) + '...',
-                score: hybridScore
+                score: Math.round(finalRrfScore * 1000) / 10
             });
         }
     }
-    const workspaceAssets = db.searchWorkspaceAssets(query);
-    for (const asset of workspaceAssets) {
-        const vectorScore = vectorStore.computeCosineSimilarity(asset.content, query);
-        const hybridScore = 5 + (vectorScore * 10 * 0.5);
+    // 2. Workspace Codebase RAG
+    const workspaceAssets = db.searchWorkspaceAssets(expandedQuery);
+    for (let i = 0; i < workspaceAssets.length; i++) {
+        const asset = workspaceAssets[i];
+        const vectorScore = vectorStore.computeCosineSimilarity(asset.content, expandedQuery);
+        const rrfScore = (1 / (kRrf + i + 1)) + (vectorScore * 0.05);
         combinedResults.push({
             asset,
             sourceType: 'workspace',
             title: `${asset.filename} (${asset.assetType})`,
             snippet: asset.content.slice(0, 300) + '...',
-            score: hybridScore
+            score: Math.round(rrfScore * 1000) / 10
         });
     }
     return combinedResults
