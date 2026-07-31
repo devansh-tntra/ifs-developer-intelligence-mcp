@@ -1,0 +1,96 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "IFS Developer Intelligence API",
+    "description": "ChatGPT Action OpenAPI 3.1.0 specification for IFS Cloud Development Intelligence MCP Server",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://hot-schools-punch.loca.lt/api",
+      "description": "Live Public HTTPS Tunnel Server"
+    }
+  ],
+  "paths": {
+    "/tools": {
+      "get": {
+        "summary": "List available IFS tools",
+        "operationId": "listTools",
+        "responses": {
+          "200": {
+            "description": "List of available IFS tools",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tools": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": { "type": "string" },
+                          "description": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools/{name}": {
+      "post": {
+        "summary": "Execute specific IFS MCP Tool",
+        "operationId": "executeTool",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": { "type": "string", "description": "Search query or concept" },
+                  "code": { "type": "string", "description": "Code snippet or file content" },
+                  "errorCode": { "type": "string", "description": "Oracle or IFS error code" },
+                  "luName": { "type": "string", "description": "IFS Logical Unit name" },
+                  "entityName": { "type": "string", "description": "Entity name" },
+                  "projectionName": { "type": "string", "description": "Projection name" },
+                  "component": { "type": "string", "description": "Component code" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tool execution result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": { "type": "object" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

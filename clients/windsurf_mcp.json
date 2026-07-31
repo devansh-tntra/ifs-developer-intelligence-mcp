@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "ifs-developer-intelligence": {
+      "command": "C:/Users/DELL/AppData/Local/OpenAI/Codex/runtimes/cua_node/f8d2abcb7481383b/bin/node.exe",
+      "args": [
+        "d:/MCP_IFS/dist/index.js"
+      ],
+      "env": {
+        "IFS_WORKSPACE_PATH": "d:/Project/clauger/clauger"
+      }
+    }
+  }
+}
