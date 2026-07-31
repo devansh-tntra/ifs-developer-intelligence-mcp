@@ -1,49 +1,55 @@
 # IFS Engineering Copilot Enterprise vNext
 
 [![Render Status](https://img.shields.io/badge/Render-Active%2024%2F7-brightgreen)](https://ifs-mcp-server.onrender.com/health)
-[![IFS Cloud Versions](https://img.shields.io/badge/IFS%20Cloud-23R2%20%7C%2024R1%20%7C%2024R2%20%7C%2025R1%20%7C%2025R2%20%7C%2026R1-blue)](https://docs.ifs.com/techdocs/)
+[![Telemetry Metrics](https://img.shields.io/badge/Telemetry-Live%20Metrics-blue)](https://ifs-mcp-server.onrender.com/metrics)
+[![IFS Cloud Versions](https://img.shields.io/badge/IFS%20Cloud-23R2%20%7C%2024R1%20%7C%2024R2%20%7C%2025R1%20%7C%2025R2%20%7C%2026R1-orange)](https://docs.ifs.com/techdocs/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-An enterprise-grade, multi-agent AI engineering platform transforming official IFS Cloud Technical Documentation (`docs.ifs.com`), IFS Academy Resource Portal (`resourceportal.ifsacademyworld.com`), IFS Community Forum (`community.ifs.com`), local workspace models (`*.entity`, `*.projection`, `*.client`, `*.plsql`), and Oracle DBA knowledge into a senior-level Engineering Copilot for IFS Cloud development.
+An enterprise-grade, multi-agent AI engineering copilot platform transforming official IFS Cloud Technical Documentation (`docs.ifs.com`), IFS Academy Resource Portal (`resourceportal.ifsacademyworld.com`), IFS Community Forum (`community.ifs.com`), local workspace models (`*.entity`, `*.projection`, `*.client`, `*.plsql`), and Oracle DBA knowledge into a senior-level Engineering Copilot for IFS Cloud development.
 
 ---
 
-## 🚀 Key Architectural Capabilities (vNext Release)
+## 🚀 Key Architectural Capabilities (Version Next Release)
 
-### 1. Multi-Agent Request Orchestrator
+### 1. Multi-Agent Request Orchestrator (`src/engine/multiAgentOrchestrator.ts`)
 - **Virtual Agent Dispatcher**: Coordinates specialized Virtual Agents (*Documentation Agent*, *Workspace Agent*, *PL/SQL Agent*, *Marble Agent*, *DBA Agent*, *Security Agent*, *Impact Analysis Agent*, *Quality Gate Agent*).
 - **Evidence Synthesis**: Combines agent findings into a single, evidence-backed response.
 
-### 2. Consensus & Evidence Comparison Engine
+### 2. Reciprocal Rank Fusion (RRF) & Semantic Synonym Engine (`src/rag/hybridSearch.ts`)
+- **RRF RAG Pipeline**: Upgraded search scoring using Reciprocal Rank Fusion ($k=60$).
+- **IFS Domain Synonyms**: Automatic domain expansion (e.g. searching *"VAT"* expands to search `TAX_CALCULATION_API` and `STATUTORY_FEE_API`).
+
+### 3. Real-Time Telemetry & Observability Subsystem (`src/engine/telemetryEngine.ts`)
+- Track request volumes, tool execution counts, latency in milliseconds, tool success/failure rates, and confidence score distribution.
+- Live public endpoints: **`https://ifs-mcp-server.onrender.com/metrics`** & **`https://ifs-mcp-server.onrender.com/health`**.
+
+### 4. Consensus & Evidence Comparison Engine (`src/engine/consensusEngine.ts`)
 - Cross-references evidence across **Official TechDocs**, **IFS Academy**, **IFS Community**, **Oracle KB**, and **Local Workspace**.
 - Detects conflicting context and enforces multi-source evidence verification.
 
-### 3. Confidence Engine
+### 5. Confidence Engine (`src/engine/confidenceEngine.ts`)
 - Computes **Confidence Score %** (0% - 100%), **Quality Grade (A+ to D)**, and evidence diversity metrics.
 - Flags missing context indicators to eliminate AI hallucinations.
 
-### 4. Deep Root Cause Tracing Engine
+### 6. Deep Root Cause Tracing Engine (`src/engine/rootCauseEngine.ts`)
 - Recursive backtrace engine: `ORA / PLS Error` → `Package Invalid` → `View Compilation Failure` → `Missing Column/Table` → `Root Cause, Remediation & Verification`.
 
-### 5. Dependency Graph & Impact Analysis Engine
+### 7. Dependency Graph & Impact Analysis Engine (`src/engine/dependencyGraphEngine.ts`)
 - Maps relationships across `Entity` ↔ `Projection` ↔ `Package` ↔ `View` ↔ `Table` ↔ `Custom Field` ↔ `Security Grants` ↔ `OData Endpoints`.
 - Evaluates risk levels (`LOW`, `MEDIUM`, `HIGH`, `CRITICAL`) and downstream callers before code edits.
 
-### 6. Self-Validating Quality Gate & Static Analyzer
+### 8. Self-Validating Quality Gate & Static Analyzer (`src/engine/qualityGateEngine.ts`)
 - Evaluates code against **SOLID principles**, **Cust-layer customization rules**, **missing `initialcheck implementation;` declarations**, **raw `COMMIT` inside PL/SQL LUs**, and **SQL injection risks**.
-
-### 7. Multi-Version Knowledge Base (23R2 to 26R1)
-- Comprehensive indexed knowledge covering Marble DSL, PL/SQL LU framework hooks (`Check_Common___`, `Prepare_Insert___`), OData v4 REST endpoints, Operational Reporting (`Xml_Record_Writer_SYS`), IFS Connect, Security Grants, and Custom Fields.
 
 ---
 
-## 🛠️ 75+ Specialized MCP Tools Across 14 Categories
+## 🛠️ 76 Specialized MCP Tools Across 14 Categories
 
 | Category | Key MCP Tools |
 | :--- | :--- |
 | **Copilot & Orchestration** | `copilot_orchestrated_query`, `analyze_impact`, `trace_root_cause`, `evaluate_quality_gate`, `evaluate_consensus_confidence` |
 | **Documentation & RAG** | `search_docs`, `compare_version_docs`, `related_docs`, `search_examples` |
-| **Code Generation** | `generate_bulk_plsql`, `generate_autonomous_transaction`, `generate_plsql`, `generate_package`, `generate_entity`, `generate_projection`, `generate_page` |
+| **Code & Test Generation** | `generate_unit_test`, `generate_bulk_plsql`, `generate_autonomous_transaction`, `generate_plsql`, `generate_package`, `generate_entity`, `generate_projection`, `generate_page` |
 | **Oracle DBA & Tuning** | `oracle_dba_help`, `explain_execution_plan`, `analyze_schema`, `find_table`, `find_view` |
 | **Reporting & SSRS** | `generate_xml_report_writer`, `generate_rdf`, `generate_rdl`, `generate_report_parameters` |
 | **Code Review & Quality** | `review_code`, `review_architecture`, `detect_code_smells` |
@@ -59,6 +65,7 @@ An enterprise-grade, multi-agent AI engineering platform transforming official I
 
 Your MCP Server is running 24/7 on Render cloud:
 - **Cloud SSE Endpoint**: `https://ifs-mcp-server.onrender.com/sse`
+- **Cloud Telemetry Endpoint**: `https://ifs-mcp-server.onrender.com/metrics`
 - **Cloud Health Endpoint**: `https://ifs-mcp-server.onrender.com/health`
 - **OpenAPI Schema for ChatGPT**: `https://ifs-mcp-server.onrender.com/openapi.json`
 
@@ -107,7 +114,7 @@ npm install
 # Build TypeScript
 npm run build
 
-# Run Vitest test suite (9 tests)
+# Run Vitest test suite (12 tests)
 npm test
 
 # Run HTTP / SSE Server locally

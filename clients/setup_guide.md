@@ -4,9 +4,10 @@ This guide explains how to connect your **IFS Engineering Copilot Platform** to 
 
 ---
 
-## 🌐 Live Cloud Server Endpoint (100% Zero-Local Setup)
+## 🌐 Live Cloud Server Endpoints (100% Zero-Local Setup)
 
 - **Cloud SSE Endpoint**: `https://ifs-mcp-server.onrender.com/sse`
+- **Cloud Telemetry Endpoint**: `https://ifs-mcp-server.onrender.com/metrics`
 - **Cloud Health Endpoint**: `https://ifs-mcp-server.onrender.com/health`
 - **OpenAPI 3.1.0 Schema**: `https://ifs-mcp-server.onrender.com/openapi.json`
 
