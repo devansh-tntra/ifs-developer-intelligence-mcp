@@ -1,6 +1,6 @@
-# IFS Engineering Copilot - Client Setup Guide
+# IFS Engineering Copilot - Client Setup Guide & Web Search Prevention
 
-This guide explains how to connect your **IFS Engineering Copilot Platform** to **ChatGPT**, **Claude Desktop**, **Cursor IDE**, **VS Code**, and **Windsurf**.
+This guide explains how to connect your **IFS Engineering Copilot Platform** to **ChatGPT**, **Claude Desktop**, **Cursor IDE**, **VS Code**, and **Windsurf**, and how to **disable generic Bing web searches in ChatGPT**.
 
 ---
 
@@ -13,7 +13,25 @@ This guide explains how to connect your **IFS Engineering Copilot Platform** to 
 
 ---
 
-## 🤖 1. ChatGPT (Web Actions / Custom GPTs)
+## 🛑 How to Fix ChatGPT Searching Generic Web Sites (WordPress, SAP, Qlik)
+
+If ChatGPT is showing web search results from unrelated sites like WordPress, SAP, or Qlik (as seen in your screenshot), follow these **2 quick steps** in ChatGPT:
+
+### Step 1: Update ChatGPT Custom GPT Instructions
+1. Open **ChatGPT** -> **Explore GPTs** -> Find your **IFS Developer Assistant** -> Click **Edit GPT**.
+2. In the **Instructions** text box, paste the updated text from `prompts/master_system_prompt.md` (which includes the **STRICT KNOWLEDGE SEARCH DIRECTIVE**).
+
+### Step 2: Disable / Uncheck Web Search Capability in ChatGPT
+1. In the **Configure** tab of your Custom GPT, look at the **Capabilities** section.
+2. **Uncheck / Turn off "Web Search / Web Browsing"**.
+3. Ensure **"Actions"** remains enabled.
+4. Click **Save / Update** (top right).
+
+> **Result**: ChatGPT will now **ONLY** use your connected IFS MCP Actions (`search_docs`, `copilot_orchestrated_query`, `compare_version_docs`) to search official IFS Cloud Documentation (`docs.ifs.com`), IFS Academy, and IFS Community!
+
+---
+
+## 🤖 1. ChatGPT (Web Actions / Custom GPTs Setup)
 
 1. Open **ChatGPT** -> **Explore GPTs** -> **Create / Edit GPT**.
 2. Go to **Configure** -> **Actions** -> **Import from URL**.
