@@ -68,17 +68,72 @@ export class LocalStorageDB {
                 ]
             },
             // ---------------------------------------------------------------------
-            // PL/SQL LU BUSINESS LOGIC & FRAMEWORK APIS
+            // OFFICIAL IFS DEVELOPER COURSE RESOURCE BUNDLES (FROM ZIP)
             // ---------------------------------------------------------------------
             {
-                id: 'techdocs-plsql-lu-framework',
-                title: 'IFS PL/SQL LU Implementation Methods & Core Framework APIs',
-                url: 'https://docs.ifs.com/techdocs/26r1/plsql_lu_framework.htm',
-                category: 'Business Logic Development',
-                version: '26R1',
-                content: `IFS PL/SQL packages (*_API) enforce business logic using standard lifecycle hooks: Prepare_Insert___ (default values), Check_Insert___ / Check_Update___ (validations), Insert___ / Update___ (database DML), Check_Common___ (shared validations), and Check_Delete___ / Delete___ (cascade/restricted deletes). Use Error_SYS.Record_General to raise user errors. Use Client_SYS to parse attribute strings (attr_). Never issue raw COMMIT or ROLLBACK inside LU methods.`,
+                id: 'course-web-dev-aurena',
+                title: 'IFS Course Resource Bundle: Web Development - IFS Cloud (Aurena UX, Assistants & Dialogs)',
+                url: 'file:///D:/MCP_IFS/Resource%20Bundles%20for%20Developer%20courses/Web%20Development%20-%20IFS%20Cloud',
+                category: 'IFS Training Resource Bundle',
+                version: 'ALL',
+                content: `Official IFS Cloud Web Development Course Resource Bundle: 1) Marble Client UX pages, groups, lists, selectors, dialogs, and assistants; 2) Dynamic command execution syntax with confirmation dialogs; 3) Component registration scripts and support materials; 4) Model definitions for TrnInventoryProduct.entity, TrnInventoryProductHandling.projection, and TrnInventoryProductHandling.client.`,
                 codeBlocks: [
-                    `@Override\nPROCEDURE Check_Common___ (\n   oldrec_ IN     customer_order_tab%ROWTYPE,\n   newrec_ IN OUT customer_order_tab%ROWTYPE,\n   indrec_ IN OUT Indicator_Rec,\n   attr_   IN OUT VARCHAR2 )\nIS\nBEGIN\n   super(oldrec_, newrec_, indrec_, attr_);\n   IF newrec_.amount < 0 THEN\n      Error_SYS.Record_General(lu_name_, 'INVALIDAMT: Order amount cannot be negative.');\n   END IF;\nEND Check_Common___;`
+                    `assistant TrnCreateProductAssistant using ProductVirtualSet {\n   label = "Create New Inventory Product";\n   setup InitAssistant {\n      variable CompanyId Text;\n      execute {\n         set Company = CompanyId;\n      }\n   }\n   steps {\n      step {\n         group ProductDetailGroup;\n      }\n      final step {\n      }\n   }\n   finish command {\n      execute {\n         call CreateProduct(Company, ProductCode, Description);\n         navigate page Form;\n      }\n   }\n}`
+                ]
+            },
+            {
+                id: 'course-business-logic-plsql',
+                title: 'IFS Course Resource Bundle: Business Logic Development - IFS Cloud (PL/SQL LUs & Triggers)',
+                url: 'file:///D:/MCP_IFS/Resource%20Bundles%20for%20Developer%20courses/Business_Logic_Development-IFS_Cloud',
+                category: 'IFS Training Resource Bundle',
+                version: 'ALL',
+                content: `Official IFS Business Logic Development Course Resource Bundle: 1) Standard PL/SQL package LU lifecycle hooks: Prepare_Insert___, Check_Insert___, Check_Update___, Check_Common___, Insert___, Update___, Check_Delete___, Delete___; 2) Exception handling with Error_SYS.Record_General; 3) Client_SYS attribute string construction and unpacking; 4) Custom LU storage views (*_TAB, *_BASE, *_CFV).`,
+                codeBlocks: [
+                    `@Override\nPROCEDURE Check_Insert___ (\n   newrec_ IN OUT trn_inventory_product_tab%ROWTYPE,\n   indrec_ IN OUT Indicator_Rec,\n   attr_   IN OUT VARCHAR2 )\nIS\nBEGIN\n   super(newrec_, indrec_, attr_);\n   IF newrec_.unit_price <= 0 THEN\n      Error_SYS.Record_General(lu_name_, 'INVALIDPRICE: Unit price must be strictly positive.');\n   END IF;\nEND Check_Insert___;`
+                ]
+            },
+            {
+                id: 'course-integration-dev-rest',
+                title: 'IFS Course Resource Bundle: Integration Development & Configurations (REST, OData & IFS Connect)',
+                url: 'file:///D:/MCP_IFS/Resource%20Bundles%20for%20Developer%20courses/Integration%20Development%20-%20IFS%20Cloud',
+                category: 'IFS Training Resource Bundle',
+                version: 'ALL',
+                content: `Official IFS Integration Development & Configurations Resource Bundle: 1) OData v4 REST API service interfaces, cURL OAuth 2.0 requests, JSON payloads (LoginUser.json, QueryProduct.json, ProductInput.json); 2) IFS Connect Routing Rules, Content-based Transformers (XSLT/JSON), Message Processors; 3) Outbound Method Templates and Projection Cache clearing scripts (ClearProjectionCache.txt).`,
+                codeBlocks: [
+                    `curl -X POST "https://ifs-server:48080/main/ifsapi/rest/v1/TrnInventoryProductHandling.svc/InventoryProducts" \\\n  -H "Authorization: Bearer ${'${ACCESS_TOKEN}'}" \\\n  -H "Content-Type: application/json" \\\n  -d '{"ProductCode":"P100","Description":"Industrial Sensor","UnitPrice":250.00}'`
+                ]
+            },
+            {
+                id: 'course-report-designer',
+                title: 'IFS Course Resource Bundle: Report Designer & Operational Reports (RDF, RDL/RDLC & SSRS)',
+                url: 'file:///D:/MCP_IFS/Resource%20Bundles%20for%20Developer%20courses/Report%20Designer%20Development',
+                category: 'IFS Training Resource Bundle',
+                version: 'ALL',
+                content: `Official IFS Report Designer Development Resource Bundle: 1) Operational Reports PL/SQL data providers (*_RPI); 2) Xml_Record_Writer_SYS XML data stream construction; 3) RDL/RDLC layout design for Report Designer and Microsoft SSRS; 4) Report parameters, archive registration, and PDF generation.`,
+                codeBlocks: [
+                    `PROCEDURE Execute_Report ( ... )\nIS\n   xml_ CLOB;\nBEGIN\n   Xml_Record_Writer_SYS.Create_Report_Header(xml_, 'TRN_INVENTORY_REP', 'Inventory Report');\n   Xml_Record_Writer_SYS.Add_Element(xml_, 'PRODUCT_CODE', rec_.product_code);\n   Xml_Record_Writer_SYS.Close_Report_Header(xml_, 'TRN_INVENTORY_REP');\nEND Execute_Report;`
+                ]
+            },
+            {
+                id: 'course-mobile-development',
+                title: 'IFS Course Resource Bundle: Aurena Native Mobile Development (Offline Sync, Push & Batch)',
+                url: 'file:///D:/MCP_IFS/Resource%20Bundles%20for%20Developer%20courses/Mobile%20Development%20-%20IFS%20Cloud',
+                category: 'IFS Training Resource Bundle',
+                version: 'ALL',
+                content: `Official IFS Aurena Native Mobile Development Resource Bundle: 1) Offline P1/P2 synchronization rules and WorkOrder offline handling; 2) Push & Batch sync scheduling for TechCompanyApp.app; 3) Group Push valuation rules and equipment object mobile models.`,
+                codeBlocks: [
+                    `app TechCompanyApp;\ncomponent TRNMOB;\n\nentity WorkOrder {\n   sync policy PushAndBatch;\n   group push where = "Company = :UserCompany";\n}`
+                ]
+            },
+            {
+                id: 'course-trnaca-customizations',
+                title: 'IFS Course Resource Bundle: Aurena Customizations & Configurations (TrnACA_0001)',
+                url: 'file:///D:/MCP_IFS/Resource%20Bundles%20for%20Developer%20courses/TrnACA_0001',
+                category: 'IFS Training Resource Bundle',
+                version: 'ALL',
+                content: `Official IFS Aurena Customization & Configurations Resource Bundle (TrnACA_0001): 1) Custom Logical Units (TrnCity.xml, TrnCompanyFounder.xml); 2) Custom Projections (TrnCityHandling.xml, TrnCompanyFounderHandling.xml); 3) Custom Aurena Page Groups (TrnCompanyFounderPage.client, TrnCityAreas.xml); 4) Custom Field expressions and projection configuration metadata.`,
+                codeBlocks: [
+                    `<CustomLogicalUnit name="TrnCity">\n   <Attribute name="CityCode" type="Text" length="10"/>\n   <Attribute name="Population" type="Number"/>\n</CustomLogicalUnit>`
                 ]
             },
             // ---------------------------------------------------------------------
