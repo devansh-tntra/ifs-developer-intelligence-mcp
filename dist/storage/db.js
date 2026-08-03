@@ -82,37 +82,37 @@ export class LocalStorageDB {
                 ]
             },
             // ---------------------------------------------------------------------
-            // ORACLE FUNDAMENTAL DATABASE RESOURCES & PL/SQL DEVELOPER MANUAL
+            // ORACLE FUNDAMENTAL DATABASE RESOURCES & PL/SQL DEVELOPER MANUAL (MANUAL.PDF)
             // ---------------------------------------------------------------------
             {
                 id: 'manual-plsql-dev-compilation-debugging',
-                title: 'Oracle Fundamental DB: Compilation, Debugging & Run-time Error Stack Analysis',
+                title: 'Oracle Fundamental DB (Manual.pdf / PL/SQL Developer User Guide): Compilation, Debugging & Run-time Error Stack Analysis',
                 url: 'file:///D:/MCP_IFS/Manual.pdf#page=16',
-                category: 'Oracle DB Fundamentals',
+                category: 'Oracle DB Fundamentals (Manual.pdf)',
                 version: 'ALL',
-                content: `Fundamental Oracle PL/SQL compilation and debugging guide: 1) Program units include procedures, functions, packages, types, and triggers; 2) Integrated debugging: Step Into, Step Over, Step Out, Run until exception; 3) Conditional Breakpoint expressions (e.g. upper(:ename) = 'SMITH'); 4) Run-time Error Stack tracing highlights line numbers and call hierarchy causing ORA- / PLS- exceptions; 5) Package session state resets (ORA-04068) occur after package recompilation.`,
+                content: `Source: Uploaded manual (Manual.pdf - PL/SQL Developer 10.0 User Guide). Fundamental Oracle PL/SQL compilation and debugging guide: 1) Program units include procedures, functions, packages, types, and triggers; 2) Integrated debugging: Step Into, Step Over, Step Out, Run until exception; 3) Conditional Breakpoint expressions (e.g. upper(:ename) = 'SMITH'); 4) Run-time Error Stack tracing highlights line numbers and call hierarchy causing ORA- / PLS- exceptions; 5) Package session state resets (ORA-04068) occur after package recompilation.`,
                 codeBlocks: [
                     `-- Conditional Breakpoint Syntax in PL/SQL Debugger\nupper(:ename) = 'SMITH'\n\n-- DBMS_TRACE Execution Logging\nEXEC DBMS_TRACE.set_plsql_trace(DBMS_TRACE.trace_all_calls);`
                 ]
             },
             {
                 id: 'manual-plsql-dev-profiling-tuning',
-                title: 'Oracle Fundamental DB: SQL Tuning, Explain Plan, DBMS_PROFILER & TKPROF',
+                title: 'Oracle Fundamental DB (Manual.pdf / PL/SQL Developer User Guide): SQL Tuning, Explain Plan, DBMS_PROFILER & TKPROF',
                 url: 'file:///D:/MCP_IFS/Manual.pdf#page=32',
-                category: 'Oracle DB Fundamentals',
+                category: 'Oracle DB Fundamentals (Manual.pdf)',
                 version: 'ALL',
-                content: `Oracle SQL and PL/SQL performance tuning principles: 1) Explain Plan (F5) analyzes execution paths, cost, cardinality, and index scans; 2) PL/SQL Profiler (DBMS_PROFILER) records line-by-line execution time, minimum/maximum/average times, and execution counts; 3) Automatic session statistics (V$SESSION, V$STATNAME, V$SESSTAT) track physical reads, logical reads, sorts (disk/memory), and full table scans; 4) TKPROF trace utility analyzes database server trace files (ora*.trc) for CPU and parse times.`,
+                content: `Source: Uploaded manual (Manual.pdf - PL/SQL Developer 10.0 User Guide). Oracle SQL and PL/SQL performance tuning principles: 1) Explain Plan (F5) analyzes execution paths, cost, cardinality, and index scans; 2) PL/SQL Profiler (DBMS_PROFILER) records line-by-line execution time, minimum/maximum/average times, and execution counts; 3) Automatic session statistics (V$SESSION, V$STATNAME, V$SESSTAT) track physical reads, logical reads, sorts (disk/memory), and full table scans; 4) TKPROF trace utility analyzes database server trace files (ora*.trc) for CPU and parse times.`,
                 codeBlocks: [
                     `-- Generate Oracle Explain Plan\nEXPLAIN PLAN FOR SELECT * FROM customer_order_tab WHERE state = 'Planned';\nSELECT * FROM TABLE(DBMS_XPLAN.DISPLAY());\n\n-- Start PL/SQL Profiler Session\nEXEC DBMS_PROFILER.start_profiler('Order_Validation_Benchmark');`
                 ]
             },
             {
                 id: 'manual-plsql-dev-db-objects',
-                title: 'Oracle Fundamental DB: Database Object Management, Scheduler & Queues',
+                title: 'Oracle Fundamental DB (Manual.pdf / PL/SQL Developer User Guide): Database Object Management, Scheduler & Queues',
                 url: 'file:///D:/MCP_IFS/Manual.pdf#page=53',
-                category: 'Oracle DB Fundamentals',
+                category: 'Oracle DB Fundamentals (Manual.pdf)',
                 version: 'ALL',
-                content: `Fundamental Oracle Database object definitions and administration: 1) Table Editor: column data types, primary/foreign key constraints, check constraints, indexes (Normal, Unique, Bitmap), storage parameters (PCTFREE, INITRANS); 2) DBMS_SCHEDULER: Programs, Schedules, Chains, Windows, and Jobs; 3) Advanced Queuing (DBMS_AQ): Queue tables and payload types; 4) Security Administration: Users, Roles, System Privileges, Object Privileges, and Database Links.`,
+                content: `Source: Uploaded manual (Manual.pdf - PL/SQL Developer 10.0 User Guide). Fundamental Oracle Database object definitions and administration: 1) Table Editor: column data types, primary/foreign key constraints, check constraints, indexes (Normal, Unique, Bitmap), storage parameters (PCTFREE, INITRANS); 2) DBMS_SCHEDULER: Programs, Schedules, Chains, Windows, and Jobs; 3) Advanced Queuing (DBMS_AQ): Queue tables and payload types; 4) Security Administration: Users, Roles, System Privileges, Object Privileges, and Database Links.`,
                 codeBlocks: [
                     `-- Recompile Schema Invalid Objects\nEXEC DBMS_UTILITY.compile_schema(schema => USER, compile_all => FALSE);\n\n-- DBMS_SCHEDULER Job Definition\nEXEC DBMS_SCHEDULER.create_job(job_name => 'PURGE_LOGS_JOB', job_type => 'STORED_PROCEDURE', job_action => 'Audit_Log_API.Purge_Old_Logs');`
                 ]
@@ -166,7 +166,8 @@ export class LocalStorageDB {
             const contentMatch = chunk.content.toLowerCase().includes(q);
             const categoryMatch = chunk.category.toLowerCase().includes(q);
             const versionMatch = chunk.version.toLowerCase().includes(q);
-            if (titleMatch || contentMatch || categoryMatch || versionMatch) {
+            const urlMatch = chunk.url.toLowerCase().includes(q);
+            if (titleMatch || contentMatch || categoryMatch || versionMatch || urlMatch) {
                 let score = 0;
                 if (titleMatch)
                     score += 10;
@@ -176,6 +177,8 @@ export class LocalStorageDB {
                     score += 2;
                 if (versionMatch)
                     score += 4;
+                if (urlMatch)
+                    score += 8;
                 results.push({ ...chunk, score });
             }
         }
