@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "IFS Developer Intelligence API",
-    "description": "ChatGPT Action OpenAPI 3.1.0 specification for IFS Cloud Multi-Version Development Intelligence MCP Server",
+    "description": "ChatGPT Action OpenAPI 3.1.0 specification for IFS Cloud Multi-Version Development Intelligence MCP Server and Manual.pdf database resources",
     "version": "1.0.0"
   },
   "servers": [
@@ -44,7 +44,7 @@
     },
     "/tools/{name}": {
       "post": {
-        "summary": "Execute specific IFS MCP Tool",
+        "summary": "Execute IFS MCP Tool (search_docs, copilot_orchestrated_query, etc.) to query IFS Cloud Technical Documentation, Oracle DB Manuals, and Manual.pdf text chunks.",
         "operationId": "executeTool",
         "parameters": [
           {
@@ -63,7 +63,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "query": { "type": "string", "description": "Search query or concept" },
+                  "query": { "type": "string", "description": "Search query or concept e.g. 'conditional breakpoints' or 'Manual.pdf'" },
                   "queryPrompt": { "type": "string", "description": "Developer prompt or query for multi-agent copilot" },
                   "version": { "type": "string", "description": "IFS release version filter (e.g. ALL, 24R1, 24R2, 25R1, 25R2, 26R1)" },
                   "concept": { "type": "string", "description": "IFS concept to compare across versions" },
