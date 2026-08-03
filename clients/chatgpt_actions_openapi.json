@@ -7,8 +7,8 @@
   },
   "servers": [
     {
-      "url": "https://hot-schools-punch.loca.lt/api",
-      "description": "IFS MCP Server API"
+      "url": "https://ifs-mcp-server.onrender.com/api",
+      "description": "IFS Cloud 24/7 Render Production Server"
     }
   ],
   "paths": {
@@ -64,12 +64,16 @@
                 "type": "object",
                 "properties": {
                   "query": { "type": "string", "description": "Search query or concept" },
+                  "queryPrompt": { "type": "string", "description": "Developer prompt or query for multi-agent copilot" },
                   "version": { "type": "string", "description": "IFS release version filter (e.g. ALL, 24R1, 24R2, 25R1, 25R2, 26R1)" },
                   "concept": { "type": "string", "description": "IFS concept to compare across versions" },
                   "fromVersion": { "type": "string", "description": "Base version e.g. 25R2" },
                   "toVersion": { "type": "string", "description": "Target version e.g. 26R1" },
                   "code": { "type": "string", "description": "Code snippet or file content" },
+                  "codeSnippet": { "type": "string", "description": "Code snippet for quality gate evaluation" },
+                  "errorMessage": { "type": "string", "description": "Oracle or IFS error message string for root cause analysis" },
                   "errorCode": { "type": "string", "description": "Oracle or IFS error code" },
+                  "objectName": { "type": "string", "description": "Target IFS object or LU for impact analysis" },
                   "luName": { "type": "string", "description": "IFS Logical Unit name" },
                   "entityName": { "type": "string", "description": "Entity name" },
                   "projectionName": { "type": "string", "description": "Projection name" },

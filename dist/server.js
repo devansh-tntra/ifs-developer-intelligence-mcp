@@ -4,6 +4,8 @@ import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import express from 'express';
 import cors from 'cors';
+import fs from 'fs';
+import path from 'path';
 import { ALL_MCP_TOOLS } from './tools/index.js';
 import { config } from './config/environment.js';
 import { indexWorkspaceDirectory } from './indexer/workspaceIndexer.js';
@@ -110,6 +112,16 @@ export async function startSseServer() {
     app.get('/api/metrics', (req, res) => {
         res.status(200).json(telemetryEngine.getMetrics());
     });
+    // Serve OpenAPI 3.1.0 Schema for ChatGPT Actions
+    app.get('/openapi.json', (req, res) => {
+        const schemaPath = path.resolve(process.cwd(), 'clients', 'chatgpt_actions_openapi.json');
+        if (fs.existsSync(schemaPath)) {
+            res.sendFile(schemaPath);
+        }
+        else {
+            res.status(404).json({ error: 'OpenAPI Schema not found' });
+        }
+    });
     const server = await createMcpServer();
     let sseTransport = null;
     app.get('/sse', async (req, res) => {
@@ -125,7 +137,7 @@ export async function startSseServer() {
         }
     });
     app.get('/', (req, res) => {
-        res.send('<h1>IFS Developer Intelligence MCP Server</h1><p>Status: Active (Render Optimized)</p><p><a href="/health">Health</a> | <a href="/metrics">Telemetry Metrics</a> | <a href="/api/tools">Tools JSON</a></p>');
+        res.send('<h1>IFS Developer Intelligence MCP Server</h1><p>Status: Active (Render Production)</p><p><a href="/health">Health</a> | <a href="/metrics">Telemetry Metrics</a> | <a href="/openapi.json">OpenAPI Schema</a> | <a href="/api/tools">Tools JSON</a></p>');
     });
     app.get('/api/tools', async (req, res) => {
         res.json({
@@ -153,6 +165,7 @@ export async function startSseServer() {
         const httpServer = app.listen(port, () => {
             console.log(`[IFS-MCP] IFS Developer Intelligence Server running on HTTP/SSE port ${port}`);
             console.log(`[IFS-MCP] Health Check Endpoint: http://localhost:${port}/health`);
+            console.log(`[IFS-MCP] OpenAPI Schema Endpoint: http://localhost:${port}/openapi.json`);
             console.log(`[IFS-MCP] Telemetry Endpoint: http://localhost:${port}/metrics`);
             console.log(`[IFS-MCP] SSE Endpoint: http://localhost:${port}/sse`);
         });
