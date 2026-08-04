@@ -24,10 +24,17 @@ export async function createMcpServer() {
     }
   );
 
-  if (config.workspacePath) {
-    console.error(`[IFS-MCP] Indexing local workspace at: ${config.workspacePath}`);
+  // Index project root (including resources/) and user workspace directory
+  const rootDir = process.cwd();
+  console.error(`[IFS-MCP] Indexing project resources & models at: ${rootDir}`);
+  indexWorkspaceDirectory(rootDir).then(count => {
+    console.error(`[IFS-MCP] Indexed ${count} project resources & model files.`);
+  });
+
+  if (config.workspacePath && path.resolve(config.workspacePath) !== path.resolve(rootDir)) {
+    console.error(`[IFS-MCP] Indexing custom local workspace at: ${config.workspacePath}`);
     indexWorkspaceDirectory(config.workspacePath).then(count => {
-      console.error(`[IFS-MCP] Indexed ${count} IFS workspace files.`);
+      console.error(`[IFS-MCP] Indexed ${count} custom workspace files.`);
     });
   }
 
