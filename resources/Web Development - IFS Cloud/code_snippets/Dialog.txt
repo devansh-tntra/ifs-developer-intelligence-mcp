@@ -1,0 +1,141 @@
+command MoveProductCommand for TrnInventoryProduct {
+   label = "Move Product";
+
+   mode = SingleRecord;
+   execute {
+      dialog MoveProductDialog(CompanyId, BranchId, InventoryId, ProductId, Quantity) {
+         when OK {
+            success("Product successfully moved");
+         }
+      }
+   }
+}
+
+
+dialog MoveProductDialog for MoveProductDataStructure {
+   label = "Move Product";
+   input(CompanyId, SourceBranchId, SourceInventoryId, ProductId, SourceQuantity);
+
+   group MoveProductSourceGroup;
+   group MoveProductDestinationGroup;
+
+   command Ok {
+      label = "Move Product";
+      enabled = [DestBranchId != null and DestInventoryId != null and QuantityToMove <= SourceQuantity and QuantityToMove != null];
+      execute {
+         call MoveProduct(CompanyId, SourceBranchId, SourceInventoryId, ProductId, DestBranchId, DestInventoryId, QuantityToMove);
+         exit OK;
+      }
+   }
+   command Cancel;
+}
+
+
+group MoveProductSourceGroup for MoveProductDataStructure {
+   static CompanyId;
+   static SourceBranchId;
+   static SourceInventoryId;
+   static ProductId;
+   static SourceQuantity;
+}
+
+group MoveProductDestinationGroup for MoveProductDataStructure {
+   field TrnBranchRef {
+      label = "Branch ID";
+   }
+   field TrnInventoryRef {
+      label = "Inventory ID";
+
+      validate command {
+         enabled = [DestBranchId != null];
+         execute {
+            call GetCurrentQuantity(CompanyId, DestBranchId, DestInventoryId, ProductId) into QuantityAlreadyAvailable;
+         }
+      }
+   }
+   static QuantityAlreadyAvailable;
+   field QuantityToMove {
+      validate command {
+         execute {
+            if [QuantityToMove > SourceQuantity] {
+               info("Quantity to move cannot be larger than quantity availabe at source");
+            }
+         }
+      }
+   }
+}
+
+structure MoveProductDataStructure {
+   attribute CompanyId Text;
+   attribute SourceBranchId Text;
+   attribute SourceInventoryId Number;
+   attribute ProductId Number;
+   attribute SourceQuantity Number;
+   attribute DestBranchId Text {
+      required = [true];
+   }
+   attribute DestInventoryId Number {
+      required = [true];
+   }
+   attribute QuantityAlreadyAvailable Number;
+   attribute QuantityToMove Number {
+      required = [true];
+   }
+
+   reference TrnBranchRef(CompanyId, DestBranchId) to TrnBranch(CompanyId, BranchId);
+   reference TrnInventoryRef(CompanyId, DestBranchId, DestInventoryId) to TrnInventory(CompanyId, BranchId, InventoryId);
+}
+
+function GetCurrentQuantity Number {
+
+   initialcheck none;
+   parameter CompanyId Text;
+   parameter BranchId Text;
+   parameter InventoryId Number;
+   parameter ProductId Number;
+}
+
+action MoveProduct {
+   initialcheck none;
+   ludependencies = TrnInventoryProduct;
+
+   parameter CompanyId Text;
+   parameter SourceBranchId Text;
+   parameter SourceInventoryId Number;
+   parameter SourceProductId Number;
+   parameter DestBranchId Text;
+   parameter DestInventoryId Number;
+   parameter QuantityToMove Number;
+}
+
+FUNCTION Get_Current_Quantity___(
+   company_id_   IN VARCHAR2,
+   branch_id_    IN VARCHAR2,
+   inventory_id_ IN NUMBER,
+   product_id_   IN NUMBER ) RETURN NUMBER
+IS
+   
+BEGIN
+   RETURN NVL(Trn_Inventory_Product_API.Get_Quantity(company_id_, branch_id_, inventory_id_, product_id_), 0);
+END Get_Current_Quantity___;
+
+PROCEDURE Move_Product___ (
+   company_id_          IN VARCHAR2,
+   source_branch_id_    IN VARCHAR2,
+   source_inventory_id_ IN NUMBER,
+   source_product_id_   IN NUMBER,
+   dest_branch_id_      IN VARCHAR2,
+   dest_inventory_id_   IN NUMBER,
+   quantity_to_move_    IN NUMBER ) 
+IS
+   
+BEGIN
+   Trn_Inventory_Prod_Util_API.Move_Items(
+   company_id_,
+   source_branch_id_, 
+   source_inventory_id_, 
+   source_product_id_, 
+   dest_branch_id_, 
+   dest_inventory_id_, 
+   quantity_to_move_);
+END Move_Product___;

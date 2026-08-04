@@ -1,0 +1,68 @@
+projection TrnProductService;
+component TRNINV;
+layer Core;
+description "WebService to expose TrnProducts";
+category Integration;
+
+--------------------------------- FRAGMENTS ---------------------------------
+include fragment TrnProductServiceUtil;
+
+
+----------------------------- MAIN ENTRY POINTS -----------------------------
+
+
+------------------------------ ENTITY DETAILS -------------------------------
+
+
+------------------------------- ENUMERATIONS --------------------------------
+
+
+---------------------------------- QUERIES ----------------------------------
+
+
+---------------------------------- ACTIONS ----------------------------------
+action ReceiveProduct {
+   initialcheck none;
+   parameter Product Structure(ReceiveProductStruct);
+}
+
+
+action ReceiveProducts {
+   initialcheck none;
+   parameter Product List<Structure(ReceiveProductStruct)>;
+}
+
+
+--------------------------------- FUNCTIONS ---------------------------------
+function QueryProducts List<Entity(TrnProduct)> {
+   parameter CompanyId Text;
+   from = "TRN_PRODUCT";
+   where = "company_id = :CompanyId";
+}
+
+function QueryProductsNew List<Structure(QueryProductsStruct)> {
+   parameter CompanyId Text;
+}
+
+function QueryProductsFinal List<Structure(QueryProductsFinalStruct)> {
+   parameter CompanyId Text;
+}
+
+
+
+-------------------------------- STRUCTURES ---------------------------------
+structure QueryProductsStruct {
+   attribute CompanyId Text;
+   attribute ProductId Number;
+   attribute Description Text;
+   attribute Price Number;
+}
+
+
+--------------------------------- VIRTUALS ----------------------------------
+
+
+--------------------------------- SUMMARIES ---------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------

@@ -1,0 +1,3 @@
+deliveryid=ifs-cloud-25.1.2-k5dkc3r-3.1.0-20250712T185122Z
+productversion=25.1.2
+baselinedeliveryid=ifs-cloud-25.1.2-k5dkc3r-3.0.0-20250711T172021Z

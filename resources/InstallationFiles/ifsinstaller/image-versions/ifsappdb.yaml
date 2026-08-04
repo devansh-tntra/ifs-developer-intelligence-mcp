@@ -1,0 +1,3 @@
+ifsappdb:
+  imageVersion: 19.19
+  imageName: ifs/ifsapp-db

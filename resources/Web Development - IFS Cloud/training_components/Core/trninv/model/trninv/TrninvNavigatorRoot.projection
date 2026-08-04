@@ -1,0 +1,10 @@
+projection TrninvNavigatorRoot;
+component TRNINV;
+layer Core;
+description "Dummy Projection for TrninvNavigatorRoot Client";
+category Users;
+
+----------------------------- MAIN ENTRY POINTS -----------------------------
+
+
+------------------------------ ENTITY DETAILS -------------------------------

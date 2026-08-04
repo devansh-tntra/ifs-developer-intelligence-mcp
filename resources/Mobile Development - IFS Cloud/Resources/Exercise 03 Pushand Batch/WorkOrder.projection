@@ -1,0 +1,94 @@
+projection WorkOrder;
+component TRNMWO;
+layer Core;
+description "Used to expose Trn Work Order Manager Demo related data";
+capability Offline;
+category Users, NativeMobile;
+
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- MAIN ENTRY POINTS -----------------------------
+entityset WorkOrders for TrnWorkOrder;
+entityset Persons for PersonInfo;
+entityset WorkOrderSteps for TrnWorkOrderStep;
+entityset Customers for TrnCustomer;
+entityset Technicians for TrnTechnician;
+
+------------------------------ ENTITY DETAILS -------------------------------
+@Override
+entity TrnWorkOrder
+   {
+   syncpolicy Push
+      {
+      syncschedule = daily at 10:00;
+      guardcondition = "";
+      ownershipquery = "SELECT 'IFSAPP' FROM dual";
+   }
+   reference CustomerRef(CustomerId) to TrnCustomer(CustomerId);
+   reference TechnicianRef(PersonId) to TrnTechnician(PersonId);
+   reference AssigneeRef(Assignee) to PersonInfo(PersonId);
+
+   array Steps(WorkOrderNo) to TrnWorkOrderStep(WorkOrderNo);
+   action FillNullValues {
+      initialcheck none;
+      syncpolicy Offline;
+   }
+  --Transaction Group Should be added later
+}
+
+@Override
+entity TrnWorkOrderStep
+   {
+   syncpolicy Push
+      {
+      syncschedule = daily at 10:00;
+      guardcondition = "";
+      ownershipquery = "SELECT 'IFSAPP' FROM dual";
+
+   }
+
+   reference InstructionRef(InstructionNo) to TrnStepInstruction(InstructionNo);
+    --Transaction Group Should be added later
+}
+
+@Override
+entity TrnCustomer
+   {
+   syncpolicy Batch
+      {
+      syncschedule = daily at 10:00;
+   }
+}
+
+@Override
+entity TrnTechnician
+   {
+   crud = Create, Read, Update, Delete;
+
+   syncpolicy Batch {
+      syncschedule = daily at 10:00;
+   }
+}
+
+------------------------------- ENUMERATIONS --------------------------------
+
+
+---------------------------------- QUERIES ----------------------------------
+
+
+---------------------------------- ACTIONS ----------------------------------
+
+--------------------------------- FUNCTIONS ---------------------------------
+
+
+-------------------------------- STRUCTURES ---------------------------------
+
+
+--------------------------------- VIRTUALS ----------------------------------
+
+
+--------------------------------- SUMMARIES ---------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------

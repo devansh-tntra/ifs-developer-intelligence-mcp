@@ -1,0 +1,69 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnProductService
+--  Component:    TRNINV
+--
+--  IFS Developer Studio Template Version 3.0
+--
+--  Date    Sign    History
+--  ------  ------  ---------------------------------------------------------
+-----------------------------------------------------------------------------
+
+layer Core;
+
+FUNCTION Query_Products_New___ (
+   company_id_ IN VARCHAR2) RETURN Query_Products_Struct_Arr
+IS
+   -- Cursor to extract the products from Trn_product view, with order by
+   CURSOR get_products(company_id_ VARCHAR2) IS 
+      SELECT company_id, product_id, description, price 
+      FROM TRN_PRODUCT 
+      WHERE company_id = company_id_ 
+      ORDER BY product_id ASC;
+      
+   response_rec_ Query_Products_Struct_Rec;
+   response_arr_ Query_Products_Struct_Arr;
+   counter_ INTEGER := 1;
+BEGIN
+   response_arr_ := Query_Products_Struct_Arr();
+   
+   -- loop through the cursor and fetch each item and populate
+   FOR i IN get_products(company_id_) LOOP 
+      response_arr_.EXTEND(1); 
+      response_rec_.company_id := i.company_id; 
+      response_rec_.product_id := i.product_id; 
+      response_rec_.description := i.description; 
+      response_rec_.price := i.price; 
+      
+      response_arr_(counter_) := response_rec_; 
+      counter_ := counter_ + 1; 
+   END LOOP;
+     
+   RETURN response_arr_;
+END Query_Products_New___;
+
+
+FUNCTION Query_Products_Final___ (
+   company_id_ IN VARCHAR2) RETURN Trn_Product_Service_Util_API.Query_Products_Final_Struct_Arr
+IS
+BEGIN
+	RETURN Trn_Product_Service_Util_API.Get_Query_Products_Final_Struct_Arr(company_id_);
+END Query_Products_Final___;
+
+
+PROCEDURE Receive_Product___ (
+   product_ IN Trn_Product_Service_Util_API.Receive_Product_Struct_Rec)
+IS
+BEGIN
+	Trn_Product_Service_Util_API.Create_Product(product_);
+END Receive_Product___;
+
+
+PROCEDURE Receive_Products___ (
+   products_ IN Trn_Product_Service_Util_API.Receive_Product_Struct_Arr)
+IS
+BEGIN
+	Trn_Product_Service_Util_API.Create_Products(products_);
+END Receive_Products___;
+
+

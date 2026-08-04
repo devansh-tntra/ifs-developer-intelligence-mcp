@@ -1,0 +1,84 @@
+projection WorkOrder;
+component TRNMWO;
+layer Core;
+description "Used to expose Trn Work Order Manager Demo related data";
+capability Offline;
+category Users, NativeMobile;
+
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- MAIN ENTRY POINTS -----------------------------
+entityset WorkOrders for TrnWorkOrder;
+entityset Persons for PersonInfo;
+entityset WorkOrderSteps for TrnWorkOrderStep;
+entityset Customers for TrnCustomer;
+entityset Technicians for TrnTechnician;
+
+------------------------------ ENTITY DETAILS -------------------------------
+@Override
+entity TrnWorkOrder
+   {
+   syncpolicy Push
+      {
+      syncschedule = daily at 10:00;
+      guardcondition = "";
+      ownershipquery = "SELECT 'IFSAPP' FROM dual";
+   }
+   reference CustomerRef(CustomerId) to TrnCustomer(CustomerId);
+   reference TechnicianRef(PersonId) to TrnTechnician(PersonId);
+   reference AssigneeRef(Assignee) to PersonInfo(PersonId);
+
+   array Steps(WorkOrderNo) to TrnWorkOrderStep(WorkOrderNo);
+  --Fill Null Value Action is needed
+  --Transaction Group Should be added later
+}
+
+@Override
+entity TrnWorkOrderStep
+   {
+   syncpolicy OnlineOnly;
+      --Chnage this to Push in Next Activity
+
+   reference InstructionRef(InstructionNo) to TrnStepInstruction(InstructionNo);
+    --Transaction Group Should be added later
+}
+
+@Override
+entity TrnCustomer
+   {
+   syncpolicy OnlineOnly;
+    --Chnage this to Batch in Next Activity
+}
+
+
+@Override
+entity TrnTechnician
+   {
+   syncpolicy OnlineOnly;
+    --Chnage this to Batch in Next Activity
+}
+--Group Push Entity Sync policy should apply
+   --WorkOrderTechnician in Next Activity
+
+------------------------------- ENUMERATIONS --------------------------------
+
+
+---------------------------------- QUERIES ----------------------------------
+
+
+---------------------------------- ACTIONS ----------------------------------
+
+--------------------------------- FUNCTIONS ---------------------------------
+
+
+-------------------------------- STRUCTURES ---------------------------------
+
+
+--------------------------------- VIRTUALS ----------------------------------
+
+
+--------------------------------- SUMMARIES ---------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------

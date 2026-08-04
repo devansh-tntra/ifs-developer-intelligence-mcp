@@ -1,0 +1,8 @@
+--------------------------------------------------------------------------------
+--	File: ObsoleteComponents.sql
+--
+--	Purpose: Call to this file is included in install.tem, therefore this
+--		 file should always exist. If the file is not created by Developer
+--		 Studio, the file will be created as dummy template.
+--
+--------------------------------------------------------------------------------

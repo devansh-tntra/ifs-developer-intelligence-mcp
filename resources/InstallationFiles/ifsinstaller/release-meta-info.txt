@@ -1,0 +1,5 @@
+release: 25.1
+serviceUpdate: 25.1.2
+bitbucketRevision: c528b8417bfcd42bd521d283f6fa08b83f395099
+Date: 20250709-093000
+releaseCandidateRun: rc2

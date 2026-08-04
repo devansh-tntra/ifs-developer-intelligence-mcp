@@ -1,0 +1,57 @@
+projection EnterpriseHandling;
+component TRNENT;
+layer Core;
+description "Used to handle functionality realted to Training Enterprise basic data";
+category Users;
+
+----------------------------- MAIN ENTRY POINTS -----------------------------
+entityset TrnCountries for TrnCountry;
+entityset TrnAreas for TrnArea;
+entityset TrnCompanies for TrnCompany;
+entityset TrnBranches for TrnBranch;
+entityset TrnVirtualCountries for TrnCountryVirtual;
+
+------------------------------ ENTITY DETAILS -------------------------------
+
+@Override
+entity TrnCountry {
+   array Areas(CountryId) to TrnArea(CountryId);
+}
+
+@Override
+entity TrnBranch {
+   attribute CompanyName Text {
+      fetch = "Trn_Company_API.Get_Name(company_id)";
+      editable = [false];
+   }
+
+   attribute CountryName Text {
+      fetch = "Trn_Country_API.Get_Country(country_id)";
+      editable = [false];
+   }
+
+   attribute AreaName Text {
+      fetch = "Trn_Area_API.Get_Area(country_id, area_id)";
+      editable = [false];
+   }
+
+   reference TrnCompanyRef(CompanyId) to TrnCompany(CompanyId);
+   reference TrnCountryRef(CountryId) to TrnCountry(CountryId);
+   reference TrnAreaRef(CountryId, AreaId) to TrnArea(CountryId, AreaId);
+}
+
+virtual TrnCountryVirtual {
+   attribute CountryId Text;
+   attribute Country Text;
+
+   array Areas(CountryId) to TrnAreaVirtual(CountryId);
+
+   action CreateCoutriesAreas {
+   }
+}
+
+virtual TrnAreaVirtual {
+   attribute CountryId Text;
+   attribute AreaId Text;
+   attribute Area Text;
+}

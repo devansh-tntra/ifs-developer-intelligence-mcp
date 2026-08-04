@@ -1,0 +1,22 @@
+client TrninvNavigatorRoot;
+component TRNINV;
+layer Core;
+
+------------------------------ NAVIGATOR ROOT -------------------------------
+navigator {
+   entry ManageProductsNavEntry toplevel at index 100 {
+      label = "Manage Products";
+   }
+
+   entry ManageInventoriesNavEntry toplevel at index 200 {
+      label = "Manage Inventories";
+   }
+}
+
+-------------------------------- MAIN PAGES ---------------------------------
+
+
+--------------------------------- COMMANDS ----------------------------------
+
+
+----------------------------- VISUAL COMPONENTS -----------------------------

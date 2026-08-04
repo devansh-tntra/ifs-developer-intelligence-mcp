@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A042B544-C500-4BA0-9AAC-5BE9EA6A8E49}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Ifs.Application.Trnord</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Ifs.Application.Trnord</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>0</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>0</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ifs.Fnd.ApplicationForms">
+      <HintPath>..\..\..\..\..\..\DeployFiles\Ifs.Fnd.ApplicationForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ifs.Fnd.Core">
+      <HintPath>..\..\..\..\..\..\DeployFiles\Ifs.Fnd.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ifs.Fnd.Explorer.Interfaces">
+      <HintPath>..\..\..\..\..\..\DeployFiles\Ifs.Fnd.Explorer.Interfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ifs.Fnd.Feature">
+      <HintPath>..\..\..\..\..\..\DeployFiles\Ifs.Fnd.Feature.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ifs.Fnd.Windows.Forms.CommonControls">
+      <HintPath>..\..\..\..\..\..\DeployFiles\Ifs.Fnd.Windows.Forms.CommonControls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ifs.Fnd.Windows.Forms.Interfaces">
+      <HintPath>..\..\..\..\..\..\DeployFiles\Ifs.Fnd.Windows.Forms.Interfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PPJ.Runtime.4">
+      <HintPath>..\..\..\..\..\..\DeployFiles\PPJ.Runtime.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PPJ.Runtime.Vis.4">
+      <HintPath>..\..\..\..\..\..\DeployFiles\PPJ.Runtime.Vis.2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\frmCustomerInvoiceDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCustomerInvoiceDetail.Designer.cs">
+      <DependentUpon>frmCustomerInvoiceDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCustomerOrderDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCustomerOrderDetail.Designer.cs">
+      <DependentUpon>frmCustomerOrderDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmOrderReservationDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmOrderReservationDetail.Designer.cs">
+      <DependentUpon>frmOrderReservationDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\tbwCustomerInvoiceOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\tbwCustomerInvoiceOverview.Designer.cs">
+      <DependentUpon>tbwCustomerInvoiceOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\tbwCustomerOrderOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\tbwCustomerOrderOverview.Designer.cs">
+      <DependentUpon>tbwCustomerOrderOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Globals\Const.cs" />
+    <Compile Include="Globals\Ext.cs" />
+    <Compile Include="Globals\Int.cs" />
+    <Compile Include="Globals\Res.cs" />
+    <Compile Include="Globals\Var.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\frmCustomerInvoiceDetail.resx">
+      <DependentUpon>frmCustomerInvoiceDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCustomerOrderDetail.resx">
+      <DependentUpon>frmCustomerOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmOrderReservationDetail.resx">
+      <DependentUpon>frmOrderReservationDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\tbwCustomerInvoiceOverview.resx">
+      <DependentUpon>tbwCustomerInvoiceOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\tbwCustomerOrderOverview.resx">
+      <DependentUpon>tbwCustomerOrderOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>%25DEVELOPROOT%25\Ifs.Fnd.AppDeployer.exe sourcefile=$(TargetPath) destdir=%25DEPLOYTARGET%25</PostBuildEvent>
+  </PropertyGroup>
+</Project>

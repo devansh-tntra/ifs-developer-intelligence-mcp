@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ENUMERATION xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:ifsworld-com:schemas:enumeration_enumeration">
+   <CODE_GENERATION_PROPERTIES>
+      <CODE_GENERATION_PROPERTIES>
+      </CODE_GENERATION_PROPERTIES>
+   </CODE_GENERATION_PROPERTIES>
+   <NAME>TrnOrderDelType</NAME>
+   <COMPONENT>TRNORD</COMPONENT>
+   <VALUES>
+      <VALUE>
+         <NAME>Express</NAME>
+      </VALUE>
+      <VALUE>
+         <NAME>Mail</NAME>
+      </VALUE>
+      <VALUE>
+         <NAME>Other</NAME>
+      </VALUE>
+   </VALUES>
+</ENUMERATION>

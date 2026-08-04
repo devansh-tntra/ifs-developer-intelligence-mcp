@@ -1,0 +1,84 @@
+ifsappamdatapump:
+  imageVersion: 25.1.0.202507030112.0 
+ifsappamm:
+  imageVersion: 25.1E.0.13.0
+ifsappamscheduler:
+  imageVersion: 25.1.0.202507030112.0 
+ifsappamworkqueue:
+  imageVersion: 7.0.15
+ifsappapplicationsvc:
+  imageVersion: 25.1.2.1.0
+ifsappbusmod:
+  imageVersion: 25.1.0.202507030112.0 
+ifsappchat:
+  imageVersion: 25.1.2.20250702082751.0
+ifsappclient:
+  imageVersion: 25.1.2.20250702082751.0
+ifsappclientnotification:
+  imageVersion: 25.1.2.20250702082751.0
+ifsappclientservices:
+  imageVersion: 25.1.2.20250702082751.0
+ifsappconnect:
+  imageVersion: 25.1.2.6.0
+ifsappdb:
+  imageVersion: 19.19
+ifsappdoc:
+  imageVersion: 25.1.2.20250701063333.0
+ifsappdocmanesign:
+  imageVersion: 25.1.0.0.1
+ifsappextensibility:
+  imageVersion: 25.1.2.20250701105542.0
+ifsappgraph:
+  imageVersion: 23.2.0.202401241045.0
+ifsappiam:
+  imageVersion: 25.1.2.0.0
+ifsappnativeexecutor:
+  imageVersion: 25.1.2-20250704164049.0
+ifsappnativenotification:
+  imageVersion: 25.1.2-20250704164049.0
+ifsappnativeserver:
+  imageVersion: 25.1.2-20250704164049.0
+ifsappodata:
+  imageVersion: 25.1.2.20250707102745.0
+ifsapppowerbisvc:
+  imageVersion: 25.1.0.202506032022.0 
+ifsappproxy:
+  imageVersion: 25.1.2.1.0
+ifsapprem:
+  imageVersion: 25.1.1.0.0
+ifsappreporting:
+  imageVersion: 25.1.2.0.0
+ifsappreportingbr:
+  imageVersion: 25.1.0.1.0
+ifsappreportingcr:
+  imageVersion: 25.1.2.0.0
+ifsappreportingren:
+  imageVersion: 25.1.2.1.0
+ifsappreportingwebdesigner:
+  imageVersion: 25.1.2.0.0
+ifsappreportingwebdesignerren:
+  imageVersion: 25.1.2.0.0
+ifsappreportingwebruntimeren:
+  imageVersion: 25.1.2.0.0
+ifsappreportingwebtransformer:
+  imageVersion: 25.1.2.0.0
+ifsapprmpanel:
+  imageVersion: 25.1.2.0.0
+ifsapprmsync:
+  imageVersion: 25.1.2.0.0
+ifsappscim:
+  imageVersion: 25.1.1.0.0
+ifsappsigningservice:
+  imageVersion: 25.1.1.0.0
+ifsappxdiv:
+  imageVersion: 25.1.2.20250703041720.0
+ifsdbinit:
+  imageVersion: 25.1E.0.2.0
+ifsfilestorage:
+  imageVersion: 25.1.2.20250703024727.0
+ifsmaintenixappserver:
+  imageVersion: 25.1.2.83122.0
+ifsmaintenixreportserver:
+  imageVersion: 25.1.2.83122.0
+ifsvirusscanner:
+  imageVersion: 25.1.2.20250701193638.0

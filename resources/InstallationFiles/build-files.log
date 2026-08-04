@@ -1,0 +1,11 @@
+Mon Jul 12 21:02:20 BST 2025 INFO    * * * * *
+Mon Jul 12 21:02:20 BST 2025 INFO    Mode: CreateDelivery
+Mon Jul 12 21:02:20 BST 2025 INFO    Source: /opt/ifs/repository/customer-solution
+Mon Jul 12 21:02:20 BST 2025 INFO    File List: /opt/ifs/repository/customer-solution/file_list
+Mon Jul 12 21:02:20 BST 2025 INFO    Target: /opt/ifs/build-delivery/InstallationFiles
+Mon Jul 12 21:02:20 BST 2025 INFO    Searching for components...
+Mon Jul 12 21:02:20 BST 2025 INFO    Creating delivery structure...
+Mon Jul 12 21:02:20 BST 2025 INFO    1 component found.
+Mon Jul 12 21:02:25 BST 2025 INFO    1 file copied.
+Mon Jul 12 21:02:25 BST 2025 INFO    Creating Install.ini...
+Mon Jul 12 21:02:25 BST 2025 INFO    CreateDelivery completed.

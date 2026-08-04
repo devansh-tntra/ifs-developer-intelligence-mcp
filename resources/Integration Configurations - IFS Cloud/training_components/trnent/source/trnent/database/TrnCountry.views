@@ -1,0 +1,27 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCountry
+--  Component:    TRNENT
+--
+--  IFS Developer Studio Template Version 3.0
+--
+--  Date    Sign    History
+--  ------  ------  ---------------------------------------------------------
+-----------------------------------------------------------------------------
+
+layer Core;
+
+-------------------- COMMON COLUMN DEFINITIONS ------------------------------
+
+
+-------------------- PUBLIC VIEW DEFINITIONS --------------------------------
+
+
+-------------------- PRIVATE VIEW DEFINITIONS -------------------------------
+VIEW Trn_Country_Lov IS
+   Prompt     = 'Trn Country Lov'
+   Table      = 'TRN_COUNTRY_TAB'
+SELECT
+       country_id                     country_id,
+       country                        country
+FROM   trn_country_tab;

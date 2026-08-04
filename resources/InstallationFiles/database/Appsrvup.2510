@@ -1,0 +1,9 @@
+--------------------------------------------------------------------------------
+--	File: Appsrvup.2310
+--
+--	Purpose: Script to upgrade database objects from version [23.1.0] up to version [23.1.0].
+--
+-- 	NOTE Folder separator '/' used for compatibility with Unix. Works in Windows.
+--------------------------------------------------------------------------------
+
+-- [25.1.0]

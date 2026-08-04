@@ -1,0 +1,15 @@
+projection OrderHandling;
+component TRNORD;
+layer Core;
+description "Projection to handle operations on entities related to Customer Orders";
+category Users;
+----------------------------- MAIN ENTRY POINTS -----------------------------
+entityset CustomerOrders for TrnCustomerOrder;
+
+------------------------------ ENTITY DETAILS -------------------------------
+
+@Override
+entity TrnCustomerOrder {
+   reference CustomerRef(CustomerId) to TrnCustomer(CustomerId);
+   array OrderLines(CompanyId, BranchId, OrderId) to TrnCustomerOrderItem(CompanyId, BranchId, OrderId);
+}

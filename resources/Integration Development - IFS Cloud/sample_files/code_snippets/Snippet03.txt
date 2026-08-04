@@ -1,0 +1,170 @@
+---------------------------  Ex 1 - 3rd Approach   ----------------------
+
+
+TrnProductServiceUtil.fragment
+=============================
+
+
+@Override
+entity TrnProduct {
+   use attributes = Description, Price;
+   array InventoryProducts(CompanyId,ProductId) to TrnInventoryProduct(CompanyId,ProductId);
+}
+
+
+
+
+
+structure QueryProductsFinalStruct using TrnProduct {
+    nestedwithcrud = Read;
+    implementation = "utility";
+}
+
+
+structure ReceiveProductStruct using TrnProduct {
+   nestedwithcrud = Create;
+   implementation = "utility";
+}
+
+
+
+
+
+
+
+TrnProductServiceUtil.plsql
+=========
+
+
+
+FUNCTION Get_Query_Products_Final_Struct_Arr___ (
+   company_id_ IN VARCHAR2) RETURN Query_Products_Final_Struct_Arr
+IS
+   return_arr_ Query_Products_Final_Struct_Arr := Query_Products_Final_Struct_Arr();
+   CURSOR get_attributes IS
+   SELECT company_id,
+   product_id,
+   description,
+   price
+   FROM TRN_PRODUCT
+   WHERE company_id = company_id_
+   ORDER BY product_id ASC;
+BEGIN
+   FOR rec_ IN get_attributes LOOP
+      return_arr_.extend;
+      return_arr_(return_arr_.last).company_id := rec_.company_id;
+      return_arr_(return_arr_.last).product_id := rec_.product_id;
+      return_arr_(return_arr_.last).description := rec_.description;
+      return_arr_(return_arr_.last).price := rec_.price;
+   END LOOP;
+   RETURN return_arr_;
+END Get_Query_Products_Final_Struct_Arr___;
+
+
+
+
+
+PROCEDURE Create_Product (
+   product_rec_ IN Receive_Product_Struct_Rec)
+IS
+   newrec_ Receive_Product_Struct_Rec;
+BEGIN
+   newrec_ := product_rec_;
+   Create_Receive_Product_Struct_Rec___(newrec_);
+END Create_Product;
+
+
+
+
+PROCEDURE Create_Products (
+   products_ IN Receive_Product_Struct_Arr)
+IS
+   newrec_ Receive_Product_Struct_Rec;
+BEGIN
+   IF (products_.count > 0) THEN
+      FOR index_ IN products_.first..products_.count LOOP
+         newrec_ := products_(index_);
+         Create_Receive_Product_Struct_Rec___(newrec_);
+      END LOOP;
+   END IF;
+END Create_Products;
+
+
+
+
+
+
+
+
+
+
+TrnProductService.projection
+================================
+
+include fragment TrnProductServiceUtil;
+
+
+
+function QueryProductsFinal List<Structure(QueryProductsFinalStruct)> {
+   parameter CompanyId Text;
+}
+
+
+
+
+action ReceiveProduct {
+   initialcheck none;
+   parameter Product Structure(ReceiveProductStruct);
+}
+
+
+
+action ReceiveProducts {
+   initialcheck none;
+   parameter Product List<Structure(ReceiveProductStruct)>;
+}
+
+
+
+
+
+
+
+
+TrnProductService.plsvc
+============================
+
+
+FUNCTION Query_Products_Final___ (
+   company_id_ IN VARCHAR2) RETURN Trn_Product_Service_Util_API.Query_Products_Final_Struct_Arr
+IS
+BEGIN
+	RETURN Trn_Product_Service_Util_API.Get_Query_Products_Final_Struct_Arr(company_id_);
+END Query_Products_Final___;
+
+
+
+
+PROCEDURE Receive_Product___ (
+   product_ IN Trn_Product_Service_Util_API.Receive_Product_Struct_Rec)
+IS
+BEGIN
+	Trn_Product_Service_Util_API.Create_Product(product_);
+END Receive_Product___;
+
+
+
+
+
+PROCEDURE Receive_Products___ (
+   products_ IN Trn_Product_Service_Util_API.Receive_Product_Struct_Arr)
+IS
+BEGIN
+	Trn_Product_Service_Util_API.Create_Products(products_);
+END Receive_Products___;
+
+
+
+
+
+

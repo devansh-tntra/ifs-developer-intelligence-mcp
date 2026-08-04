@@ -1,0 +1,114 @@
+client ManageCompanies;
+component TRNENT;
+layer Core;
+projection EnterpriseHandling;
+
+--------------------------------- NAVIGATOR ---------------------------------
+navigator {
+   entry TrnCompanyOverviewNavEntry parent TrnentNavigatorRoot.ManageCompaniesNavEntry at index 100 {
+      label = "Companies";
+      page TrnCompanyOverview;
+   }
+
+   entry TrnBranchOverviewNavEntry parent TrnentNavigatorRoot.ManageCompaniesNavEntry at index 200 {
+      label = "Branches";
+      page TrnBranchOverview;
+   }
+
+   entry TrnBranchDetailsNavEntry parent TrnentNavigatorRoot.ManageCompaniesNavEntry at index 300 {
+      label = "Branch Details";
+      page TrnBranchDetails;
+   }
+}
+-------------------------------- MAIN PAGES ---------------------------------
+page TrnBranchDetails using TrnBranches {
+   label = "Branch Details";
+   editmode = MultiField;
+   selector  TrnBranchSelector;
+   group TrnBranchGroup bind TrnBranchSelector;
+}
+
+page TrnBranchOverview using TrnBranches {
+   label = "Branches";
+   list TrnBranchList;
+}
+
+page TrnCompanyOverview using TrnCompanies {
+   label = "Companies";
+   list TrnCompanyList;
+}
+--------------------------------- COMMANDS ----------------------------------
+
+
+----------------------------- VISUAL COMPONENTS -----------------------------
+
+list TrnCompanyList for TrnCompany {
+   //orderby = CompanyId, Name;
+
+
+   field CompanyId;
+   field Name;
+   field CreationDate;
+   field Comments;
+
+
+}
+
+group TrnBranchGroup for TrnBranch {
+
+   //field CompanyId;
+   //field CompanyName;
+   field TrnCompanyRef {
+      label = "Company ID";
+   }
+   field TrnCompanyRef.Name {
+      label = "Company Name";
+   }
+   field BranchId;
+   field Name;
+   //field CountryId;
+   //field CountryName;
+   field TrnCountryRef {
+      label = "Country ID";
+   }
+   field TrnCountryRef.Country {
+      label = "Country";
+   }
+   //field AreaId;
+   //field AreaName;
+   field TrnAreaRef {
+      label = "Area ID";
+   }
+   field TrnAreaRef.Area {
+      label = "Area";
+   }
+   field TimeOffset;
+}
+
+list TrnBranchList for TrnBranch {
+   card TrnBranchCard;
+   initialview = CardView;
+   editmode = SingleCellEdit;
+
+   field CompanyId;
+   field BranchId;
+   field Name;
+   field CountryId;
+   field AreaId;
+   field TimeOffset;
+}
+
+card TrnBranchCard for TrnBranch {
+   label = "${TrnCompanyRef.Name} - ${Name}";
+
+   field TrnCompanyRef.Name {
+      label = "Company Name";
+   }
+   field Name;
+   field TrnCountryRef.Country {
+      label = "Country";
+   }
+   field TrnAreaRef.Area {
+      label = "Area";
+   }
+}

@@ -1,0 +1,18 @@
+client TrnordNavigatorRoot;
+component TRNORD;
+layer Core;
+
+------------------------------ NAVIGATOR ROOT -------------------------------
+navigator {
+   entry ManageCustomerOrdersNavEntry toplevel at index 500 {
+      label = "Manage Customer Orders";
+   }
+}
+
+-------------------------------- MAIN PAGES ---------------------------------
+
+
+--------------------------------- COMMANDS ----------------------------------
+
+
+----------------------------- VISUAL COMPONENTS -----------------------------

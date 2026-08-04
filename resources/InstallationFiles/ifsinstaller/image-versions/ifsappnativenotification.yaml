@@ -1,0 +1,3 @@
+ifsappnativenotification:
+  imageVersion: 25.1.2-20250704164049.0
+  imageName: ifs/ifsapp-native-notification

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="TrnExercise05" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0v9smc4</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0v9smc4" sourceRef="StartEvent_1" targetRef="Activity_1eoejwn" />
+    <bpmn:serviceTask id="Activity_1eoejwn" name="Read Income Types" camunda:class="com.ifsworld.fnd.bpa.IfsProjectionDelegate">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="ifsBpaProjectionAction">READ</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionETagVariableName">ETag</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionType">Standard</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionName">IncomeTypeHandling</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionEntitySetName">IncomeTypeSet</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionCollectionVariableName">IncomeTypeCollection</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionIsCollection">true</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionParameters">
+            <camunda:map />
+          </camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionNestedEntityParameters">
+            <camunda:map />
+          </camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaFilterQuery">country_code = 'US'</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaJsonFormatTreeQuery">{"errors":[],"logic":{"and":[{"==":[{"var":"country_code"},"US"]}]},"data":{"country_code":null}}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0v9smc4</bpmn:incoming>
+      <bpmn:outgoing>Flow_1q0lwck</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1q0lwck" sourceRef="Activity_1eoejwn" targetRef="Activity_09ivbjr" />
+    <bpmn:subProcess id="Activity_09ivbjr">
+      <bpmn:incoming>Flow_1q0lwck</bpmn:incoming>
+      <bpmn:outgoing>Flow_0z4zn18</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" camunda:collection="IncomeTypeCollection" camunda:elementVariable="item" />
+      <bpmn:startEvent id="Event_1dox3b7">
+        <bpmn:outgoing>Flow_1gsxseh</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_1gsxseh" sourceRef="Event_1dox3b7" targetRef="Activity_0jlbegq" />
+      <bpmn:endEvent id="Event_18n24z1">
+        <bpmn:incoming>Flow_0bnyybm</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0bnyybm" sourceRef="Activity_0jlbegq" targetRef="Event_18n24z1" />
+      <bpmn:scriptTask id="Activity_0jlbegq" name="Read Income Type" scriptFormat="JavaScript">
+        <bpmn:incoming>Flow_1gsxseh</bpmn:incoming>
+        <bpmn:outgoing>Flow_0bnyybm</bpmn:outgoing>
+        <bpmn:script>execution.setVariable('modifiedIncomeTypeDesc', 'Modified ' + item.Description);</bpmn:script>
+      </bpmn:scriptTask>
+    </bpmn:subProcess>
+    <bpmn:endEvent id="Event_1gayvzv">
+      <bpmn:incoming>Flow_0z4zn18</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0z4zn18" sourceRef="Activity_09ivbjr" targetRef="Event_1gayvzv" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TrnExercise05">
+      <bpmndi:BPMNEdge id="Flow_0z4zn18_di" bpmnElement="Flow_0z4zn18">
+        <di:waypoint x="255" y="590" />
+        <di:waypoint x="255" y="642" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1q0lwck_di" bpmnElement="Flow_1q0lwck">
+        <di:waypoint x="255" y="300" />
+        <di:waypoint x="255" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0v9smc4_di" bpmnElement="Flow_0v9smc4">
+        <di:waypoint x="255" y="178" />
+        <di:waypoint x="255" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="237" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_12rpfgp_di" bpmnElement="Activity_1eoejwn">
+        <dc:Bounds x="205" y="220" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1jw9g2y_di" bpmnElement="Activity_09ivbjr" isExpanded="true">
+        <dc:Bounds x="50" y="360" width="410" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0bnyybm_di" bpmnElement="Flow_0bnyybm">
+        <di:waypoint x="300" y="470" />
+        <di:waypoint x="362" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gsxseh_di" bpmnElement="Flow_1gsxseh">
+        <di:waypoint x="108" y="470" />
+        <di:waypoint x="200" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1dox3b7_di" bpmnElement="Event_1dox3b7">
+        <dc:Bounds x="71.66666666666669" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18n24z1_di" bpmnElement="Event_18n24z1">
+        <dc:Bounds x="362" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zz45a0_di" bpmnElement="Activity_0jlbegq">
+        <dc:Bounds x="200" y="430" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1gayvzv_di" bpmnElement="Event_1gayvzv">
+        <dc:Bounds x="237" y="642" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

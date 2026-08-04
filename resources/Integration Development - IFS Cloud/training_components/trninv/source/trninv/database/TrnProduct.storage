@@ -1,0 +1,19 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnProduct
+--  Component:    TRNINV
+--
+--  IFS Developer Studio Template Version 3.0
+--
+--  Date    Sign    History
+--  ------  ------  ---------------------------------------------------------
+-----------------------------------------------------------------------------
+
+
+layer Core;
+
+-------------------- TABLE DEFINITIONS --------------------------------------
+
+
+-------------------- OTHER DEFINITIONS --------------------------------------
+SEQUENCE Trn_Product_Id_SEQ IS INCREMENT BY 1 START WITH 1000 NOCACHE;

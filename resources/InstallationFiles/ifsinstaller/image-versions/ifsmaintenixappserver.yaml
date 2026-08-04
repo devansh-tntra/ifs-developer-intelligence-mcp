@@ -1,0 +1,3 @@
+ifsmaintenixappserver:
+  imageVersion: 25.1.2.83122.0
+  imageName: ifs/ifsmaintenix-appserver

@@ -1,0 +1,101 @@
+client TrnmwoBasicDataManagement;
+component TRNMWO;
+layer Core;
+projection TrnentBasicData;
+description "TRNMWO Basic Data management pages";
+
+
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- NAVIGATOR ENTRIES -----------------------------
+navigator
+   {
+   entry BasicDataNavEntry parent TrnmwoNavigatorRoot.DemoManagerWorkOrderNavEntry at  index  100 {
+      label = "Basic Data";
+      entry CustomerOverviewPageNavEntry;
+      entry TechnicianOverviewPageNavEntry;
+   }
+   entry CustomerOverviewPageNavEntry
+      {
+      label = "Customers";
+      page CustomerOverviewPage;
+
+   }
+
+   entry TechnicianOverviewPageNavEntry
+      {
+      label = "Technicians";
+      page TechnicianOverviewPage;
+
+   }
+}
+-------------------------------- MAIN PAGES ---------------------------------
+page CustomerOverviewPage
+   {
+   label = "Customers";
+   list CustomerList using Customers;
+
+}
+
+page TechnicianOverviewPage
+   {
+   label = "Technicians";
+   list TechnicianList using Technicians;
+
+}
+
+--------------------------------- COMMANDS ----------------------------------
+
+
+--------------------------------- SELECTORS ---------------------------------
+
+
+---------------------------------- GROUPS -----------------------------------
+
+
+----------------------------------- LISTS -----------------------------------
+list CustomerList for TrnCustomer
+   {
+   field CompanyId;
+   field CustomerId;
+   field       Name;
+   field       CreditLimit;
+   field       Discount;
+   field      Comments;
+   field       Active;
+
+}
+
+list TechnicianList for TrnTechnician
+   {
+   field PersonId;
+   field       Name;
+
+}
+
+---------------------------------- DIALOGS ----------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------
+
+
+---------------------------------- CHARTS -----------------------------------
+
+
+--------------------------------- CALENDERS ---------------------------------
+
+
+---------------------------------- SHEETS -----------------------------------
+
+
+----------------------------- STATE INDICATORS ------------------------------
+
+
+----------------------------------- TREES -----------------------------------
+
+
+---------------------------------- PLUGINS ----------------------------------
+
+
+------------------------------- IMAGE VIEWERS -------------------------------

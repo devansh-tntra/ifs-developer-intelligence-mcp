@@ -1,0 +1,20 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCustomerOrder
+--  Component:    TRNORD
+--
+--  IFS Developer Studio Template Version 3.0
+--
+--  Date    Sign    History
+--  ------  ------  ---------------------------------------------------------
+-----------------------------------------------------------------------------
+
+
+layer Core;
+
+-------------------- TABLE DEFINITIONS --------------------------------------
+
+
+-------------------- OTHER DEFINITIONS --------------------------------------
+SEQUENCE Trn_Customer_Order_Id_SEQ IS INCREMENT BY 1 START WITH 1000 NOCACHE;
+SEQUENCE Trn_Cust_Order_Row_No_SEQ IS INCREMENT BY 1 START WITH 1000 NOCACHE;

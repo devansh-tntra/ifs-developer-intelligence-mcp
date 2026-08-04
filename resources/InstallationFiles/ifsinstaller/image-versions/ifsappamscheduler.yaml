@@ -1,0 +1,3 @@
+ifsappamscheduler:
+  imageVersion: 25.1.0.202507030112.0 
+  imageName: ifs/ifsapp-am-scheduler

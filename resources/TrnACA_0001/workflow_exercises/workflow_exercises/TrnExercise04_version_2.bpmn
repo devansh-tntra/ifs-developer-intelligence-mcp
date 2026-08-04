@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="TrnExercise04" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0mmjea4</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0mmjea4" sourceRef="StartEvent_1" targetRef="Activity_0064jt0" />
+    <bpmn:scriptTask id="Activity_0064jt0" name="Add Default Values" scriptFormat="JavaScript">
+      <bpmn:incoming>Flow_0mmjea4</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fn2dmw</bpmn:outgoing>
+      <bpmn:script>execution.setVariable('Cf_Temperature', 0);</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_0fn2dmw" sourceRef="Activity_0064jt0" targetRef="Activity_1iext73" />
+    <bpmn:serviceTask id="Activity_1iext73" name="Enrich Variables" camunda:class="com.ifsworld.fnd.bpa.process.enrichment.IfsBpaProcessEnrichmentDelegate">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="ifsBpaEnrichmentRegisteredVariables">
+            <camunda:list>
+              <camunda:value>Cf_Temperature</camunda:value>
+            </camunda:list>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0fn2dmw</bpmn:incoming>
+      <bpmn:outgoing>Flow_1oqibxa</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_02d0qo1">
+      <bpmn:incoming>Flow_1oqibxa</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1oqibxa" sourceRef="Activity_1iext73" targetRef="Event_02d0qo1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TrnExercise04">
+      <bpmndi:BPMNEdge id="Flow_1oqibxa_di" bpmnElement="Flow_1oqibxa">
+        <di:waypoint x="480" y="258" />
+        <di:waypoint x="542" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fn2dmw_di" bpmnElement="Flow_0fn2dmw">
+        <di:waypoint x="320" y="258" />
+        <di:waypoint x="380" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mmjea4_di" bpmnElement="Flow_0mmjea4">
+        <di:waypoint x="168" y="258" />
+        <di:waypoint x="220" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="132" y="240" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1plywgg_di" bpmnElement="Activity_0064jt0">
+        <dc:Bounds x="220" y="218" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06ytbfk_di" bpmnElement="Activity_1iext73">
+        <dc:Bounds x="380" y="218" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_02d0qo1_di" bpmnElement="Event_02d0qo1">
+        <dc:Bounds x="542" y="240" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

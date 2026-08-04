@@ -1,0 +1,3 @@
+ifsdbinit:
+  imageVersion: 25.1E.0.2.0
+  imageName: ifs/ifs-db-init

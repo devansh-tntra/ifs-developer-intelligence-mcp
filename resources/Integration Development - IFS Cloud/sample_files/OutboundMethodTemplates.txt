@@ -1,0 +1,105 @@
+========================================== Outbound Asynchronous Template ========================================== 
+
+PROCEDURE <Method_Name>(
+   parameter_1_ IN <DATATYPE>
+   receiver_address_    IN VARCHAR2 )
+IS
+   json_obj_         JSON_OBJECT_T;
+   json_clob_        CLOB;
+   msg_id_           NUMBER;
+   msg_rec_    <Structure_Rec>;
+
+BEGIN   
+   msg_rec_ := <Method call to get outbound Msg>;
+   json_obj_ := <Method call to transform outbound Msg To_Json>;
+   json_clob_ := json_obj_.to_clob;
+   Plsqlap_Server_API.Post_Outbound_Message(json_clob_,
+                                            msg_id_,                                              
+                                            sender_address_,
+                                            receiver_address_,
+                                            message_type_ => 'APPLICATION_MESSAGE',                                               
+                                            message_function_ => ‘OUTBOUNT_MSG_NAME’,
+                                            is_json_ => true);  
+END <Method_Name>;
+
+
+========================================== Outbound Synchronous Template ========================================== 
+
+PROCEDURE <Method_Name>(
+   parameter_1_ IN <DATATYPE>
+   receiver_address_    IN VARCHAR2 )
+IS
+   json_obj_         JSON_OBJECT_T;
+   json_clob_        CLOB; 
+   msg_rec_    <Structure_Rec>;
+
+BEGIN   
+   msg_rec_ := <Method call to get outbound Msg>;
+   json_obj_ := <Method call to transform outbound Msg To_Json>;
+   json_clob_ := json_obj_.to_clob;
+   Plsqlap_Server_API.Invoke_Outbound_Message(json_clob_,           
+                                            sender_address_,
+                                            receiver_address_,
+                                            message_type_ => 'APPLICATION_MESSAGE',                                               
+                                            message_function_ => ‘OUTBOUNT_MSG_NAME’,
+                                            is_json_ => true);  
+END <Method_Name>;
+
+
+========================================== REST Template ========================================== 
+
+PROCEDURE Template_Rest_Method (
+   parameter_1_ IN <DATATYPE>
+   receiver_address_    IN VARCHAR2
+   )
+IS
+   query_params_ Plsqlap_Document_API.Document;
+   url_params_ Plsqlap_Document_API.Document;
+   
+BEGIN
+
+   url_params_ := Plsqlap_Document_API.New_Document('URL_PARAMETERS');
+   Plsqlap_Document_API.Add_Attribute(url_params_,'param1', 'Airports');
+   
+   query_params_ := Plsqlap_Document_API.New_Document('QUERY_PARAMETERS');
+   Plsqlap_Document_API.Add_Attribute(query_params_,'param1', 'value');
+
+   
+   Plsql_Rest_Sender_API.Call_Rest_EndPoint_Empty_Body2(rest_service_ =>'TEST_SERVICE',
+                                                        url_params_ => url_params_,
+                                                        query_parameters_ => query_params_,
+                                                        http_method_ => 'GET',
+                                                        receiver_ => receiver_address_); 
+END Template_Rest_Method;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

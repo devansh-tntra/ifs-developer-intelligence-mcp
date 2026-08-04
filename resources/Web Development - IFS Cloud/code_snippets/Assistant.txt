@@ -1,0 +1,114 @@
+EnterpriseHandling
+ManageGeographies
+
+virtual TrnCountryVirtual {
+   attribute CountryId Text;
+   attribute Country Text;
+
+   array Areas(CountryId) to TrnAreaVirtual(CountryId);
+
+   action CreateCoutriesAreas;
+
+}
+
+virtual TrnAreaVirtual {
+   attribute CountryId Text;
+   attribute AreaId Text;
+   attribute Area Text;
+}
+
+// Create a entityset from the virtual TrnCountryVirtual named TrnCountryVirtualSet 
+
+list TrnAreaVirtualList for TrnAreaVirtual {
+   field CountryId;
+   field AreaId;
+   field Area;
+}
+
+group TrnCountryVirtualGroup for TrnCountryVirtual {
+   field CountryId;
+   field Country;
+}
+
+assistant CreateCountryAssistant using TrnCountryVirtualSet {
+   label = "Create Country Assistant";
+   steps {
+      step {
+         label = "Country Information";
+         group TrnCountryVirtualGroup;
+         next command {
+            enabled = [Country != null and CountryId != null];
+            execute {
+               info("Step 01 Done");
+            }
+         }
+      }
+      step {
+         label = "Area Information";
+         list TrnAreaVirtualList(Areas);
+      }
+      final step {
+         label = "Final Step";
+         description = "Process Completed Sucessfully";
+      }
+      cancelled step {
+         description = "Country and Area creation cancelled.";
+
+      }
+   }
+   finish command {
+      enabled = [component.CreateCountryAssistant.ActiveStep = 2 and not component.TrnAreaVirtualList.IsEmpty];
+
+      execute {
+         call CreateCoutriesAreas();
+      }
+   }
+}
+
+
+entry TrnCountryAssistatntNavEntry parent TrnentNavigatorRoot.ManageGeographiesNavEntry at index 15 {
+      label = "Add Country Assistant";
+      assistant CreateCountryAssistant;
+}
+
+PROCEDURE Create_Coutries_Areas___ (
+   key_ IN Trn_Country_Virtual_Key ) 
+IS
+   attr_        VARCHAR2(2000);
+   country_rec_ Trn_Country_Virtual_Rec;
+BEGIN
+   country_rec_ := Get_Record___(key_);
+   
+   Client_SYS.Clear_Attr(attr_);
+   
+   Client_SYS.Add_To_Attr('COUNTRY_ID', country_rec_.country_id, attr_);
+   Client_SYS.Add_To_Attr('COUNTRY', country_rec_.country, attr_);
+   
+   Trn_Country_API.New(attr_);
+   
+   FOR area_rec_ IN Get_Areas___(key_) LOOP
+      Client_SYS.Clear_Attr(attr_);
+      
+      Client_SYS.Add_To_Attr('COUNTRY_ID', area_rec_.country_id, attr_);
+      Client_SYS.Add_To_Attr('AREA_ID', area_rec_.area_id, attr_);
+      Client_SYS.Add_To_Attr('AREA', area_rec_.area, attr_);
+   
+      Trn_Area_API.New(attr_);
+   END LOOP;   
+END Create_Coutries_Areas___;
+
+----for TrnCountry New method---------------------
+PROCEDURE New (
+   new_attr_ IN VARCHAR2)
+IS
+   newrec_ trn_Country_tab%ROWTYPE;
+   indrec_ Indicator_Rec;
+   objid_ VARCHAR2(2000);
+   objversion_ VARCHAR2(2000);
+   attr_ VARCHAR2(4000) := new_attr_;
+BEGIN
+   attr_ := new_attr_;
+   Unpack___(newrec_, indrec_, attr_);
+   Check_Insert___(newrec_, indrec_, attr_);
+   Insert___(objid_, objversion_, newrec_, attr_);
+END New;

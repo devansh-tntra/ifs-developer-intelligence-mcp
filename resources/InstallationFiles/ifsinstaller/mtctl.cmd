@@ -1,0 +1,7 @@
+@echo off
+SETLOCAL EnableDelayedExpansion
+REM CALL utils\verify_required_software.cmd --java --kubectl
+REM IF %ERRORLEVEL% NEQ 0 EXIT /B 1
+echo INFO: MTCTL: Calling with arguments: %*
+java -cp lib/mtctl.jar ifs.cloud.client.Client %*
+EXIT /B !errorlevel!

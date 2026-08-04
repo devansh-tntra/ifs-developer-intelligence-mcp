@@ -1,0 +1,3 @@
+ifsvirusscanner:
+  imageVersion: 25.1.2.20250701193638.0
+  imageName: ifs/virus-scanner

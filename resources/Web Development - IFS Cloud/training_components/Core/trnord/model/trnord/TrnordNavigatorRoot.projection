@@ -1,0 +1,9 @@
+projection TrnordNavigatorRoot;
+component TRNORD;
+layer Core;
+description "Dummy Projection for TrnordNavigatorRoot Client";
+category Users;
+----------------------------- MAIN ENTRY POINTS -----------------------------
+
+
+------------------------------ ENTITY DETAILS -------------------------------

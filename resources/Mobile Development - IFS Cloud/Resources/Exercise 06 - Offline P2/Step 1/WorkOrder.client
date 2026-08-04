@@ -1,0 +1,370 @@
+client WorkOrder;
+component TRNMWO;
+layer Core;
+projection WorkOrder;
+description "Put some useful description here ...";
+target AurenaNative;
+
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- NAVIGATOR ENTRIES -----------------------------
+navigator
+   {
+
+   entry WorkOrderEntry toplevel at  index  100 {
+      --Needs to change later
+      entry WorkOrderOverviewPageNavEntry;
+      entry CustomerverviewPageNavEntry;
+      entry TechnicianOverviewPageNavEntry;
+   }
+
+
+   entry WorkOrderDetailsPageNavEntry
+      {
+      label = "Work Order Details";
+      page WorkOrderDetailsPage;
+      icon = "account-type";
+   }
+
+   entry WorkOrderOverviewPageNavEntry
+      {
+      label = "Work Orders";
+      page WorkOrderOverviewPage;
+      icon = "tools-solid";
+      count = WorkOrders;
+   }
+
+   entry CustomerverviewPageNavEntry
+      {
+      label = "Customers";
+      page CustomerOverviewPage;
+      icon = "people-alt";
+      count = Customers;
+   }
+
+   entry TechnicianOverviewPageNavEntry
+      {
+      label = "Technicians";
+      page TechnicianOverviewPage;
+      icon = "clipboard";
+      count = Technicians;
+   }
+
+}
+
+-------------------------------- MAIN PAGES ---------------------------------
+page WorkOrderDetailsPage using WorkOrders
+   {
+   label = "Work Order Details";
+   stateindicator TrnWorkOrderStateIndicator;
+   selector TrnWorkOrderSelector;
+   group WorkOrderGroup bind TrnWorkOrderSelector;
+   list WorkOrderStepList(Steps) bind TrnWorkOrderSelector;
+
+   commandgroup StateChanges {
+      command Assign;
+      command Accept;
+      command Start;
+      command StartTravel;
+      command OnSite;
+      command Complete;
+   }
+
+   command CommandGetStepCount;
+   --command CommandWoChangeDescription;
+   --command CommandFillNullValues;
+   --command CommandOpenWoPage;
+   --command CommandGetUserInfo;
+   --command CommandGenerateReport;
+}
+
+page WorkOrderOverviewPage  using WorkOrders
+   {
+   label = "Work Order Overview";
+   list WorkOrderList {
+      label = "Work Orders";
+      details = WorkOrderDetailsPage(WorkOrderNo);
+   }
+   attachments {
+      enabled = [true];
+   }
+
+}
+
+page CustomerOverviewPage  using Customers
+   {
+   label = "Customer Overview";
+   list CustomerList;
+
+}
+
+page TechnicianOverviewPage  using Technicians
+   {
+   label = "Technician Overview";
+   list TechnicianList {
+      label = "Technician Info";
+      details = TechnicianDetailsPage(PersonId);
+   }
+
+}
+
+page TechnicianDetailsPage using Technicians
+   {
+   label = "Technician Details";
+   crudactions {
+      new {
+         enabled = [true];
+      }
+      delete {
+         enabled = [true];
+      }
+   }
+   selector TrnTechnicianSelector;
+   group TechnicianGroup bind TrnTechnicianSelector;
+}
+
+--------------------------------- COMMANDS ----------------------------------
+command CommandGetStepCount for TrnWorkOrder {
+   label = "Step Count";
+   variable StepCount Number;
+   execute {
+      call GetStepCount(WorkOrderNo) into StepCount;
+
+      info("Work Order Step Count: ${StepCount}");
+   }
+}
+--Add CommandWoChangeDescription for TrnWorkOrder
+--Add CommandFillNullValues for TrnWorkOrder
+--Add CommandOpenWoPage for TrnWorkOrder
+--Add CommandGetUserInfo
+
+
+
+
+command CommandGenerateReport
+   {
+   label = "Print Report";
+   icon = "book";
+   execute {
+      print WorkOrderDetailsPage
+         {
+         filter(WorkOrderNo, WorkOrderNo);
+      }
+   }
+}
+
+
+
+--------------------------------- SELECTORS ---------------------------------
+@Overtake
+selector TrnWorkOrderSelector for TrnWorkOrder {
+   label = "${WorkOrderNo} -${Description}-${Objstate}";
+   static WorkOrderNo;
+   static Description;
+   badge Objstate {
+      style = TextOnly;
+      label = "Status";
+      showlabel = false;
+   }
+}
+
+---------------------------------- GROUPS -----------------------------------
+group WorkOrderGroup for TrnWorkOrder {
+   label = "Work Order Details";
+   badge      WorkOrderNo {
+      emphasis Complementary1 = [true];
+   }
+   field      Description;
+   field      CreationDate;
+   field      Comments;
+   field      CompanyId;
+   badge      Objstate {
+      emphasis Complementary5 = [true];
+   }
+   field      CustomerRef {
+      label = "Customer Id";
+   }
+   field      TechnicianRef {
+      label = "Technician Id";
+   }
+   field      AssigneeRef {
+      label = "Assignee Id";
+   }
+   field TaskUrl {
+      fieldhint = Url;
+   }
+
+}
+
+group TechnicianGroup  for TrnTechnician
+   {
+   field PersonId;
+   field Name;
+}
+
+----------------------------------- LISTS -----------------------------------
+list WorkOrderList for TrnWorkOrder {
+
+   label = "";
+   card WorkOrderCard;
+
+}
+
+list WorkOrderStepList for TrnWorkOrderStep {
+   label = "Work Order Steps";
+   field    WorkOrderNo;
+   field    StepId;
+   field    InstructionRef;
+   field    SequenceNo;
+   field    IsDone;
+
+}
+
+card WorkOrderCard for TrnWorkOrder {
+   label = "Work Order-${WorkOrderNo}-${Description}-${Objstate}";
+
+   markdowntext {
+      visible = [Objstate = "New"];
+      text = "New Work Order!";
+      emphasis Complementary2 = [true];
+   }
+
+   badge      WorkOrderNo {
+      emphasis Complementary1 = [true];
+   }
+   field      Description;
+   field      CreationDate;
+   field      Comments;
+   field      CompanyId;
+   badge      Objstate {
+      emphasis Complementary5 = [true];
+   }
+   field      CustomerRef {
+      label = "Customer Id";
+   }
+   field      TechnicianRef {
+      label = "Technician Id";
+   }
+   field      AssigneeRef {
+      label = "Assignee Id";
+	   contactwidget {
+         enabled = [true];
+         source = Person;
+      }
+   }
+   field TaskUrl {
+      fieldhint = Url;
+   }
+
+
+   commandgroup StateChanges {
+      command Assign {
+         emphasis Complementary1 = [true];
+      }
+      command Accept {
+         emphasis Complementary2 = [true];
+      }
+      command Start {
+         emphasis Complementary3 = [true];
+      }
+      command StartTravel {
+         emphasis Complementary4 = [true];
+      }
+      command OnSite {
+         emphasis Complementary5 = [true];
+      }
+      command Complete {
+         emphasis Complementary6 = [true];
+      }
+   }
+   --command CommandGetStepCount;
+  -- command CommandWoChangeDescription;
+  -- command CommandOpenWoPage;
+}
+
+list CustomerList for TrnCustomer
+   {
+   field CompanyId;
+   field CustomerId;
+   field Name;
+   field CreditLimit;
+   field Discount;
+   field Comments;
+   field Active;
+}
+
+
+list TechnicianList  for TrnTechnician
+   {
+   label = "";
+   card TechnicianCard;
+
+
+}
+
+card TechnicianCard  for TrnTechnician
+   {
+   label = "";
+   markdowntext {
+      text = "**${Name}**";
+   }
+   field PersonId;
+   field Name;
+}
+
+---------------------------------- DIALOGS ----------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------
+
+
+---------------------------------- CHARTS -----------------------------------
+
+
+--------------------------------- CALENDERS ---------------------------------
+
+
+---------------------------------- SHEETS -----------------------------------
+
+
+----------------------------- STATE INDICATORS ------------------------------
+@Overtake Base
+stateindicator TrnWorkOrderStateIndicator for TrnWorkOrder {
+   state "New" {
+      completed = 0%;
+      emphasis Complementary2 = [Objstate = "New"];
+   }
+
+   state "Assigned" {
+      completed = 20%;
+      emphasis Complementary3 = [Objstate = "Assigned"];
+   }
+
+   state "Accepted" {
+      completed = 40%;
+      emphasis Complementary6 = [Objstate = "Accepted"];
+   }
+
+   state "Travel" {
+      completed = 60%;
+      emphasis Complementary1 = [Objstate = "Travel"];
+   }
+   state "ReachedSite" {
+      completed = 80%;
+      emphasis Complementary1 = [Objstate = "ReachedSite"];
+   }
+
+   state "Completed" {
+      completed = 100%;
+      emphasis Complementary9 = [Objstate = "Completed"];
+   }
+}
+
+----------------------------------- TREES -----------------------------------
+
+
+---------------------------------- PLUGINS ----------------------------------
+
+
+------------------------------- IMAGE VIEWERS -------------------------------

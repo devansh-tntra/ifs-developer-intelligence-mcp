@@ -1,0 +1,26 @@
+projection ProductHandling;
+component TRNINV;
+layer Core;
+description "Used to handle all Product related activities";
+category Users;
+
+----------------------------- MAIN ENTRY POINTS -----------------------------
+entityset TrnUnitSet for TrnUnit;
+entityset TrnProductSet for TrnProduct;
+entityset TrnBrandSet for TrnBrand;
+entityset TrnProductCategorySet for TrnProdCategory;
+entityset TrnProductCategoryBrandSet for TrnProdCategoryBrand;
+entityset TrnModelSet for TrnModel;
+entityset TrnInventoryProductSet for TrnInventoryProduct;
+
+------------------------------ ENTITY DETAILS -------------------------------
+
+@Override
+entity TrnProdCategoryBrand {
+   attribute Brand Text {
+      fetch = "Trn_Brand_API.Get_Name(brand_id)";
+   }
+   attribute Category Text {
+      fetch = "Trn_Prod_Category_API.Get_Name(category_id)";
+   }
+}

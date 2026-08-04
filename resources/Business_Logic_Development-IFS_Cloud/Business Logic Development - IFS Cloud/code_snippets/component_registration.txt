@@ -1,0 +1,50 @@
+DECLARE
+   module_ VARCHAR2(50):= 'TRNENT';
+   name_ VARCHAR2(50):= 'Training Enterprise';
+   version_ VARCHAR2(50):= '24.1.0';
+   description_ VARCHAR2(50):= 'Training Enterprise for version 24.1.0';
+   patch_version_ VARCHAR2(50):= NULL;
+BEGIN
+   Module_API.Create_And_Set_Version(module_,name_,version_,description_,patch_version_);
+   Dbms_Output.Put_Line('module_= ' || module_);
+   Dbms_Output.Put_Line('name_= ' || name_);
+   Dbms_Output.Put_Line('version_= ' || version_);
+   Dbms_Output.Put_Line('description_= ' || description_);
+   Dbms_Output.Put_Line('patch_version_= ' || patch_version_);
+END;
+COMMIT;
+/
+
+DECLARE
+   module_ VARCHAR2(50):= 'TRNINV';
+   name_ VARCHAR2(50):= 'Training Inventory';
+   version_ VARCHAR2(50):= '24.1.0';
+   description_ VARCHAR2(50):= 'Training Inventory for version 24.1.0';
+   patch_version_ VARCHAR2(50):= NULL;
+BEGIN
+   Module_API.Create_And_Set_Version(module_,name_,version_,description_,patch_version_);
+   Dbms_Output.Put_Line('module_= ' || module_);
+   Dbms_Output.Put_Line('name_= ' || name_);
+   Dbms_Output.Put_Line('version_= ' || version_);
+   Dbms_Output.Put_Line('description_= ' || description_);
+   Dbms_Output.Put_Line('patch_version_= ' || patch_version_);
+END;
+COMMIT;
+/
+
+DECLARE
+   module_ VARCHAR2(50):= 'TRNORD';
+   name_ VARCHAR2(50):= 'Training Order';
+   version_ VARCHAR2(50):= '24.1.0';
+   description_ VARCHAR2(50):= 'Training Order for version 24.1.0';
+   patch_version_ VARCHAR2(50):= NULL;
+BEGIN
+   Module_API.Create_And_Set_Version(module_,name_,version_,description_,patch_version_);
+   Dbms_Output.Put_Line('module_= ' || module_);
+   Dbms_Output.Put_Line('name_= ' || name_);
+   Dbms_Output.Put_Line('version_= ' || version_);
+   Dbms_Output.Put_Line('description_= ' || description_);
+   Dbms_Output.Put_Line('patch_version_= ' || patch_version_);
+END;
+COMMIT;
+/

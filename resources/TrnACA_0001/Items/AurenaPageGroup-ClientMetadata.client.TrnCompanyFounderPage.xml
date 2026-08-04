@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<CUSTOM_OBJECT>
+  <NAME>ClientMetadata.client:TrnCompanyFounderPage</NAME>
+  <TYPE>AURENA_PAGE_GROUP</TYPE>
+  <DESCRIPTION>DESCRIPTION value</DESCRIPTION>
+  <WEB_PAGE_BUNDLE>
+    <CUSTPAGE_PAGE_NAME>TrnCompanyFounderPage</CUSTPAGE_PAGE_NAME>
+    <CUSTPAGE_PROJECTION_NAME>TrnCompanyFounderHandling</CUSTPAGE_PROJECTION_NAME>
+    <CUSTPAGE_MODIFIED_DATE>2024-01-15-15.49.58</CUSTPAGE_MODIFIED_DATE>
+    <CUSTPAGE_ROWKEY>B56EA55796D741B2B7C6CBCC27EAE8AE</CUSTPAGE_ROWKEY>
+    <MODEL_ID>ClientMetadata.client:TrnCompanyFounderPage</MODEL_ID>
+    <DESCRIPTION>TrnCompany Founder Page</DESCRIPTION>
+    <ARTIFACT>client</ARTIFACT>
+    <NAME>TrnCompanyFounderPage</NAME>
+    <KIND>ClientMetadata</KIND>
+    <REFERENCE>ClientMetadata.projection:TrnCompanyFounderHandling</REFERENCE>
+    <VERSION>2024-01-15-15.53.51</VERSION>
+    <TEMPLATE>{&quot;name&quot;:&quot;TrnCompanyFounderPage&quot;,&quot;component&quot;: &quot;CONFIG&quot;,&quot;version&quot;:&quot;[#[generate:version]#]&quot;,&quot;id&quot;:&quot;ClientMetadata.client:TrnCompanyFounderPage&quot;,&quot;projection&quot;:[#[reference:projection:TrnCompanyFounderHandling]#],&quot;layout&quot;:{&quot;commands&quot;: {[#[jsonnamedcontent:kind:command]#]},&quot;groups&quot;: {[#[jsonnamedcontent:kind:group]#]},&quot;lists&quot;: {[#[jsonnamedcontent:kind:list]#]},&quot;pages&quot;: {[#[jsonnamedcontent:kind:page]#]},&quot;selectors&quot;: {[#[jsonnamedcontent:kind:selector]#]}}}</TEMPLATE>
+    <DATA>
+      <DATA_ROW>
+        <OBJKEY>EAF189C71B1B4EF195DA075058D2B78A</OBJKEY>
+        <SCOPE_ID>global</SCOPE_ID>
+        <DATA_ID>list:TrnFounderList</DATA_ID>
+        <ARTIFACT>list</ARTIFACT>
+        <NAME>TrnFounderList</NAME>
+        <LINE_NO>99999</LINE_NO>
+        <LAYER_NO>2</LAYER_NO>
+        <VISIBILITY>Public</VISIBILITY>
+        <REFERENCE/>
+        <DEPENDENCIES/>
+        <CONTENT>{&quot;name&quot;:&quot;TrnFounderList&quot;,&quot;label&quot;:&quot;[#[translatesys:Table Window:[global].TrnCompanyFounderPage.list.TrnFounderList.$this:$this:CONFIGCLIENT:Company Founders]#]&quot;,&quot;entity&quot;:&quot;TrnCompanyFounder&quot;,&quot;visible&quot;:true,&quot;content&quot;:[{&quot;elementType&quot;:&quot;field&quot;,&quot;field&quot;:{&quot;entity&quot;:&quot;TrnCompanyFounder&quot;,&quot;datatype&quot;:&quot;Text&quot;,&quot;required&quot;:true,&quot;control&quot;:&quot;field&quot;,&quot;label&quot;:&quot;[#[translatesys:Data Field:[global].TrnCompanyFounderPage.list.TrnFounderList.content.field.Cf_Name:Cf_Name:CONFIGCLIENT:Name]#]&quot;,&quot;attribute&quot;:&quot;Cf_Name&quot;,&quot;name&quot;:&quot;Cf_Name&quot;,&quot;editable&quot;:true,&quot;maxlength&quot;:1000}},{&quot;elementType&quot;:&quot;field&quot;,&quot;field&quot;:{&quot;entity&quot;:&quot;TrnCompanyFounder&quot;,&quot;datatype&quot;:&quot;Date&quot;,&quot;required&quot;:true,&quot;control&quot;:&quot;field&quot;,&quot;label&quot;:&quot;[#[translatesys:Data Field:[global].TrnCompanyFounderPage.list.TrnFounderList.content.field.Cf_Est_Date:Cf_Est_Date:CONFIGCLIENT:Est Date]#]&quot;,&quot;attribute&quot;:&quot;Cf_Est_Date&quot;,&quot;name&quot;:&quot;Cf_Est_Date&quot;,&quot;editable&quot;:true}},{&quot;elementType&quot;:&quot;field&quot;,&quot;field&quot;:{&quot;entity&quot;:&quot;TrnCompanyFounder&quot;,&quot;datatype&quot;:&quot;Text&quot;,&quot;required&quot;:false,&quot;control&quot;:&quot;field&quot;,&quot;label&quot;:&quot;[#[translatesys:Data Field:[global].TrnCompanyFounderPage.list.TrnFounderList.content.field.Cf_Notes:Cf_Notes:CONFIGCLIENT:Founder Notes]#]&quot;,&quot;attribute&quot;:&quot;Cf_Notes&quot;,&quot;name&quot;:&quot;Cf_Notes&quot;,&quot;editable&quot;:true,&quot;maxlength&quot;:2000}}],&quot;@[DIFF]PACKED&quot;:{&quot;content&quot;:{&quot;0&quot;:{&quot;@[DIFF]ID&quot;:&quot;71e1698e7145c05798c4824d301063110c593fa3&quot;},&quot;1&quot;:{&quot;@[DIFF]ID&quot;:&quot;6cb876af3c9a485022354eae7a41f20b1bc3ea50&quot;},&quot;2&quot;:{&quot;@[DIFF]ID&quot;:&quot;2a43a18013d87e2fa5982c4b46d5b79e8bc4d56b&quot;}}}}</CONTENT>
+      </DATA_ROW>
+      <DATA_ROW>
+        <OBJKEY>00A0973B03364531AFBAD3D2D7B5451E</OBJKEY>
+        <SCOPE_ID>global</SCOPE_ID>
+        <DATA_ID>page:TrnCompanyFounderPagePage</DATA_ID>
+        <ARTIFACT>page</ARTIFACT>
+        <NAME>TrnCompanyFounderPagePage</NAME>
+        <LINE_NO>0</LINE_NO>
+        <LAYER_NO>2</LAYER_NO>
+        <VISIBILITY>Public</VISIBILITY>
+        <REFERENCE/>
+        <DEPENDENCIES/>
+        <CONTENT>{&quot;name&quot;:&quot;TrnCompanyFounderPagePage&quot;,&quot;label&quot;:&quot;[#[translatesys:Form Window:[global].TrnCompanyFounderPage.page.TrnCompanyFounderPagePage.$this:$this:CONFIGCLIENT:Trn Company Founder Page]#]&quot;,&quot;datasourceProjection&quot;:&quot;TrnCompanyFounderHandling&quot;,&quot;entity&quot;:&quot;TrnCompanyFounder&quot;,&quot;content&quot;:[{&quot;elementType&quot;:&quot;list&quot;,&quot;isReference&quot;:true,&quot;list&quot;:&quot;TrnFounderList&quot;}],&quot;datasourceEntitySet&quot;:&quot;TrnCompanyFounderSet&quot;,&quot;@[DIFF]PACKED&quot;:{&quot;content&quot;:{&quot;0&quot;:{&quot;@[DIFF]ID&quot;:&quot;080ec1488f2739b46c80f8f24687c2c50d7f6f6d&quot;}}}}</CONTENT>
+      </DATA_ROW>
+    </DATA>
+  </WEB_PAGE_BUNDLE>
+</CUSTOM_OBJECT>

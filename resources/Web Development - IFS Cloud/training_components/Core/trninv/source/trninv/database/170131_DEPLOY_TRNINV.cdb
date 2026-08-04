@@ -1,0 +1,406 @@
+-----------------------------------------------------------------------------
+--  Module : TRNINV
+--
+--  File   : 170131_DEPLOY_TRNINV.cdb
+--
+--  IFS Developer Studio Template Version 2.6
+--
+--  Date     Sign    History
+--  ------   ------  --------------------------------------------------
+--  170130   Administrator
+--  ------   ------  --------------------------------------------------
+-----------------------------------------------------------------------------
+
+SET SERVEROUTPUT ON
+
+-----------------------------------------------------------------------------
+-------------------- TABLE DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_BRAND_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'BRAND_ID', 'VARCHAR2(10)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'NAME', 'VARCHAR2(1000)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'COMMENTS', 'VARCHAR2(2000)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+/
+
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_INVENTORY_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'INVENTORY_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'NAME', 'VARCHAR2(200)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'PICKING_LEAD_TIME', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+/
+
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_INVENTORY_PRODUCT_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'INVENTORY_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'PRODUCT_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'QUANTITY', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'REORDER_LEVEL', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'RESERVED_QUANTITY', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+/
+
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_MODEL_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'BRAND_ID', 'VARCHAR2(10)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'CATEGORY_ID', 'VARCHAR2(10)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'MODEL_ID', 'VARCHAR2(100)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'DESCRIPTION', 'VARCHAR2(2000)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+/
+
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_PROD_CATEGORY_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'CATEGORY_ID', 'VARCHAR2(10)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'NAME', 'VARCHAR2(1000)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'COMMENTS', 'VARCHAR2(2000)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+/
+
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_PROD_CATEGORY_BRAND_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'BRAND_ID', 'VARCHAR2(10)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'CATEGORY_ID', 'VARCHAR2(10)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+/
+
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_UNIT_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'UNIT', 'VARCHAR2(10)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'DESCRIPTION', 'VARCHAR2(1000)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+/
+
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_PRODUCT_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'PRODUCT_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'DESCRIPTION', 'VARCHAR2(1000)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'PRICE', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'COMMENTS', 'VARCHAR2(2000)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'UNIT', 'VARCHAR2(10)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'BRAND_ID', 'VARCHAR2(10)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'CATEGORY_ID', 'VARCHAR2(10)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'MODEL_ID', 'VARCHAR2(100)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+/
+
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_INVENTORY_COMM_METHOD_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'INVENTORY_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'INVENTORY_COMM_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ADDRESS', 'VARCHAR2(1000)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'COMMUNICATION_TYPE', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'DEFAULT_ADDRESS', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+/
+
+-----------------------------------------------------------------------------
+-------------------- INDEX DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_INVENTORY_COMM_METHOD_PK';
+   table_name_ VARCHAR2(30) := 'TRN_INVENTORY_COMM_METHOD_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID');
+   Database_SYS.Set_Table_Column(columns_, 'INVENTORY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'INVENTORY_COMM_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_INVENTORY_COMM_METHOD_RK';
+   table_name_ VARCHAR2(30) := 'TRN_INVENTORY_COMM_METHOD_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_BRAND_PK';
+   table_name_ VARCHAR2(30) := 'TRN_BRAND_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'BRAND_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_BRAND_RK';
+   table_name_ VARCHAR2(30) := 'TRN_BRAND_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_INVENTORY_PK';
+   table_name_ VARCHAR2(30) := 'TRN_INVENTORY_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID');
+   Database_SYS.Set_Table_Column(columns_, 'INVENTORY_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_INVENTORY_RK';
+   table_name_ VARCHAR2(30) := 'TRN_INVENTORY_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_INVENTORY_PRODUCT_PK';
+   table_name_ VARCHAR2(30) := 'TRN_INVENTORY_PRODUCT_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID');
+   Database_SYS.Set_Table_Column(columns_, 'INVENTORY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'PRODUCT_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_INVENTORY_PRODUCT_RK';
+   table_name_ VARCHAR2(30) := 'TRN_INVENTORY_PRODUCT_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_MODEL_PK';
+   table_name_ VARCHAR2(30) := 'TRN_MODEL_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'BRAND_ID');
+   Database_SYS.Set_Table_Column(columns_, 'CATEGORY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'MODEL_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_MODEL_RK';
+   table_name_ VARCHAR2(30) := 'TRN_MODEL_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_PROD_CATEGORY_PK';
+   table_name_ VARCHAR2(30) := 'TRN_PROD_CATEGORY_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'CATEGORY_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_PROD_CATEGORY_RK';
+   table_name_ VARCHAR2(30) := 'TRN_PROD_CATEGORY_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_PROD_CATEGORY_BRAND_PK';
+   table_name_ VARCHAR2(30) := 'TRN_PROD_CATEGORY_BRAND_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'BRAND_ID');
+   Database_SYS.Set_Table_Column(columns_, 'CATEGORY_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_PROD_CATEGORY_BRAND_RK';
+   table_name_ VARCHAR2(30) := 'TRN_PROD_CATEGORY_BRAND_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_PRODUCT_PK';
+   table_name_ VARCHAR2(30) := 'TRN_PRODUCT_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'PRODUCT_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_PRODUCT_RK';
+   table_name_ VARCHAR2(30) := 'TRN_PRODUCT_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_UNIT_PK';
+   table_name_ VARCHAR2(30) := 'TRN_UNIT_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'UNIT');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_UNIT_RK';
+   table_name_ VARCHAR2(30) := 'TRN_UNIT_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+/
+
+-----------------------------------------------------------------------------
+-------------------- OTHER DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+DECLARE
+   sequence_name_ VARCHAR2(30) := 'TRN_PRODUCT_ID_SEQ';
+BEGIN
+   Database_SYS.Create_Sequence(sequence_name_, 'INCREMENT BY 1 START WITH 1000 NOCACHE', TRUE);
+END;
+/
+
+DECLARE
+   sequence_name_ VARCHAR2(30) := 'TRN_INVENTORY_ID_SEQ';
+BEGIN
+   Database_SYS.Create_Sequence(sequence_name_, 'INCREMENT BY 1 START WITH 10000 NOCACHE', TRUE);
+END;
+/
+
+DECLARE
+   sequence_name_ VARCHAR2(30) := 'TRN_INV_COMM_ID_SEQ';
+BEGIN
+   Database_SYS.Create_Sequence(sequence_name_, 'INCREMENT BY 1 START WITH 30000 NOCACHE', TRUE);
+END;
+
+SET SERVEROUTPUT OFF

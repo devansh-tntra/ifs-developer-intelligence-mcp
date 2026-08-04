@@ -1,0 +1,50 @@
+projection TrnmwoHandling;
+component TRNMWO;
+layer Core;
+description "Exposes data end-points related to TRNMWO work order handling";
+category Users;
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- MAIN ENTRY POINTS -----------------------------
+entityset WorkOrders for TrnWorkOrder;
+
+------------------------------ ENTITY DETAILS -------------------------------
+@Override
+entity TrnWorkOrder
+   {
+   reference CustomerRef(CustomerId) to TrnCustomer(CustomerId);
+   reference TechnicianRef(PersonId) to TrnTechnician(PersonId);
+   @DynamicComponentDependency ENTERP
+   reference AssigneeRef(Assignee) to PersonInfo(PersonId);
+   array Steps(WorkOrderNo) to TrnWorkOrderStep(WorkOrderNo);
+
+}
+
+@Override
+entity TrnWorkOrderStep
+   {
+   reference InstructionRef(InstructionNo) to TrnStepInstruction(InstructionNo);
+
+}
+------------------------------- ENUMERATIONS --------------------------------
+
+
+---------------------------------- QUERIES ----------------------------------
+
+
+---------------------------------- ACTIONS ----------------------------------
+
+--------------------------------- FUNCTIONS ---------------------------------
+
+
+-------------------------------- STRUCTURES ---------------------------------
+
+
+--------------------------------- VIRTUALS ----------------------------------
+
+
+--------------------------------- SUMMARIES ---------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------

@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="commandManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labeldfsCompanyId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="labeldfsCompanyId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfsCompanyId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>141, 14</value>
+  </data>
+  <data name="labeldfsCompanyId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 13</value>
+  </data>
+  <data name="labeldfsCompanyId.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labeldfsCompanyId.Text" xml:space="preserve">
+    <value>Company Id:</value>
+  </data>
+  <data name="labeldfsCompanyId.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;labeldfsCompanyId.Name" xml:space="preserve">
+    <value>labeldfsCompanyId</value>
+  </data>
+  <data name="&gt;&gt;labeldfsCompanyId.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfsCompanyId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfsCompanyId.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="dfsCompanyId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 14</value>
+  </data>
+  <data name="dfsCompanyId.MaxLength" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="dfsCompanyId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 21</value>
+  </data>
+  <data name="dfsCompanyId.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="dfsCompanyId.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;dfsCompanyId.Name" xml:space="preserve">
+    <value>dfsCompanyId</value>
+  </data>
+  <data name="&gt;&gt;dfsCompanyId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfsCompanyId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfsCompanyId.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labeldfnReservationId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfnReservationId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfnReservationId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 8</value>
+  </data>
+  <data name="labeldfnReservationId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 13</value>
+  </data>
+  <data name="labeldfnReservationId.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labeldfnReservationId.Text" xml:space="preserve">
+    <value>Reservation Id:</value>
+  </data>
+  <data name="&gt;&gt;labeldfnReservationId.Name" xml:space="preserve">
+    <value>labeldfnReservationId</value>
+  </data>
+  <data name="&gt;&gt;labeldfnReservationId.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfnReservationId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfnReservationId.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="dfnReservationId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 25</value>
+  </data>
+  <data name="dfnReservationId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="dfnReservationId.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;dfnReservationId.Name" xml:space="preserve">
+    <value>dfnReservationId</value>
+  </data>
+  <data name="&gt;&gt;dfnReservationId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfnReservationId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfnReservationId.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labeldfnOrderId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfnOrderId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfnOrderId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>141, 8</value>
+  </data>
+  <data name="labeldfnOrderId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="labeldfnOrderId.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labeldfnOrderId.Text" xml:space="preserve">
+    <value>Order Id:</value>
+  </data>
+  <data name="&gt;&gt;labeldfnOrderId.Name" xml:space="preserve">
+    <value>labeldfnOrderId</value>
+  </data>
+  <data name="&gt;&gt;labeldfnOrderId.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfnOrderId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfnOrderId.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="dfnOrderId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 25</value>
+  </data>
+  <data name="dfnOrderId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="dfnOrderId.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;dfnOrderId.Name" xml:space="preserve">
+    <value>dfnOrderId</value>
+  </data>
+  <data name="&gt;&gt;dfnOrderId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfnOrderId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfnOrderId.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tblItems_colsCompanyId.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tblItems_colsCompanyId.Title" xml:space="preserve">
+    <value>Company Id</value>
+  </data>
+  <data name="tblItems_colsCompanyId.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsCompanyId.Name" xml:space="preserve">
+    <value>tblItems_colsCompanyId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsCompanyId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsCompanyId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsCompanyId.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tblItems_colnReservationId.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tblItems_colnReservationId.Title" xml:space="preserve">
+    <value>Reservation Id</value>
+  </data>
+  <data name="tblItems_colnReservationId.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnReservationId.Name" xml:space="preserve">
+    <value>tblItems_colnReservationId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnReservationId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnReservationId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnReservationId.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tblItems_colnReservationItemId.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tblItems_colnReservationItemId.Title" xml:space="preserve">
+    <value>Reservation Item Id</value>
+  </data>
+  <data name="tblItems_colnReservationItemId.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnReservationItemId.Name" xml:space="preserve">
+    <value>tblItems_colnReservationItemId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnReservationItemId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnReservationItemId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnReservationItemId.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tblItems_colnOrderId.Title" xml:space="preserve">
+    <value>Order Id</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnOrderId.Name" xml:space="preserve">
+    <value>tblItems_colnOrderId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnOrderId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnOrderId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnOrderId.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tblItems_colnRowNo.Title" xml:space="preserve">
+    <value>Row No</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnRowNo.Name" xml:space="preserve">
+    <value>tblItems_colnRowNo</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnRowNo.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnRowNo.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnRowNo.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tblItems_colsBranchId.Title" xml:space="preserve">
+    <value>Branch Id</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsBranchId.Name" xml:space="preserve">
+    <value>tblItems_colsBranchId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsBranchId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsBranchId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsBranchId.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tblItems_colnInventoryId.Title" xml:space="preserve">
+    <value>Inventory Id</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnInventoryId.Name" xml:space="preserve">
+    <value>tblItems_colnInventoryId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnInventoryId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnInventoryId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnInventoryId.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="tblItems_colnProductId.Title" xml:space="preserve">
+    <value>Product Id</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnProductId.Name" xml:space="preserve">
+    <value>tblItems_colnProductId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnProductId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnProductId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnProductId.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="tblItems_colnQuantity.Title" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnQuantity.Name" xml:space="preserve">
+    <value>tblItems_colnQuantity</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnQuantity.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnQuantity.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnQuantity.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="tblItems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 59</value>
+  </data>
+  <data name="tblItems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>480, 168</value>
+  </data>
+  <data name="tblItems.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tblItems.Name" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cChildTable, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tblItems.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>508, 239</value>
+  </data>
+  <data name="&gt;&gt;commandManager.Name" xml:space="preserve">
+    <value>commandManager</value>
+  </data>
+  <data name="&gt;&gt;commandManager.Type" xml:space="preserve">
+    <value>Ifs.Fnd.Windows.Forms.FndCommandManager, Ifs.Fnd.Windows.Forms.CommonControls, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmOrderReservationDetail</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cFormWindow, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+</root>

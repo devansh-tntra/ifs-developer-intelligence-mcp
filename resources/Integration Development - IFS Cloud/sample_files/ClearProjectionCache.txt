@@ -1,0 +1,3 @@
+https://dlk1k8strndXX.corpnet.ifsworld.com/int/ifsapplications/projection/ClearCache?METHOD=CLEAR_PROJECTION_CACHE&VALUE=[your_projection_name]
+
+https://dlk1k8strndXX.corpnet.ifsworld.com/int/ifsapplications/projection/ClearCache?METHOD=CLEAR_PROJECTION_CACHE&VALUE=*

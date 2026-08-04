@@ -1,0 +1,3 @@
+ifsappgraph:
+  imageVersion: 23.2.0.202401241045.0
+  imageName: ifs/ifsapp-graph

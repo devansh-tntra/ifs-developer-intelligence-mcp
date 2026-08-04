@@ -1,0 +1,8 @@
+--------------------------------------------------------------------------------
+--	File: ActivateComponents.sql
+--
+--	Purpose: Call to this file is included in install.tem, therefore this
+--		 file should always exist. If the file is not created because of 
+--		 missing solutionset file, the file will be created as dummy template.
+--
+--------------------------------------------------------------------------------

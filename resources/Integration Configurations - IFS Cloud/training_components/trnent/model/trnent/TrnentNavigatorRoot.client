@@ -1,0 +1,23 @@
+client TrnentNavigatorRoot;
+component TRNENT;
+layer Core;
+
+--------------------------------- NAVIGATOR ---------------------------------
+navigator {
+   entry ManageGeographiesNavEntry toplevel at index 100 {
+      label = "Manage Geographies";
+   }
+
+   entry ManageCompaniesNavEntry toplevel at index 200 {
+      label = "Manage Companies";
+   }
+}
+
+
+-------------------------------- MAIN PAGES ---------------------------------
+
+
+--------------------------------- COMMANDS ----------------------------------
+
+
+----------------------------- VISUAL COMPONENTS -----------------------------

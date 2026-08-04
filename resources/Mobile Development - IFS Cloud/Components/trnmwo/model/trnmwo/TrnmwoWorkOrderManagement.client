@@ -1,0 +1,105 @@
+client TrnmwoWorkOrderManagement;
+component TRNMWO;
+layer Core;
+projection TrnmwoHandling;
+description "TRNMWO Work Order Management";
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- NAVIGATOR ENTRIES -----------------------------
+navigator
+   {
+
+   entry WorkOrderManagement parent TrnmwoNavigatorRoot.DemoManagerWorkOrderNavEntry at index 1000
+      {
+      label = "Work Order Details";
+      entry WorkOrderDetailsPageNavEntry;
+
+   }
+   entry WorkOrderDetailsPageNavEntry
+      {
+      label = "Work Order Details";
+      page WorkOrderDetailsPage;
+
+   }
+}
+-------------------------------- MAIN PAGES ---------------------------------
+page WorkOrderDetailsPage using WorkOrders
+   {
+   label = "Work Order Details";
+   selector TrnWorkOrderSelector;
+   group WorkOrderGroup bind TrnWorkOrderSelector;
+   list WorkOrderStepList(Steps) bind TrnWorkOrderSelector;
+
+
+}
+
+--------------------------------- COMMANDS ----------------------------------
+
+
+--------------------------------- SELECTORS ---------------------------------
+
+
+---------------------------------- GROUPS -----------------------------------
+group WorkOrderGroup for TrnWorkOrder {
+   field      WorkOrderNo;
+   field      Description {
+      fieldhint = Paragraph;
+   }
+   field      CreationDate;
+   field      Comments;
+   static      CompanyId;
+   field      CustomerRef {
+      label = "Customer Id";
+   }
+   field      TechnicianRef {
+      label = "Technician Id";
+   }
+      field      AssigneeRef {
+      label = "Assignee Id";
+   }
+   field TaskUrl {
+      fieldhint = Url;
+   }
+}
+
+
+----------------------------------- LISTS -----------------------------------
+list WorkOrderStepList for TrnWorkOrderStep {
+   field    WorkOrderNo;
+   field    StepId {
+      required = [false];
+   }
+   field    InstructionRef {
+      label = "Instruction Id";
+   }
+   field    SequenceNo;
+   field    IsDone;
+}
+
+
+---------------------------------- DIALOGS ----------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------
+
+
+---------------------------------- CHARTS -----------------------------------
+
+
+--------------------------------- CALENDERS ---------------------------------
+
+
+---------------------------------- SHEETS -----------------------------------
+
+
+----------------------------- STATE INDICATORS ------------------------------
+
+
+----------------------------------- TREES -----------------------------------
+
+
+---------------------------------- PLUGINS ----------------------------------
+
+
+------------------------------- IMAGE VIEWERS -------------------------------

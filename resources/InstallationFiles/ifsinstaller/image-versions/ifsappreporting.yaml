@@ -1,0 +1,3 @@
+ifsappreporting:
+  imageVersion: 25.1.2.0.0
+  imageName: ifs/ifsapp-reporting

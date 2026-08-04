@@ -1,0 +1,4 @@
+ifsappclientnotification:
+  imageVersion: 25.1.2.20250702082751.0
+  imageName: ifs/ifsapp-client-notification
+  

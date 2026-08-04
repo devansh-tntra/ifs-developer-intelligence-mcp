@@ -1,0 +1,3 @@
+ifsappamworkqueue:
+  imageVersion: 7.0.15
+  imageName: ifs/ifsapp-am-workqueue

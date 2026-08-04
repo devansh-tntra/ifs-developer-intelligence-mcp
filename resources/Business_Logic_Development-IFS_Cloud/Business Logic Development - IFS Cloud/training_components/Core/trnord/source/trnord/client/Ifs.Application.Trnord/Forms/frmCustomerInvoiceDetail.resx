@@ -1,0 +1,1158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="commandManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="menuFrmMethods_menuPay___.Caption" xml:space="preserve">
+    <value>Pay...</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="menuItem_Pay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 22</value>
+  </data>
+  <data name="menuFrmMethods.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 26</value>
+  </data>
+  <data name="&gt;&gt;menuFrmMethods.Name" xml:space="preserve">
+    <value>menuFrmMethods</value>
+  </data>
+  <data name="&gt;&gt;menuFrmMethods.Type" xml:space="preserve">
+    <value>Ifs.Fnd.Windows.Forms.FndContextMenuStrip, Ifs.Fnd.Windows.Forms.CommonControls, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labeldfsCompanyId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfsCompanyId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfsCompanyId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>141, 14</value>
+  </data>
+  <data name="labeldfsCompanyId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 13</value>
+  </data>
+  <data name="labeldfsCompanyId.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labeldfsCompanyId.Text" xml:space="preserve">
+    <value>Company Id:</value>
+  </data>
+  <data name="labeldfsCompanyId.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;labeldfsCompanyId.Name" xml:space="preserve">
+    <value>labeldfsCompanyId</value>
+  </data>
+  <data name="&gt;&gt;labeldfsCompanyId.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfsCompanyId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfsCompanyId.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="dfsCompanyId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 14</value>
+  </data>
+  <data name="dfsCompanyId.MaxLength" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="dfsCompanyId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 21</value>
+  </data>
+  <data name="dfsCompanyId.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="dfsCompanyId.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;dfsCompanyId.Name" xml:space="preserve">
+    <value>dfsCompanyId</value>
+  </data>
+  <data name="&gt;&gt;dfsCompanyId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfsCompanyId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfsCompanyId.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="labeldfsBranchId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfsBranchId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfsBranchId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 8</value>
+  </data>
+  <data name="labeldfsBranchId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 13</value>
+  </data>
+  <data name="labeldfsBranchId.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labeldfsBranchId.Text" xml:space="preserve">
+    <value>Branch Id:</value>
+  </data>
+  <data name="&gt;&gt;labeldfsBranchId.Name" xml:space="preserve">
+    <value>labeldfsBranchId</value>
+  </data>
+  <data name="&gt;&gt;labeldfsBranchId.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfsBranchId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfsBranchId.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="dfsBranchId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 25</value>
+  </data>
+  <data name="dfsBranchId.MaxLength" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="dfsBranchId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="dfsBranchId.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;dfsBranchId.Name" xml:space="preserve">
+    <value>dfsBranchId</value>
+  </data>
+  <data name="&gt;&gt;dfsBranchId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfsBranchId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfsBranchId.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="labelccInvoiceId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelccInvoiceId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labelccInvoiceId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 8</value>
+  </data>
+  <data name="labelccInvoiceId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
+  </data>
+  <data name="labelccInvoiceId.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelccInvoiceId.Text" xml:space="preserve">
+    <value>Invoice Id:</value>
+  </data>
+  <data name="&gt;&gt;labelccInvoiceId.Name" xml:space="preserve">
+    <value>labelccInvoiceId</value>
+  </data>
+  <data name="&gt;&gt;labelccInvoiceId.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labelccInvoiceId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelccInvoiceId.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="ccInvoiceId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 25</value>
+  </data>
+  <data name="ccInvoiceId.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;ccInvoiceId.Name" xml:space="preserve">
+    <value>ccInvoiceId</value>
+  </data>
+  <data name="&gt;&gt;ccInvoiceId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cRecListDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;ccInvoiceId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ccInvoiceId.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="labeldfdInvoiceDate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfdInvoiceDate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfdInvoiceDate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 8</value>
+  </data>
+  <data name="labeldfdInvoiceDate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 13</value>
+  </data>
+  <data name="labeldfdInvoiceDate.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="labeldfdInvoiceDate.Text" xml:space="preserve">
+    <value>Invoice Date:</value>
+  </data>
+  <data name="&gt;&gt;labeldfdInvoiceDate.Name" xml:space="preserve">
+    <value>labeldfdInvoiceDate</value>
+  </data>
+  <data name="&gt;&gt;labeldfdInvoiceDate.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfdInvoiceDate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfdInvoiceDate.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="dfdInvoiceDate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>288, 25</value>
+  </data>
+  <data name="dfdInvoiceDate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="dfdInvoiceDate.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;dfdInvoiceDate.Name" xml:space="preserve">
+    <value>dfdInvoiceDate</value>
+  </data>
+  <data name="&gt;&gt;dfdInvoiceDate.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfdInvoiceDate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfdInvoiceDate.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="labeldfdDueDate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfdDueDate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfdDueDate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>423, 8</value>
+  </data>
+  <data name="labeldfdDueDate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="labeldfdDueDate.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="labeldfdDueDate.Text" xml:space="preserve">
+    <value>Due Date:</value>
+  </data>
+  <data name="&gt;&gt;labeldfdDueDate.Name" xml:space="preserve">
+    <value>labeldfdDueDate</value>
+  </data>
+  <data name="&gt;&gt;labeldfdDueDate.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfdDueDate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfdDueDate.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="dfdDueDate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>426, 25</value>
+  </data>
+  <data name="dfdDueDate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="dfdDueDate.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;dfdDueDate.Name" xml:space="preserve">
+    <value>dfdDueDate</value>
+  </data>
+  <data name="&gt;&gt;dfdDueDate.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfdDueDate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfdDueDate.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="labeldfnInvoiceAmount.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfnInvoiceAmount.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfnInvoiceAmount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>561, 8</value>
+  </data>
+  <data name="labeldfnInvoiceAmount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 13</value>
+  </data>
+  <data name="labeldfnInvoiceAmount.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="labeldfnInvoiceAmount.Text" xml:space="preserve">
+    <value>Invoice Amount:</value>
+  </data>
+  <data name="&gt;&gt;labeldfnInvoiceAmount.Name" xml:space="preserve">
+    <value>labeldfnInvoiceAmount</value>
+  </data>
+  <data name="&gt;&gt;labeldfnInvoiceAmount.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfnInvoiceAmount.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfnInvoiceAmount.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="dfnInvoiceAmount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>564, 25</value>
+  </data>
+  <data name="dfnInvoiceAmount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="dfnInvoiceAmount.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;dfnInvoiceAmount.Name" xml:space="preserve">
+    <value>dfnInvoiceAmount</value>
+  </data>
+  <data name="&gt;&gt;dfnInvoiceAmount.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfnInvoiceAmount.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfnInvoiceAmount.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="labeldfnOrderId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfnOrderId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfnOrderId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 59</value>
+  </data>
+  <data name="labeldfnOrderId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="labeldfnOrderId.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="labeldfnOrderId.Text" xml:space="preserve">
+    <value>Order Id:</value>
+  </data>
+  <data name="&gt;&gt;labeldfnOrderId.Name" xml:space="preserve">
+    <value>labeldfnOrderId</value>
+  </data>
+  <data name="&gt;&gt;labeldfnOrderId.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfnOrderId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfnOrderId.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="dfnOrderId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 76</value>
+  </data>
+  <data name="dfnOrderId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="dfnOrderId.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;dfnOrderId.Name" xml:space="preserve">
+    <value>dfnOrderId</value>
+  </data>
+  <data name="&gt;&gt;dfnOrderId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfnOrderId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfnOrderId.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="labeldfTrnCustomerOrderDeliveryType.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfTrnCustomerOrderDeliveryType.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfTrnCustomerOrderDeliveryType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 59</value>
+  </data>
+  <data name="labeldfTrnCustomerOrderDeliveryType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
+  </data>
+  <data name="labeldfTrnCustomerOrderDeliveryType.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="labeldfTrnCustomerOrderDeliveryType.Text" xml:space="preserve">
+    <value>Delivery Type:</value>
+  </data>
+  <data name="&gt;&gt;labeldfTrnCustomerOrderDeliveryType.Name" xml:space="preserve">
+    <value>labeldfTrnCustomerOrderDeliveryType</value>
+  </data>
+  <data name="&gt;&gt;labeldfTrnCustomerOrderDeliveryType.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfTrnCustomerOrderDeliveryType.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfTrnCustomerOrderDeliveryType.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="dfTrnCustomerOrderDeliveryType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 76</value>
+  </data>
+  <data name="dfTrnCustomerOrderDeliveryType.MaxLength" type="System.Int32, mscorlib">
+    <value>2000</value>
+  </data>
+  <data name="dfTrnCustomerOrderDeliveryType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="dfTrnCustomerOrderDeliveryType.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;dfTrnCustomerOrderDeliveryType.Name" xml:space="preserve">
+    <value>dfTrnCustomerOrderDeliveryType</value>
+  </data>
+  <data name="&gt;&gt;dfTrnCustomerOrderDeliveryType.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfTrnCustomerOrderDeliveryType.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfTrnCustomerOrderDeliveryType.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="labeldfnUnpaid.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfnUnpaid.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfnUnpaid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 109</value>
+  </data>
+  <data name="labeldfnUnpaid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="labeldfnUnpaid.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="labeldfnUnpaid.Text" xml:space="preserve">
+    <value>Unpaid:</value>
+  </data>
+  <data name="&gt;&gt;labeldfnUnpaid.Name" xml:space="preserve">
+    <value>labeldfnUnpaid</value>
+  </data>
+  <data name="&gt;&gt;labeldfnUnpaid.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfnUnpaid.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfnUnpaid.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="dfnUnpaid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 126</value>
+  </data>
+  <data name="dfnUnpaid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="dfnUnpaid.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;dfnUnpaid.Name" xml:space="preserve">
+    <value>dfnUnpaid</value>
+  </data>
+  <data name="&gt;&gt;dfnUnpaid.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfnUnpaid.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfnUnpaid.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="labelcmbPaymentTerms.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelcmbPaymentTerms.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labelcmbPaymentTerms.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 109</value>
+  </data>
+  <data name="labelcmbPaymentTerms.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 13</value>
+  </data>
+  <data name="labelcmbPaymentTerms.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="labelcmbPaymentTerms.Text" xml:space="preserve">
+    <value>Payment Terms:</value>
+  </data>
+  <data name="&gt;&gt;labelcmbPaymentTerms.Name" xml:space="preserve">
+    <value>labelcmbPaymentTerms</value>
+  </data>
+  <data name="&gt;&gt;labelcmbPaymentTerms.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labelcmbPaymentTerms.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelcmbPaymentTerms.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="cmbPaymentTerms.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 126</value>
+  </data>
+  <data name="cmbPaymentTerms.MaxLength" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="cmbPaymentTerms.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="cmbPaymentTerms.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;cmbPaymentTerms.Name" xml:space="preserve">
+    <value>cmbPaymentTerms</value>
+  </data>
+  <data name="&gt;&gt;cmbPaymentTerms.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cComboBox, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;cmbPaymentTerms.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cmbPaymentTerms.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="labeldfnCustomerId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfnCustomerId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfnCustomerId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 160</value>
+  </data>
+  <data name="labeldfnCustomerId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="labeldfnCustomerId.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="labeldfnCustomerId.Text" xml:space="preserve">
+    <value>Customer Id:</value>
+  </data>
+  <data name="&gt;&gt;labeldfnCustomerId.Name" xml:space="preserve">
+    <value>labeldfnCustomerId</value>
+  </data>
+  <data name="&gt;&gt;labeldfnCustomerId.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfnCustomerId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfnCustomerId.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="dfnCustomerId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 176</value>
+  </data>
+  <data name="dfnCustomerId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="dfnCustomerId.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;dfnCustomerId.Name" xml:space="preserve">
+    <value>dfnCustomerId</value>
+  </data>
+  <data name="&gt;&gt;dfnCustomerId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfnCustomerId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfnCustomerId.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labeldfTrnCustomerName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfTrnCustomerName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfTrnCustomerName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 160</value>
+  </data>
+  <data name="labeldfTrnCustomerName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="labeldfTrnCustomerName.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="labeldfTrnCustomerName.Text" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="&gt;&gt;labeldfTrnCustomerName.Name" xml:space="preserve">
+    <value>labeldfTrnCustomerName</value>
+  </data>
+  <data name="&gt;&gt;labeldfTrnCustomerName.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfTrnCustomerName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfTrnCustomerName.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="dfTrnCustomerName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 176</value>
+  </data>
+  <data name="dfTrnCustomerName.MaxLength" type="System.Int32, mscorlib">
+    <value>2000</value>
+  </data>
+  <data name="dfTrnCustomerName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="dfTrnCustomerName.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;dfTrnCustomerName.Name" xml:space="preserve">
+    <value>dfTrnCustomerName</value>
+  </data>
+  <data name="&gt;&gt;dfTrnCustomerName.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfTrnCustomerName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfTrnCustomerName.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labeldfTrnCustomerCreditLimit.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeldfTrnCustomerCreditLimit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labeldfTrnCustomerCreditLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 210</value>
+  </data>
+  <data name="labeldfTrnCustomerCreditLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 13</value>
+  </data>
+  <data name="labeldfTrnCustomerCreditLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="labeldfTrnCustomerCreditLimit.Text" xml:space="preserve">
+    <value>Credit Limit:</value>
+  </data>
+  <data name="&gt;&gt;labeldfTrnCustomerCreditLimit.Name" xml:space="preserve">
+    <value>labeldfTrnCustomerCreditLimit</value>
+  </data>
+  <data name="&gt;&gt;labeldfTrnCustomerCreditLimit.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labeldfTrnCustomerCreditLimit.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labeldfTrnCustomerCreditLimit.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="dfTrnCustomerCreditLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 227</value>
+  </data>
+  <data name="dfTrnCustomerCreditLimit.MaxLength" type="System.Int32, mscorlib">
+    <value>2000</value>
+  </data>
+  <data name="dfTrnCustomerCreditLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="dfTrnCustomerCreditLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;dfTrnCustomerCreditLimit.Name" xml:space="preserve">
+    <value>dfTrnCustomerCreditLimit</value>
+  </data>
+  <data name="&gt;&gt;dfTrnCustomerCreditLimit.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cDataField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;dfTrnCustomerCreditLimit.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dfTrnCustomerCreditLimit.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelmlComments.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelmlComments.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="labelmlComments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 59</value>
+  </data>
+  <data name="labelmlComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 13</value>
+  </data>
+  <data name="labelmlComments.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="labelmlComments.Text" xml:space="preserve">
+    <value>Comments:</value>
+  </data>
+  <data name="&gt;&gt;labelmlComments.Name" xml:space="preserve">
+    <value>labelmlComments</value>
+  </data>
+  <data name="&gt;&gt;labelmlComments.Type" xml:space="preserve">
+    <value>PPJ.Runtime.Windows.SalBackgroundText, PPJ.Runtime.4, Version=4.0.1046.0, Culture=neutral, PublicKeyToken=17bef35e11b84171</value>
+  </data>
+  <data name="&gt;&gt;labelmlComments.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelmlComments.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="mlComments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>288, 76</value>
+  </data>
+  <data name="mlComments.MaxLength" type="System.Int32, mscorlib">
+    <value>2000</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="mlComments.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="mlComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>399, 168</value>
+  </data>
+  <data name="mlComments.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="mlComments.WordWrap" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;mlComments.Name" xml:space="preserve">
+    <value>mlComments</value>
+  </data>
+  <data name="&gt;&gt;mlComments.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cMultilineField, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;mlComments.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;mlComments.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tblItems_colsCompanyId.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tblItems_colsCompanyId.Title" xml:space="preserve">
+    <value>Company Id</value>
+  </data>
+  <data name="tblItems_colsCompanyId.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsCompanyId.Name" xml:space="preserve">
+    <value>tblItems_colsCompanyId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsCompanyId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsCompanyId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsCompanyId.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tblItems_colsBranchId.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tblItems_colsBranchId.Title" xml:space="preserve">
+    <value>Branch Id</value>
+  </data>
+  <data name="tblItems_colsBranchId.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsBranchId.Name" xml:space="preserve">
+    <value>tblItems_colsBranchId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsBranchId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsBranchId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colsBranchId.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tblItems_colnInvoiceId.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tblItems_colnInvoiceId.Title" xml:space="preserve">
+    <value>Invoice Id</value>
+  </data>
+  <data name="tblItems_colnInvoiceId.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnInvoiceId.Name" xml:space="preserve">
+    <value>tblItems_colnInvoiceId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnInvoiceId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnInvoiceId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnInvoiceId.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tblItems_colnItemNo.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tblItems_colnItemNo.Title" xml:space="preserve">
+    <value>Item No</value>
+  </data>
+  <data name="tblItems_colnItemNo.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnItemNo.Name" xml:space="preserve">
+    <value>tblItems_colnItemNo</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnItemNo.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnItemNo.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnItemNo.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tblItems_colnProductId.Title" xml:space="preserve">
+    <value>Product Id</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnProductId.Name" xml:space="preserve">
+    <value>tblItems_colnProductId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnProductId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnProductId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnProductId.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tblItems_colTrnProductBrandId.Title" xml:space="preserve">
+    <value>Brand Id</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductBrandId.Name" xml:space="preserve">
+    <value>tblItems_colTrnProductBrandId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductBrandId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductBrandId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductBrandId.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tblItems_colTrnProductCategoryId.Title" xml:space="preserve">
+    <value>Category Id</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductCategoryId.Name" xml:space="preserve">
+    <value>tblItems_colTrnProductCategoryId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductCategoryId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductCategoryId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductCategoryId.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="tblItems_colTrnProductModelId.Title" xml:space="preserve">
+    <value>Model Id</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductModelId.Name" xml:space="preserve">
+    <value>tblItems_colTrnProductModelId</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductModelId.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductModelId.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductModelId.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="tblItems_colDescription.Title" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="tblItems_colDescription.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colDescription.Name" xml:space="preserve">
+    <value>tblItems_colDescription</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colDescription.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colDescription.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colDescription.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="tblItems_colnPrice.Title" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnPrice.Name" xml:space="preserve">
+    <value>tblItems_colnPrice</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnPrice.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnPrice.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnPrice.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="tblItems_colnQuantity.Title" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnQuantity.Name" xml:space="preserve">
+    <value>tblItems_colnQuantity</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnQuantity.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnQuantity.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnQuantity.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="tblItems_colTrnProductUnit.Title" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductUnit.Name" xml:space="preserve">
+    <value>tblItems_colTrnProductUnit</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductUnit.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductUnit.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colTrnProductUnit.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="tblItems_colnAmount.Title" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnAmount.Name" xml:space="preserve">
+    <value>tblItems_colnAmount</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnAmount.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cColumn, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnAmount.Parent" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems_colnAmount.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="tblItems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 260</value>
+  </data>
+  <data name="tblItems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>678, 168</value>
+  </data>
+  <data name="tblItems.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;tblItems.Name" xml:space="preserve">
+    <value>tblItems</value>
+  </data>
+  <data name="&gt;&gt;tblItems.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cChildTable, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;tblItems.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tblItems.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>706, 441</value>
+  </data>
+  <data name="&gt;&gt;commandManager.Name" xml:space="preserve">
+    <value>commandManager</value>
+  </data>
+  <data name="&gt;&gt;commandManager.Type" xml:space="preserve">
+    <value>Ifs.Fnd.Windows.Forms.FndCommandManager, Ifs.Fnd.Windows.Forms.CommonControls, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;menuFrmMethods_menuPay___.Name" xml:space="preserve">
+    <value>menuFrmMethods_menuPay___</value>
+  </data>
+  <data name="&gt;&gt;menuFrmMethods_menuPay___.Type" xml:space="preserve">
+    <value>Ifs.Fnd.Windows.Forms.FndCommand, Ifs.Fnd.Windows.Forms.CommonControls, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;menuItem_Pay.Name" xml:space="preserve">
+    <value>menuItem_Pay</value>
+  </data>
+  <data name="&gt;&gt;menuItem_Pay.Type" xml:space="preserve">
+    <value>Ifs.Fnd.Windows.Forms.FndToolStripMenuItem, Ifs.Fnd.Windows.Forms.CommonControls, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmCustomerInvoiceDetail</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>Ifs.Fnd.ApplicationForms.cFormWindow, Ifs.Fnd.ApplicationForms, Version=4.52.9.0, Culture=neutral, PublicKeyToken=ff90f512e10aef0d</value>
+  </data>
+</root>

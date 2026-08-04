@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="TrnExercise01" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_021x5k4</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="Gateway_1sztucr" default="Flow_1gkom8b">
+      <bpmn:incoming>Flow_021x5k4</bpmn:incoming>
+      <bpmn:outgoing>Flow_0sjelf3</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1gkom8b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_021x5k4" sourceRef="StartEvent_1" targetRef="Gateway_1sztucr" />
+    <bpmn:sequenceFlow id="Flow_0sjelf3" name="When Tax rate &#60; 12.5%" sourceRef="Gateway_1sztucr" targetRef="Event_1kbk2sb">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${FeeRate &lt; 12.5}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_0h76v36" default="Flow_1pj2pi2">
+      <bpmn:incoming>Flow_1gkom8b</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lezznx</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1pj2pi2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1gkom8b" sourceRef="Gateway_1sztucr" targetRef="Gateway_0h76v36" />
+    <bpmn:sequenceFlow id="Flow_0lezznx" name="When Tax rate &#62; 49%" sourceRef="Gateway_0h76v36" targetRef="Event_0bignh8">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${FeeRate &gt; 49}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_1n151bf">
+      <bpmn:incoming>Flow_1pj2pi2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1pj2pi2" sourceRef="Gateway_0h76v36" targetRef="Event_1n151bf" />
+    <bpmn:endEvent id="Event_1kbk2sb">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="ifsBpaValidationErrorMessages">
+            <camunda:map>
+              <camunda:entry key="en">Tax rate is less than 12.5%</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+        <camunda:executionListener class="com.ifsworld.fnd.bpa.process.validation.IfsBpaFailureEndEventListener" event="end" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0sjelf3</bpmn:incoming>
+      <bpmn:terminateEventDefinition id="TerminateEventDefinition_1bfuqjs" />
+    </bpmn:endEvent>
+    <bpmn:endEvent id="Event_0bignh8">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="ifsBpaValidationErrorMessages">
+            <camunda:map>
+              <camunda:entry key="en">Tax rate is greater than 49%</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+        <camunda:executionListener class="com.ifsworld.fnd.bpa.process.validation.IfsBpaFailureEndEventListener" event="end" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0lezznx</bpmn:incoming>
+      <bpmn:terminateEventDefinition id="TerminateEventDefinition_0ip4nf0" />
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TrnExercise01">
+      <bpmndi:BPMNEdge id="Flow_1pj2pi2_di" bpmnElement="Flow_1pj2pi2">
+        <di:waypoint x="340" y="395" />
+        <di:waypoint x="340" y="480" />
+        <di:waypoint x="592" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lezznx_di" bpmnElement="Flow_0lezznx">
+        <di:waypoint x="365" y="370" />
+        <di:waypoint x="592" y="370" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="440" y="336" width="81" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gkom8b_di" bpmnElement="Flow_1gkom8b">
+        <di:waypoint x="340" y="283" />
+        <di:waypoint x="340" y="345" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sjelf3_di" bpmnElement="Flow_0sjelf3">
+        <di:waypoint x="365" y="258" />
+        <di:waypoint x="592" y="258" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="440" y="226" width="81" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_021x5k4_di" bpmnElement="Flow_021x5k4">
+        <di:waypoint x="258" y="258" />
+        <di:waypoint x="315" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="222" y="240" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1sztucr_di" bpmnElement="Gateway_1sztucr" isMarkerVisible="true">
+        <dc:Bounds x="315" y="233" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0h76v36_di" bpmnElement="Gateway_0h76v36" isMarkerVisible="true">
+        <dc:Bounds x="315" y="345" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1n151bf_di" bpmnElement="Event_1n151bf">
+        <dc:Bounds x="592" y="462" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18lasrj_di" bpmnElement="Event_1kbk2sb">
+        <dc:Bounds x="592" y="240" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_15m5xn3_di" bpmnElement="Event_0bignh8">
+        <dc:Bounds x="592" y="352" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

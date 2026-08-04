@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="TrnExercise06" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0jemaom</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0jemaom" sourceRef="StartEvent_1" targetRef="Activity_1dz0rcw" />
+    <bpmn:serviceTask id="Activity_1dz0rcw" name="Read All TrnCityArea Records" camunda:class="com.ifsworld.fnd.bpa.IfsProjectionDelegate">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="ifsBpaProjectionAction">READ</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionETagVariableName">ETag</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionType">Standard</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionName">TrnCityHandling</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionEntitySetName">TrnCitySet</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionCollectionVariableName">TrnCityAreaCollection</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionIsCollection">true</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0jemaom</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fw8zks</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1fw8zks" sourceRef="Activity_1dz0rcw" targetRef="Activity_12pnkkd" />
+    <bpmn:scriptTask id="Activity_12pnkkd" name="Prepare Condition Variables" scriptFormat="JavaScript">
+      <bpmn:incoming>Flow_1fw8zks</bpmn:incoming>
+      <bpmn:outgoing>Flow_14wm5d9</bpmn:outgoing>
+      <bpmn:script>var cityAreasList = execution.getVariable('TrnCityAreaCollection'); 
+var doUpdateTemps = false;
+if(cityAreasList &amp;&amp; cityAreasList.length &gt; 0)
+{
+  doUpdateTemps = true;
+}
+execution.setVariable('doUpdateTemps',doUpdateTemps );
+</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="Gateway_1s383la" default="Flow_0gbj63g">
+      <bpmn:incoming>Flow_14wm5d9</bpmn:incoming>
+      <bpmn:outgoing>Flow_0gbj63g</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0vnlta9</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_14wm5d9" sourceRef="Activity_12pnkkd" targetRef="Gateway_1s383la" />
+    <bpmn:endEvent id="Event_1ifnwh8">
+      <bpmn:incoming>Flow_0gbj63g</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0gbj63g" sourceRef="Gateway_1s383la" targetRef="Event_1ifnwh8" />
+    <bpmn:sequenceFlow id="Flow_0vnlta9" sourceRef="Gateway_1s383la" targetRef="Activity_0q6xw9l">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" language="JavaScript">execution.getVariable('doUpdateTemps') == true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:subProcess id="Activity_0q6xw9l">
+      <bpmn:incoming>Flow_0vnlta9</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ss4yp7</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" camunda:collection="TrnCityAreaCollection" camunda:elementVariable="item" />
+      <bpmn:startEvent id="Event_1tbtey8">
+        <bpmn:outgoing>Flow_1q1ga62</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_1q1ga62" sourceRef="Event_1tbtey8" targetRef="Activity_0zqxnev" />
+      <bpmn:sequenceFlow id="Flow_1jjn6te" sourceRef="Activity_0zqxnev" targetRef="Activity_1dgwi6e" />
+      <bpmn:endEvent id="Event_1xno81z">
+        <bpmn:incoming>Flow_0ply1mu</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0ply1mu" sourceRef="Activity_1dgwi6e" targetRef="Event_1xno81z" />
+      <bpmn:serviceTask id="Activity_0zqxnev" name="Lookup Current Temperature" camunda:class="com.ifsworld.fnd.bpa.delegate.IfsHttpConnectionDelegate">
+        <bpmn:extensionElements>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="ifsBpaHttpConnectionMethod">GET</camunda:inputParameter>
+            <camunda:inputParameter name="ifsBpaHttpConnectionUrl">https://api.open-meteo.com/v1/forecast?latitude=${item.Cf_Latitude}&amp;longitude=${item.Cf_Longtitude}&amp;current_weather=true</camunda:inputParameter>
+            <camunda:inputParameter name="ifsBpaHttpConnectionOutputs">
+              <camunda:map>
+                <camunda:entry key="localTemp">$.current_weather.temperature</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1q1ga62</bpmn:incoming>
+        <bpmn:outgoing>Flow_1jjn6te</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_1dgwi6e" name="Update Temperature" camunda:class="com.ifsworld.fnd.bpa.IfsProjectionDelegate">
+        <bpmn:extensionElements>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="ifsBpaProjectionAction">UPDATE</camunda:inputParameter>
+            <camunda:inputParameter name="ifsBpaProjectionETagVariableName">ETag</camunda:inputParameter>
+            <camunda:inputParameter name="ifsBpaProjectionType">Standard</camunda:inputParameter>
+            <camunda:inputParameter name="ifsBpaProjectionName">TrnCityHandling</camunda:inputParameter>
+            <camunda:inputParameter name="ifsBpaProjectionParameters">
+              <camunda:map>
+                <camunda:entry key="Cf_Temperature">${localTemp}</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="ifsBpaProjectionEntitySetName">TrnCitySet</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1jjn6te</bpmn:incoming>
+        <bpmn:outgoing>Flow_0ply1mu</bpmn:outgoing>
+      </bpmn:serviceTask>
+    </bpmn:subProcess>
+    <bpmn:endEvent id="Event_0usjk1p">
+      <bpmn:incoming>Flow_0ss4yp7</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0ss4yp7" sourceRef="Activity_0q6xw9l" targetRef="Event_0usjk1p" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TrnExercise06">
+      <bpmndi:BPMNEdge id="Flow_0ss4yp7_di" bpmnElement="Flow_0ss4yp7">
+        <di:waypoint x="850" y="610" />
+        <di:waypoint x="850" y="672" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vnlta9_di" bpmnElement="Flow_0vnlta9">
+        <di:waypoint x="850" y="283" />
+        <di:waypoint x="850" y="410" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gbj63g_di" bpmnElement="Flow_0gbj63g">
+        <di:waypoint x="875" y="258" />
+        <di:waypoint x="942" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14wm5d9_di" bpmnElement="Flow_14wm5d9">
+        <di:waypoint x="760" y="258" />
+        <di:waypoint x="825" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fw8zks_di" bpmnElement="Flow_1fw8zks">
+        <di:waypoint x="600" y="258" />
+        <di:waypoint x="660" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jemaom_di" bpmnElement="Flow_0jemaom">
+        <di:waypoint x="448" y="258" />
+        <di:waypoint x="500" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="412" y="240" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ejgyd9_di" bpmnElement="Activity_1dz0rcw">
+        <dc:Bounds x="500" y="218" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1dzlatp_di" bpmnElement="Activity_12pnkkd">
+        <dc:Bounds x="660" y="218" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1s383la_di" bpmnElement="Gateway_1s383la" isMarkerVisible="true">
+        <dc:Bounds x="825" y="233" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ifnwh8_di" bpmnElement="Event_1ifnwh8">
+        <dc:Bounds x="942" y="240" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17ilzfh_di" bpmnElement="Activity_0q6xw9l" isExpanded="true">
+        <dc:Bounds x="570" y="410" width="490" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0ply1mu_di" bpmnElement="Flow_0ply1mu">
+        <di:waypoint x="940" y="510" />
+        <di:waypoint x="1002" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jjn6te_di" bpmnElement="Flow_1jjn6te">
+        <di:waypoint x="780" y="510" />
+        <di:waypoint x="840" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1q1ga62_di" bpmnElement="Flow_1q1ga62">
+        <di:waypoint x="628" y="510" />
+        <di:waypoint x="680" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1tbtey8_di" bpmnElement="Event_1tbtey8">
+        <dc:Bounds x="591.6666666666666" y="492" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1xno81z_di" bpmnElement="Event_1xno81z">
+        <dc:Bounds x="1002" y="492" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0pdfxsa_di" bpmnElement="Activity_0zqxnev">
+        <dc:Bounds x="680" y="470" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1494fcx_di" bpmnElement="Activity_1dgwi6e">
+        <dc:Bounds x="840" y="470" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0usjk1p_di" bpmnElement="Event_0usjk1p">
+        <dc:Bounds x="832" y="672" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

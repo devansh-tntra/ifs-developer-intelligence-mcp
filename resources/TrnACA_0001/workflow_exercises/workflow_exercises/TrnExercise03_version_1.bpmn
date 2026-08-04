@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="TrnExercise03" name="&#10;" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0jwpl0r</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0jwpl0r" sourceRef="StartEvent_1" targetRef="Activity_188h7qz" />
+    <bpmn:serviceTask id="Activity_188h7qz" name="Read City Coordinates" camunda:class="com.ifsworld.fnd.bpa.IfsProjectionDelegate">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="ifsBpaProjectionAction">READ</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionETagVariableName">ETag</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionType">Standard</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionName">TrnCityHandling</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionEntitySetName">TrnCitySet</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionParameters">
+            <camunda:map>
+              <camunda:entry key="Objkey">${Objkey}</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0jwpl0r</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hvoots</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0hvoots" sourceRef="Activity_188h7qz" targetRef="Activity_0ma1ope" />
+    <bpmn:serviceTask id="Activity_0ma1ope" name="Fetch Temperature&#10;" camunda:class="com.ifsworld.fnd.bpa.delegate.IfsHttpConnectionDelegate">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="ifsBpaHttpConnectionMethod">GET</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaHttpConnectionUrl">https://api.open-meteo.com/v1/forecast?latitude=${Cf_Latitude}&amp;longitude=${Cf_Longtitude}&amp;current_weather=true</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaHttpConnectionOutputs">
+            <camunda:map>
+              <camunda:entry key="localTemp">$.current_weather.temperature</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0hvoots</bpmn:incoming>
+      <bpmn:outgoing>Flow_1k451e4</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1k451e4" sourceRef="Activity_0ma1ope" targetRef="Activity_1nqv1pb" />
+    <bpmn:serviceTask id="Activity_1nqv1pb" name="Update City Temperature" camunda:class="com.ifsworld.fnd.bpa.IfsProjectionDelegate">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="ifsBpaProjectionETagVariableName">ETag</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionType">Standard</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionAction">UPDATE</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionName">TrnCityHandling</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionEntitySetName">TrnCitySet</camunda:inputParameter>
+          <camunda:inputParameter name="ifsBpaProjectionParameters">
+            <camunda:map>
+              <camunda:entry key="Cf_Temperature">${localTemp}</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1k451e4</bpmn:incoming>
+      <bpmn:outgoing>Flow_0zws1tz</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_0vudois">
+      <bpmn:incoming>Flow_0zws1tz</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0zws1tz" sourceRef="Activity_1nqv1pb" targetRef="Event_0vudois" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TrnExercise03">
+      <bpmndi:BPMNEdge id="Flow_0zws1tz_di" bpmnElement="Flow_0zws1tz">
+        <di:waypoint x="610" y="240" />
+        <di:waypoint x="672" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1k451e4_di" bpmnElement="Flow_1k451e4">
+        <di:waypoint x="450" y="240" />
+        <di:waypoint x="510" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hvoots_di" bpmnElement="Flow_0hvoots">
+        <di:waypoint x="290" y="240" />
+        <di:waypoint x="350" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jwpl0r_di" bpmnElement="Flow_0jwpl0r">
+        <di:waypoint x="138" y="240" />
+        <di:waypoint x="190" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="102" y="222" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vnk7l2_di" bpmnElement="Activity_188h7qz">
+        <dc:Bounds x="190" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0sopsrs_di" bpmnElement="Activity_0ma1ope">
+        <dc:Bounds x="350" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1038yp2_di" bpmnElement="Activity_1nqv1pb">
+        <dc:Bounds x="510" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0vudois_di" bpmnElement="Event_0vudois">
+        <dc:Bounds x="672" y="222" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

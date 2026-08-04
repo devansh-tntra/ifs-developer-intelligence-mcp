@@ -1,0 +1,4 @@
+global:
+  helmChartVersion: 251.2.0
+  release: 25.1
+  serviceUpdate: 25.1.2

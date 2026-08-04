@@ -1,0 +1,67 @@
+client CustomerOrder;
+component TRNORD;
+layer Core;
+projection OrderBasicData;
+description "Client for Customer Order";
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- NAVIGATOR ENTRIES -----------------------------
+entry TrnCustomerPageNavEntry parent TrnordNavigatorRoot.ManageCustomers at index 100 {
+   label = "Customers";
+   page TrnCustomerPage;
+
+}
+
+-------------------------------- MAIN PAGES ---------------------------------
+page TrnCustomerPage {
+   list TrnCustomerList using TrnCustomers;
+}
+
+
+--------------------------------- COMMANDS ----------------------------------
+
+
+--------------------------------- SELECTORS ---------------------------------
+
+
+---------------------------------- GROUPS -----------------------------------
+
+
+----------------------------------- LISTS -----------------------------------
+list TrnCustomerList for TrnCustomer {
+   field CompanyId;
+   field CustomerId;
+   field Name;
+   field CreditLimit;
+   field Discount;
+   field Active;
+   field Comments;
+}
+
+
+---------------------------------- DIALOGS ----------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------
+
+
+---------------------------------- CHARTS -----------------------------------
+
+
+--------------------------------- CALENDERS ---------------------------------
+
+
+---------------------------------- SHEETS -----------------------------------
+
+
+----------------------------- STATE INDICATORS ------------------------------
+
+
+----------------------------------- TREES -----------------------------------
+
+
+---------------------------------- PLUGINS ----------------------------------
+
+
+------------------------------- IMAGE VIEWERS -------------------------------

@@ -1,0 +1,141 @@
+apiVersion: v2
+name: ifs-cloud
+description: A Helm chart for IFS Business System middle-tier services.
+
+type: application
+version: 251.2.0
+appVersion: 251.2.0
+
+dependencies:
+  - name: applicationtemplate
+    version: 1.8.6
+    repository: "@ifscloud"
+  - name: ifsappamm
+    version: 1.7.0
+    repository: "@ifscloud"
+  - name: ifsappapplicationsvc
+    version: 1.5.1
+    repository: "@ifscloud"
+  - name: ifsappdoc
+    version: 1.8.0
+    repository: "@ifscloud"
+  - name: ifsappiam
+    version: 1.8.1
+    repository: "@ifscloud"
+  - name: ifsappproxy
+    version: 1.6.0
+    repository: "@ifscloud"
+  - name: ifscore
+    version: 1.8.12
+    repository: "@ifscloud"
+  - name: ifsdbinit
+    version: 1.8.0
+    repository: "@ifscloud"
+  - name: ifsappodata
+    version: 1.8.3
+    repository: "@ifscloud"
+  - name: ifsappclient
+    version: 1.6.0
+    repository: "@ifscloud"
+  - name: ifsappclientnotification
+    version: 1.6.0
+    repository: "@ifscloud"
+  - name: ifsappclientservices
+    version: 1.8.0
+    repository: "@ifscloud"
+  - name: ifsappbusmod
+    version: 1.8.3
+    repository: "@ifscloud"
+  - name: ifsapppowerbisvc
+    version: 1.8.4
+    repository: "@ifscloud"
+  - name: ifsappconnect
+    version: 1.8.1
+    repository: "@ifscloud"
+  - name: ifsappnativeexecutor
+    version: 1.6.0
+    repository: "@ifscloud"
+  - name: ifsappnativenotification
+    version: 1.6.0
+    repository: "@ifscloud"
+  - name: ifsappnativeserver
+    version: 1.6.0
+    repository: "@ifscloud"
+  - name: ifsapprem
+    version: 1.7.0
+    repository: "@ifscloud"
+  - name: ifsappreporting
+    version: 1.8.0
+    repository: "@ifscloud"
+  - name: ifsappreportingbr
+    version: 1.8.0
+    repository: "@ifscloud"
+  - name: ifsappreportingcr
+    version: 1.5.0
+    repository: "@ifscloud"
+  - name: ifsappreportingren
+    version: 1.5.2
+    repository: "@ifscloud"
+  - name: ifsappreportingwebdesigner
+    version: 1.7.0
+    repository: "@ifscloud"
+  - name: ifsappreportingwebdesignerren
+    version: 1.7.0
+    repository: "@ifscloud"
+  - name: ifsappreportingwebruntimeren
+    version: 1.7.1
+    repository: "@ifscloud"
+  - name: ifsappreportingwebtransformer
+    version: 1.7.1
+    repository: "@ifscloud"
+  - name: ifsapprmpanel
+    version: 1.5.2
+    repository: "@ifscloud"
+  - name: ifsapprmsync
+    version: 1.5.1
+    repository: "@ifscloud"
+  - name: ifsappscim
+    version: 1.5.4
+    repository: "@ifscloud"
+  - name: ifsmaintenixappserver
+    version: 1.8.2
+    repository: "@ifscloud"
+  - name: ifsmaintenixreportserver
+    version: 1.8.1
+    repository: "@ifscloud"
+  - name: ifsfilestorage
+    version: 1.7.0
+    repository: "@ifscloud"
+  - name: ifsappextensibility
+    version: 1.7.0
+    repository: "@ifscloud"
+  - name: ifsappdb
+    version: 1.5.0
+    repository: "@ifscloud"
+  - name: ifsvirusscanner
+    version: 1.7.0
+    repository: "@ifscloud"
+  - name: ifsappsigningservice
+    version: 1.6.0
+    repository: "@ifscloud"
+  - name: ifsappgraph
+    version: 1.3.2
+    repository: "@ifscloud"
+  - name: ifsappamworkqueue
+    version: 1.6.2
+    repository: "@ifscloud"
+  - name: ifsappamscheduler
+    version: 1.8.9
+    repository: "@ifscloud"
+  - name: ifsappamdatapump
+    version: 1.8.7
+    repository: "@ifscloud"
+  - name: ifsappdocmanesign
+    version: 1.6.1
+    repository: "@ifscloud"
+  - name: ifsappchat
+    version: 1.8.8
+    repository: "@ifscloud"
+  - name: ifsappxdiv
+    version: 1.8.4
+    repository: "@ifscloud"

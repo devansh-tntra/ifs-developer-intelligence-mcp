@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<CUSTOM_OBJECT>
+  <NAME>ClientMetadata.client:TrnCityAreas</NAME>
+  <TYPE>AURENA_PAGE_GROUP</TYPE>
+  <DESCRIPTION>DESCRIPTION value</DESCRIPTION>
+  <WEB_PAGE_BUNDLE>
+    <CUSTPAGE_PAGE_NAME>TrnCityAreas</CUSTPAGE_PAGE_NAME>
+    <CUSTPAGE_PROJECTION_NAME>TrnCityHandling</CUSTPAGE_PROJECTION_NAME>
+    <CUSTPAGE_MODIFIED_DATE>2024-01-15-16.40.44</CUSTPAGE_MODIFIED_DATE>
+    <CUSTPAGE_ROWKEY>9AB23771BCD843989C87B9417F69FCDF</CUSTPAGE_ROWKEY>
+    <MODEL_ID>ClientMetadata.client:TrnCityAreas</MODEL_ID>
+    <DESCRIPTION>Trn City Areas</DESCRIPTION>
+    <ARTIFACT>client</ARTIFACT>
+    <NAME>TrnCityAreas</NAME>
+    <KIND>ClientMetadata</KIND>
+    <REFERENCE>ClientMetadata.projection:TrnCityHandling</REFERENCE>
+    <VERSION>2024-01-15-16.50.53</VERSION>
+    <TEMPLATE>{&quot;name&quot;:&quot;TrnCityAreas&quot;,&quot;component&quot;: &quot;CONFIG&quot;,&quot;version&quot;:&quot;[#[generate:version]#]&quot;,&quot;id&quot;:&quot;ClientMetadata.client:TrnCityAreas&quot;,&quot;projection&quot;:[#[reference:projection:TrnCityHandling]#],&quot;layout&quot;:{&quot;commands&quot;: {[#[jsonnamedcontent:kind:command]#]},&quot;groups&quot;: {[#[jsonnamedcontent:kind:group]#]},&quot;lists&quot;: {[#[jsonnamedcontent:kind:list]#]},&quot;pages&quot;: {[#[jsonnamedcontent:kind:page]#]},&quot;selectors&quot;: {[#[jsonnamedcontent:kind:selector]#]}}}</TEMPLATE>
+    <DATA>
+      <DATA_ROW>
+        <OBJKEY>41F9652DD5DC41F3A4C4467240ED11F3</OBJKEY>
+        <SCOPE_ID>global</SCOPE_ID>
+        <DATA_ID>command:CPEGEN_TrnCityAreasPage_Workflow_academy002</DATA_ID>
+        <ARTIFACT>command</ARTIFACT>
+        <NAME>CPEGEN_TrnCityAreasPage_Workflow_academy002</NAME>
+        <LINE_NO>99999</LINE_NO>
+        <LAYER_NO>2</LAYER_NO>
+        <VISIBILITY>Public</VISIBILITY>
+        <REFERENCE/>
+        <DEPENDENCIES/>
+        <CONTENT>{&quot;name&quot;:&quot;CPEGEN_TrnCityAreasPage_Workflow_academy002&quot;,&quot;selectAttributes&quot;:[&quot;Objkey&quot;],&quot;label&quot;:&quot;[#[translatesys:Command:[global].TrnCityAreas.command.CPEGEN_TrnCityAreasPage_Workflow_academy002.$this:$this:CONFIGCLIENT:Get Temperature]#]&quot;,&quot;autosave&quot;:true,&quot;context&quot;:&quot;record&quot;,&quot;execute&quot;:[{&quot;call&quot;:{&quot;method&quot;:&quot;wfaction&quot;,&quot;args&quot;:{&quot;name&quot;:&quot;academy002&quot;,&quot;values&quot;:{&quot;Objkey&quot;:{&quot;name&quot;:&quot;Objkey&quot;,&quot;type&quot;:&quot;Text&quot;}}}}},{&quot;call&quot;:{&quot;method&quot;:&quot;toast&quot;,&quot;args&quot;:{&quot;type&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Workflow Get Temperature executed successfully.&quot;}}}]}</CONTENT>
+      </DATA_ROW>
+      <DATA_ROW>
+        <OBJKEY>AAC3DCC8BA024AF78FF2CE4A62247DF3</OBJKEY>
+        <SCOPE_ID>global</SCOPE_ID>
+        <DATA_ID>command:CPEGEN_TrnCityList_Workflow_academy002</DATA_ID>
+        <ARTIFACT>command</ARTIFACT>
+        <NAME>CPEGEN_TrnCityList_Workflow_academy002</NAME>
+        <LINE_NO>99999</LINE_NO>
+        <LAYER_NO>2</LAYER_NO>
+        <VISIBILITY>Public</VISIBILITY>
+        <REFERENCE/>
+        <DEPENDENCIES/>
+        <CONTENT>{&quot;name&quot;:&quot;CPEGEN_TrnCityList_Workflow_academy002&quot;,&quot;selectAttributes&quot;:[&quot;Objkey&quot;],&quot;label&quot;:&quot;[#[translatesys:Command:[global].TrnCityAreas.command.CPEGEN_TrnCityList_Workflow_academy002.$this:$this:CONFIGCLIENT:Update Temparature]#]&quot;,&quot;autosave&quot;:true,&quot;context&quot;:&quot;record&quot;,&quot;execute&quot;:[{&quot;call&quot;:{&quot;method&quot;:&quot;wfaction&quot;,&quot;args&quot;:{&quot;name&quot;:&quot;academy002&quot;,&quot;values&quot;:{&quot;Objkey&quot;:{&quot;name&quot;:&quot;Objkey&quot;,&quot;type&quot;:&quot;Text&quot;}}}}},{&quot;call&quot;:{&quot;method&quot;:&quot;toast&quot;,&quot;args&quot;:{&quot;type&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Workflow Update Temparature executed successfully.&quot;}}}]}</CONTENT>
+      </DATA_ROW>
+      <DATA_ROW>
+        <OBJKEY>FBA339AF275E4D5390295FEBF498673B</OBJKEY>
+        <SCOPE_ID>global</SCOPE_ID>
+        <DATA_ID>list:TrnCityList</DATA_ID>
+        <ARTIFACT>list</ARTIFACT>
+        <NAME>TrnCityList</NAME>
+        <LINE_NO>99999</LINE_NO>
+        <LAYER_NO>2</LAYER_NO>
+        <VISIBILITY>Public</VISIBILITY>
+        <REFERENCE/>
+        <DEPENDENCIES/>
+        <CONTENT>{&quot;name&quot;:&quot;TrnCityList&quot;,&quot;label&quot;:&quot;[#[translatesys:Table Window:[global].TrnCityAreas.list.TrnCityList.$this:$this:CONFIGCLIENT:TrnCityList]#]&quot;,&quot;entity&quot;:&quot;TrnCity&quot;,&quot;content&quot;:[{&quot;elementType&quot;:&quot;field&quot;,&quot;field&quot;:{&quot;entity&quot;:&quot;TrnCity&quot;,&quot;datatype&quot;:&quot;Text&quot;,&quot;required&quot;:false,&quot;control&quot;:&quot;field&quot;,&quot;label&quot;:&quot;[#[translatesys:Data Field:[global].TrnCityAreas.list.TrnCityList.content.field.Cf_City_Area:Cf_City_Area:CONFIGCLIENT:City Area]#]&quot;,&quot;attribute&quot;:&quot;Cf_City_Area&quot;,&quot;name&quot;:&quot;Cf_City_Area&quot;,&quot;editable&quot;:true,&quot;maxlength&quot;:1000}},{&quot;elementType&quot;:&quot;field&quot;,&quot;field&quot;:{&quot;entity&quot;:&quot;TrnCity&quot;,&quot;datatype&quot;:&quot;Number&quot;,&quot;required&quot;:false,&quot;control&quot;:&quot;field&quot;,&quot;label&quot;:&quot;[#[translatesys:Data Field:[global].TrnCityAreas.list.TrnCityList.content.field.Cf_Latitude:Cf_Latitude:CONFIGCLIENT:Latitude]#]&quot;,&quot;attribute&quot;:&quot;Cf_Latitude&quot;,&quot;name&quot;:&quot;Cf_Latitude&quot;,&quot;editable&quot;:true}},{&quot;elementType&quot;:&quot;field&quot;,&quot;field&quot;:{&quot;entity&quot;:&quot;TrnCity&quot;,&quot;datatype&quot;:&quot;Number&quot;,&quot;required&quot;:false,&quot;control&quot;:&quot;field&quot;,&quot;label&quot;:&quot;[#[translatesys:Data Field:[global].TrnCityAreas.list.TrnCityList.content.field.Cf_Longtitude:Cf_Longtitude:CONFIGCLIENT:Longtitude]#]&quot;,&quot;attribute&quot;:&quot;Cf_Longtitude&quot;,&quot;name&quot;:&quot;Cf_Longtitude&quot;,&quot;editable&quot;:true}},{&quot;elementType&quot;:&quot;field&quot;,&quot;field&quot;:{&quot;entity&quot;:&quot;TrnCity&quot;,&quot;datatype&quot;:&quot;Number&quot;,&quot;required&quot;:false,&quot;control&quot;:&quot;field&quot;,&quot;label&quot;:&quot;[#[translatesys:Data Field:[global].TrnCityAreas.list.TrnCityList.content.field.Cf_Temperature:Cf_Temperature:CONFIGCLIENT:Temperature]#]&quot;,&quot;attribute&quot;:&quot;Cf_Temperature&quot;,&quot;name&quot;:&quot;Cf_Temperature&quot;,&quot;editable&quot;:true}},{&quot;elementType&quot;:&quot;field&quot;,&quot;field&quot;:{&quot;entity&quot;:&quot;TrnCity&quot;,&quot;datatype&quot;:&quot;Text&quot;,&quot;required&quot;:false,&quot;control&quot;:&quot;field&quot;,&quot;label&quot;:&quot;[#[translatesys:Data Field:[global].TrnCityAreas.list.TrnCityList.content.field.Objkey:Objkey:CONFIGCLIENT:Objkey]#]&quot;,&quot;attribute&quot;:&quot;Objkey&quot;,&quot;name&quot;:&quot;Objkey&quot;,&quot;editable&quot;:false,&quot;maxlength&quot;:128}}],&quot;visible&quot;:true,&quot;@[DIFF]PACKED&quot;:{&quot;content&quot;:{&quot;0&quot;:{&quot;@[DIFF]ID&quot;:&quot;722e091a95548cc82c6ee8cfc88feceadd0a9fd4&quot;},&quot;1&quot;:{&quot;@[DIFF]ID&quot;:&quot;6e0a24ec82379e764ac5a5a67a50779ae9ad38ff&quot;},&quot;2&quot;:{&quot;@[DIFF]ID&quot;:&quot;3c3ec94a9a0907eecfda26b292b474d5e8a8c461&quot;},&quot;3&quot;:{&quot;@[DIFF]ID&quot;:&quot;7368712df1b9b4cee16d34ba290f48907dc119c0&quot;},&quot;4&quot;:{&quot;@[DIFF]ID&quot;:&quot;c87c1221beda40f8e1a4febbcf64e67a8c5320df&quot;}}}}</CONTENT>
+      </DATA_ROW>
+      <DATA_ROW>
+        <OBJKEY>5066B36C8F1C4BE7A9E1BEED62D8DDCC</OBJKEY>
+        <SCOPE_ID>global</SCOPE_ID>
+        <DATA_ID>page:TrnCityAreasPage</DATA_ID>
+        <ARTIFACT>page</ARTIFACT>
+        <NAME>TrnCityAreasPage</NAME>
+        <LINE_NO>0</LINE_NO>
+        <LAYER_NO>2</LAYER_NO>
+        <VISIBILITY>Public</VISIBILITY>
+        <REFERENCE/>
+        <DEPENDENCIES/>
+        <CONTENT>{&quot;name&quot;:&quot;TrnCityAreasPage&quot;,&quot;label&quot;:&quot;[#[translatesys:Form Window:[global].TrnCityAreas.page.TrnCityAreasPage.$this:$this:CONFIGCLIENT:Trn City Areas]#]&quot;,&quot;datasourceProjection&quot;:&quot;TrnCityHandling&quot;,&quot;entity&quot;:&quot;TrnCity&quot;,&quot;content&quot;:[{&quot;elementType&quot;:&quot;list&quot;,&quot;isReference&quot;:true,&quot;list&quot;:&quot;TrnCityList&quot;,&quot;datasource&quot;:&quot;TrnCityHandling.svc/TrnCitySet&quot;}],&quot;datasourceEntitySet&quot;:&quot;TrnCitySet&quot;,&quot;@[DIFF]PACKED&quot;:{&quot;content&quot;:{&quot;0&quot;:{&quot;@[DIFF]ID&quot;:&quot;f1d3831366db90f67972d18d9dd879c3651562b3&quot;}}}}</CONTENT>
+      </DATA_ROW>
+    </DATA>
+  </WEB_PAGE_BUNDLE>
+</CUSTOM_OBJECT>

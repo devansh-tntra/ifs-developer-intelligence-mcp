@@ -1,0 +1,86 @@
+client CustomerOrder;
+component TRNORD;
+layer Core;
+projection OrderHandling;
+
+
+-------------------------------- MAIN PAGES ---------------------------------
+page CustomerOrderDetails using CustomerOrders {
+   label = "Customer Order ${OrderId} - ${CustomerRef.Name}";
+   stateindicator TrnCustomerOrderStateIndicator;
+   selector TrnCustomerOrderSelector;
+   group CustomerOrderGroup;
+   list CustomerOrderLineList(OrderLines);
+
+   commandgroup CustomerOrderStates {
+      command Close;
+      command Invoice;
+      command Cancel;
+   }
+}
+
+----------------------------- NAVIGATOR ENTRIES -----------------------------
+
+navigator {
+   entry CustomerOrderDetailsPage parent TrnordNavigatorRoot.ManageCustomerOrdersNavEntry at index 100 {
+      label = "Customer Order Details";
+      page CustomerOrderDetails;
+   }
+}
+
+--------------------------------- COMMANDS ----------------------------------
+
+
+
+----------------------------- VISUAL COMPONENTS -----------------------------
+
+group CustomerOrderGroup for TrnCustomerOrder {
+   field OrderId;
+   field CustomerRef.CustomerId {
+      label = "Customer Id";
+   }
+   field CustomerRef.Name;
+   field CompanyId;
+   field BranchId;
+   field DeliveryDate;
+   field DeliveryType;
+   field Discount;
+   field Objstate;
+   field OrderDate;
+   field OrderTotal;
+}
+
+list CustomerOrderLineList for TrnCustomerOrderItem {
+   field ProductId;
+   field Description;
+   field Price;
+   field Quantity;
+   field Amount;
+   field Objstate;
+
+   commandgroup CustomerOrderLineStates {
+      command Reserve;
+      command Unreserve;
+      command Invoice;
+   }
+}
+
+@Override
+stateindicator TrnCustomerOrderStateIndicator for TrnCustomerOrder {
+   state "Opened" {
+      completed = 30%;
+      emphasis StateOpen = [Objstate = "Opened"];
+   }
+   state "Closed" {
+      completed = 65%;
+      emphasis StateClosed = [Objstate = "Closed"];
+   }
+   state "Invoiced" {
+      completed = 100%;
+      emphasis StateCompleted = [Objstate = "Invoiced"];
+   }
+   state "Cancelled" {
+      completed = 0%;
+      emphasis StateCancelled = [Objstate = "Cancelled"];
+   }
+}

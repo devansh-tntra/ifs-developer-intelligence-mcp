@@ -1,0 +1,8 @@
+{
+    "Product": {
+        "CompanyId": "TCS",
+        "ProductId": 2001,
+        "Description": "It is a Text",
+        "Price": 1
+    }
+}

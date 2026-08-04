@@ -1,0 +1,111 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: UnitsOfMeasure
+--  Type:         ClientMeta
+--  Component:    APPSRV
+--
+--  Template:     3.0
+--  Built by:     IFS Developer Studio
+--
+--  NOTE! Do not edit!! This file is completely generated and will be
+--        overwritten next time the corresponding model is saved.
+-----------------------------------------------------------------------------
+
+--Storing resulting json metadata in database splitted by indivudual visual objects
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   client_     VARCHAR2(250) := 'UnitsOfMeasure';
+   projection_ VARCHAR2(250) := 'UnitsOfMeasureHandling';
+   header_     Model_Design_SYS.Fnd_Model_Design_Rec;
+   data_       Model_Design_SYS.Fnd_Model_Design_Data_Rec;
+   clob_       CLOB := to_clob(' ');
+   json_       VARCHAR2(32767);
+BEGIN
+   header_ := Model_Design_SYS.Prepare_Design_Data_Load('client', client_, Model_Design_SYS.CLIENT_METADATA,
+      'Put some useful description here ...');
+   Model_Design_SYS.Add_Model_Design_Template(header_,
+      '{"name":"'||client_||'",'
+      ||'"component": "APPSRV",'
+      ||'"version":"[#[generate:version]#]",'
+      ||'"id":"'||Model_Design_SYS.CLIENT_METADATA||'.client:'||client_||'",'
+      ||'"projection":[#[reference:projection:'||projection_||']#],'
+      ||'"layout":{'
+         ||'[#[jsonnamedcontentbydata:]#]'
+         ||''
+      ||'}}');
+   Model_Design_SYS.Add_Model_Design_Data_Ref(header_, 'projection', projection_, Model_Design_SYS.CLIENT_METADATA);
+   json_ := '{"name": "AlternateUnitOfMeasureLovList","label": "","entity": "AlternateUnitOfMeasure","content": [{"elementType": "field","field": {"name": "UomClassification","attribute": "UomClassification","control": "static","entity": "AlternateUnitOfMeasure","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.AlternateUnitOfMeasureLovList.listcontent.static.UomClassification:UomClassification:WEB:UOM Classification]#]","translationKey": "UnitsOfMeasure.list.AlternateUnitOfMeasureLovList.listcontent.static.UomClassification","datatype": "Text","array": false,"maxlength": 30,"editable": false,"required": false}},{"elementType": "field","field": {"name": "AltUomCode","attribute": "AltUomCode","control": "static","entity": "AlternateUnitOfMeasure","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.AlternateUnitOfMeasureLovList.listcontent.static.AltUomCode:AltUomCode:WEB:Alternative UOM Code]#]","translationKey": "UnitsOfMeasure.list.AlternateUnitOfMeasureLovList.listcontent.static.AltUomCode","datatype": "Text","array": false,"maxlength": 30,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'list', 'AlternateUnitOfMeasureLovList', 0, NULL, json_);
+   json_ := '{"name": "IsoUnitBaseLovList","label": "","entity": "IsoUnitBase","content": [{"elementType": "field","field": {"name": "UnitCode","attribute": "UnitCode","control": "static","entity": "IsoUnitBase","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.IsoUnitBaseLovList.listcontent.static.UnitCode:UnitCode:WEB:UoM]#]","translationKey": "UnitsOfMeasure.list.IsoUnitBaseLovList.listcontent.static.UnitCode","datatype": "Text","array": false,"editable": false,"required": false}},{"elementType": "field","field": {"name": "Description","attribute": "Description","control": "static","entity": "IsoUnitBase","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.IsoUnitBaseLovList.listcontent.static.Description:Description:WEB:Description]#]","translationKey": "UnitsOfMeasure.list.IsoUnitBaseLovList.listcontent.static.Description","datatype": "Text","array": false,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'list', 'IsoUnitBaseLovList', 1, NULL, json_);
+   json_ := '{"name": "IsoUnitList","selectAttributes": ["AltUomExists","AlternateUomSearchContext.OnlyShowAlternate"],"label": "[#[translatesys:Table Window:UnitsOfMeasure.list.IsoUnitList.$this:$this:WEB:Iso Unit List]#]","entity": "IsoUnit","orderby": [{"UnitCode": "asc"}],"content": [{"elementType": "field","field": {"name": "UnitCode","attribute": "UnitCode","control": "field","entity": "IsoUnit","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.IsoUnitList.listcontent.field.UnitCode:UnitCode:WEB:UoM]#]","translationKey": "UnitsOfMeasure.list.IsoUnitList.listcontent.field.UnitCode","datatype": "Text","controlsize": "normal","array": false,"maxlength": 30,"editable": {"==": [{"var": "record.etag"},null]},"required": true}},{"elementType": "field","field": {"name": "Description","attribute": "Description","control": "field","entity": "IsoUnit","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.IsoUnitList.listcontent.field.Description:Description:WEB:Description]#]","translationKey": "UnitsOfMeasure.list.IsoUnitList.listcontent.field.Description","datatype": "Text","array": false,"maxlength": 50,"editable": true,"required": true}},{"elementType": "field","field": {"name": "PresentFactor","attribute": "PresentFactor","control": "field","entity": "IsoUnit","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.IsoUnitList.listcontent.field.PresentFactor:PresentFactor:WEB:Factor]#]","translationKey": "UnitsOfMeasure.list.IsoUnitList.listcontent.field.PresentFactor","datatype": "Text","array": false,"maxlength": 20,"editable": {"==": [{"var": "record.etag"},null]},"required": false,"searchable": false}},{"elementType": "field","field": {"name": "UomConstant","attribute": "UomConstant","control": "field","entity": "IsoUnit","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.IsoUnitList.listcontent.field.UomConstant:UomConstant:WEB:Constant]#]","translationKey": "UnitsOfMeasure.list.IsoUnitList.listcontent.field.UomConstant","datatype": "Number","array": false,"maxlength": 100,"editable": {"==": [{"var": "record.etag"},null]},"required": true}},{"elementType": "field","field": {"name": "BaseUnitRef","selectAttributes": ["BaseUnit"],"attribute": "BaseUnit","control": "lookup","entity": "IsoUnit","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.IsoUnitList.listcontent.lookup.BaseUnitRef:BaseUnitRef:WEB:Base UoM]#]","translationKey": "UnitsOfMeasure.list.IsoUnitList.listcontent.lookup.BaseUnitRef"';
+   json_ := json_ || ',"datatype": "Text","reference": "BaseUnitRef","lov": {"selector": "ReferenceIsoUnitBaseSelector","advancedview": "IsoUnitBaseLovList","datasourceProjection": "UnitsOfMeasureHandling","datasourceEntitySet": "Reference_IsoUnitBase","search": ["UnitCode","Description"]},"update": {"datasourceProjection": "UnitsOfMeasureHandling","datasourceEntitySet": "Reference_IsoUnitBase","datasourceAggregateRefs": {"UnitCode": "${BaseUnit}"},"copy": {"BaseUnit": "UnitCode"},"fetch": {},"item": "BaseUnitRef"},"controlsize": "normal","array": false,"maxlength": 30,"editable": {"==": [{"var": "record.etag"},null]},"required": false}},{"elementType": "field","field": {"name": "UnitType","selectAttributes": ["UnitType"],"attribute": "UnitType","control": "badge","entity": "IsoUnit","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.IsoUnitList.listcontent.badge.UnitType:UnitType:WEB:UoM Type]#]","translationKey": "UnitsOfMeasure.list.IsoUnitList.listcontent.badge.UnitType","style": "TextOnly","datatype": "Enumeration","enumeration": "IsoUnitType","controlsize": "normal","emphasis": [{"Progress4": {"==": [{"var": "record.UnitType"},"NotUsed"]}},{"Progress7": {"==": [{"var": "record.UnitType"},"Weight"]}},{"Progress8": {"==": [{"var": "record.UnitType"},"Volume"]}},{"Progress9": {"==": [{"var": "record.UnitType"},"Length"]}},{"Progress10": {"==": [{"var": "record.UnitType"},"Temperat"]}},{"Progress11": {"==": [{"var": "record.UnitType"},"Density"]}},{"Progress12": {"==": [{"var": "record.UnitType"},"Discrete"]}}],"array": false,"editable": {"==": [{"var": "record.etag"},null]},"required": true}},{"elementType": "field","field": {"name": "UserDefined","attribute": "UserDefined","control": "field","entity": "IsoUnit","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.IsoUnitList.listcontent.field.UserDefined:UserDefined:WEB:User Defined UoM]#]","translationKey": "UnitsOfMeasure.list.IsoUnitList.listcontent.field.UserDefined","truelabel": "[#[translatesys:Data Field:UnitsOfMeasure.list.IsoUnitList.listcontent.field.UserDefined.booleantruelabelproperty:booleantruelabelproperty:WEB:UserDefined]#]","falselabel": "[#[translatesys:Data Field:UnitsOfMeasure.list.IsoUnitList.listcontent.field.UserDefined.booleanfalselabelproperty:booleanfalselabelproperty:WEB:SystemDefined]#]","datatype": "Boolean","controlsize": "small","array": false,"maxlength": 5,"editable": false,"required": false}}],"fieldranking": ["UnitCode","Descripti';
+   json_ := json_ || 'on","PresentFactor","UomConstant","BaseUnitRef","UnitType","UserDefined"]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'list', 'IsoUnitList', 2, NULL, json_);
+   json_ := '{"name": "AlternateUnitOfMeasureList","label": "[#[translatesys:Table Window:UnitsOfMeasure.list.AlternateUnitOfMeasureList.$this:$this:WEB:Alternate Unit Of Measure]#]","entity": "AlternateUnitOfMeasure","content": [{"elementType": "field","field": {"name": "UomClassification","attribute": "UomClassification","control": "field","entity": "AlternateUnitOfMeasure","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.AlternateUnitOfMeasureList.listcontent.field.UomClassification:UomClassification:WEB:UOM Classification]#]","translationKey": "UnitsOfMeasure.list.AlternateUnitOfMeasureList.listcontent.field.UomClassification","datatype": "Text","array": false,"maxlength": 30,"editable": {"==": [{"var": "record.etag"},null]},"required": true}},{"elementType": "field","field": {"name": "AltUomCode","attribute": "AltUomCode","control": "field","entity": "AlternateUnitOfMeasure","label": "[#[translatesys:Data Field:UnitsOfMeasure.list.AlternateUnitOfMeasureList.listcontent.field.AltUomCode:AltUomCode:WEB:Alternative UOM Code]#]","translationKey": "UnitsOfMeasure.list.AlternateUnitOfMeasureList.listcontent.field.AltUomCode","datatype": "Text","array": false,"maxlength": 30,"editable": true,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'list', 'AlternateUnitOfMeasureList', 3, NULL, json_);
+   json_ := '{"name": "List","selectAttributes": ["AltUomExists","AlternateUomSearchContext.OnlyShowAlternate"],"label": "[#[translatesys:Form Window:UnitsOfMeasure.page.List.$this:$this:WEB:Units of Measure Customized Title]#]","datasourceProjection": "UnitsOfMeasureHandling","datasourceEntitySet": "IsoUnits","entity": "IsoUnit","content": [{"elementType": "list","isReference": true,"list": "IsoUnitList","id": "IsoUnitList","filter": "AltUomExists eq true or AltUomExists eq $[AlternateUomSearchContext.OnlyShowAlternate]","lazyload": false,"searchcontext": {"name": "AlternateUomSearchContext","defaults": "UnitsOfMeasureHandling.svc/GetAlternateUomSearchContextDefaults()"}},{"elementType": "list","isReference": true,"list": "AlternateUnitOfMeasureList","id": "AlternateUnitOfMeasureList","binding": {"bindname": "IsoUnitList","property": "AlternateUnitOfMeasureArray"},"display": "nested"}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'page', 'List', 4, NULL, json_);
+   json_ := '{"name": "ListMaintenance","label": "[#[translatesys:Form Window:UnitsOfMeasure.page.ListMaintenance.$this:$this:WEB:Units]#]","datasourceProjection": "UnitsOfMeasureHandling","datasourceEntitySet": "IsoUnits","entity": "IsoUnit","content": [{"elementType": "list","isReference": true,"list": "IsoUnitList","id": "IsoUnitList"}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'page', 'ListMaintenance', 5, NULL, json_);
+   json_ := '{"name": "AlternateUomSearchContext","selectAttributes": ["OnlyShowAlternate"],"label": "","structure": "AlternateUomSearchContextStructure","entity": "AlternateUomSearchContextStructure","content": [{"elementType": "field","field": {"name": "OnlyShowAlternate","attribute": "OnlyShowAlternate","control": "field","structure": "AlternateUomSearchContextStructure","entity": "AlternateUomSearchContextStructure","label": "[#[translatesys:Data Field:UnitsOfMeasure.searchcontext.AlternateUomSearchContext.searchcontextcontent.field.OnlyShowAlternate:OnlyShowAlternate:WEB:Only show UOM with alternative codes]#]","translationKey": "UnitsOfMeasure.searchcontext.AlternateUomSearchContext.searchcontextcontent.field.OnlyShowAlternate","datatype": "Boolean","array": false,"editable": true,"required": true}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'searchcontext', 'AlternateUomSearchContext', 6, NULL, json_);
+   json_ := '{"name": "IsoUnitBaseSelector","selectAttributes": ["Description"],"label": "${Description}","entity": "IsoUnitBase","content": [{"elementType": "field","field": {"name": "UnitCode","attribute": "UnitCode","control": "static","entity": "IsoUnitBase","label": "[#[translatesys:Data Field:UnitsOfMeasure.selector.IsoUnitBaseSelector.selectorcontent.static.UnitCode:UnitCode:WEB:UoM]#]","datatype": "Text","array": false,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'selector', 'IsoUnitBaseSelector', 7, NULL, json_);
+   json_ := '{"name": "Lookup_IsoUnitSelector","selectAttributes": ["Description"],"label": "${Description}","entity": "Lookup_IsoUnit","content": [{"elementType": "field","field": {"name": "Id","attribute": "Id","control": "static","entity": "Lookup_IsoUnit","label": "[#[translatesys:Data Field:UnitsOfMeasure.selector.Lookup_IsoUnitSelector.selectorcontent.static.Id:Id:WEB:Id]#]","datatype": "Text","array": false,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'selector', 'Lookup_IsoUnitSelector', 8, NULL, json_);
+   json_ := '{"name": "ReferenceIsoUnitBaseSelector","label": "[#[translatesys:Menu Item:UnitsOfMeasure.selector.ReferenceIsoUnitBaseSelector.$this:$this:WEB:Reference Iso Unit Base Selector]#]","entity": "IsoUnitBase","content": [{"elementType": "field","field": {"name": "UnitCode","attribute": "UnitCode","control": "static","entity": "IsoUnitBase","label": "[#[translatesys:Data Field:UnitsOfMeasure.selector.ReferenceIsoUnitBaseSelector.selectorcontent.static.UnitCode:UnitCode:WEB:UoM]#]","datatype": "Text","array": false,"editable": false,"required": false}},{"elementType": "field","field": {"name": "Description","attribute": "Description","control": "static","entity": "IsoUnitBase","label": "[#[translatesys:Data Field:UnitsOfMeasure.selector.ReferenceIsoUnitBaseSelector.selectorcontent.static.Description:Description:WEB:Description]#]","datatype": "Text","array": false,"editable": false,"required": false}}]}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'selector', 'ReferenceIsoUnitBaseSelector', 9, NULL, json_);
+   json_ := '{"entities": [],"actions": []}';
+   data_ := Model_Design_SYS.Add_Model_Design_Data_Row(header_, 'warning', 'warningsEnabled', 10, NULL, json_);
+   COMMIT;
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- INSERT NAVIGATION ENTRIES ------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   client_     VARCHAR2(250) := 'UnitsOfMeasure';
+   projection_ VARCHAR2(250) := 'UnitsOfMeasureHandling';
+BEGIN
+   Navigator_SYS.Clean_Navigation_For_Client(client_);
+   Navigator_SYS.Add_Page_Navigation(client_, 'UnitofMeasureUnitsofMeasure', projection_, '[#[translatesys:Menu Item:UnitsOfMeasure.menu.UnitofMeasureUnitsofMeasure.$this:$this:WEB:Units of Measure]#]', 'List');
+   Navigator_SYS.Add_Page_Navigation(client_, 'ServIsoUnitDefMaintenance', projection_, '[#[translatesys:Menu Item:UnitsOfMeasure.menu.ServIsoUnitDefMaintenance.$this:$this:WEB:Units]#]', 'ListMaintenance');
+   Navigator_SYS.Add_Page_Navigation(client_, 'MaintIsoUnitDefMaintenance', projection_, '[#[translatesys:Menu Item:UnitsOfMeasure.menu.MaintIsoUnitDefMaintenance.$this:$this:WEB:Units]#]', 'ListMaintenance');
+
+   Navigator_SYS.Add_Menu_Structure_Item(client_, 'AppsrvNavigator', 'ApplicationBaseSetupUnitofMeasure', client_, 'UnitofMeasureUnitsofMeasure', 100);
+   Navigator_SYS.Add_Menu_Structure_Item(client_, 'MscomNavigator', 'ServiceBasicData', client_, 'ServIsoUnitDefMaintenance', 4);
+   Navigator_SYS.Add_Menu_Structure_Item(client_, 'MscomNavigator', 'MaintenanceBasicData', client_, 'MaintIsoUnitDefMaintenance', 4);
+   COMMIT;
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- GRANT PERMISSIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK BEGINEND]
+DECLARE
+   client_     VARCHAR2(250) := 'UnitsOfMeasure';
+   projection_ VARCHAR2(250) := 'UnitsOfMeasureHandling';
+BEGIN
+   Fnd_Projection_Usage_API.Clear_Client_Refs(client_);
+   Fnd_Proj_Action_Usage_API.Clear_Client_Refs(client_);
+   Fnd_Proj_Ent_Action_Usage_API.Clear_Client_Refs(client_);
+
+--Pages--
+   Fnd_Projection_Usage_API.Create_Or_Replace(projection_, client_, 'List', 'page', 'Units of Measure Customized Title');
+   Fnd_Projection_Usage_API.Create_Or_Replace(projection_, client_, 'ListMaintenance', 'page', 'Units');
+
+--Actions--
+
+--Entity Actions--
+   COMMIT;
+END;
+-- [END IFS COMPLETE BLOCK]
+/

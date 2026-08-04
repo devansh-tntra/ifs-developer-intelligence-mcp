@@ -1,0 +1,24 @@
+fragment SendCustomerInvoiceUtil;
+component TRNORD;
+layer Core;
+description "Put some useful description here ...";
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+
+----------------------------- CLIENT FRAGMENTS ------------------------------
+
+
+--------------------------- PROJECTION FRAGMENTS ----------------------------
+@Override
+entity TrnCustomerInvoice {
+   use attributes = CustomerId, InvoiceAmount, PaymentTerms;
+   array InvoiceItems(CompanyId, BranchId, InvoiceId) to TrnCustomerInvoiceItem(CompanyId, BranchId, InvoiceId);
+}
+
+
+
+structure SendInvoicesStruct using TrnCustomerInvoice {
+   nestedwithcrud = ReadAndWrapWithJson;
+   implementation = "utility";
+}

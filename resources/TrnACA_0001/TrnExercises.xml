@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<APPLICATION_CONFIGURATION>
+  <EXPORT_DEF_VERSION>1</EXPORT_DEF_VERSION>
+  <EXPORT_COMMENT>Training Exercises</EXPORT_COMMENT>
+  <PACKAGE_ID>E621702CF0054449A0F06F3EFF78962A</PACKAGE_ID>
+  <NAME>TrnExercises</NAME>
+  <DESCRIPTION>Training Exercises</DESCRIPTION>
+  <AUTHOR>DEV_CUST must change for PROD</AUTHOR>
+  <VERSION>1.0</VERSION>
+  <VERSION_TIME_STAMP>2024-01-15-16.53.56</VERSION_TIME_STAMP>
+  <ORIGIN>IFSCDB-DEV_CUST-DEV_INST</ORIGIN>
+  <LAST_MODIFIED_DATE>2024-01-15-16.52.58</LAST_MODIFIED_DATE>
+  <ITEMS>
+    <ITEMS_ROW>
+      <NAME>Trn City</NAME>
+      <TYPE>CUSTOM_LU</TYPE>
+      <DESCRIPTION/>
+      <FILENAME>CustomLogicalUnit-TrnCity.xml</FILENAME>
+    </ITEMS_ROW>
+    <ITEMS_ROW>
+      <NAME>TrnCompanyFounderHandling</NAME>
+      <TYPE>CUSTOM_PROJCONFIG</TYPE>
+      <DESCRIPTION/>
+      <FILENAME>ProjectionConfiguration-TrnCompanyFounderHandling.xml</FILENAME>
+    </ITEMS_ROW>
+    <ITEMS_ROW>
+      <NAME>TrnCompanyFounderHandling</NAME>
+      <TYPE>CUSTOM_PROJECTION</TYPE>
+      <DESCRIPTION>TrnCompanyFounderHandling</DESCRIPTION>
+      <FILENAME>CustomProjection-TrnCompanyFounderHandling.xml</FILENAME>
+    </ITEMS_ROW>
+    <ITEMS_ROW>
+      <NAME>TrnCityHandling</NAME>
+      <TYPE>CUSTOM_PROJECTION</TYPE>
+      <DESCRIPTION>TrnCityHandling</DESCRIPTION>
+      <FILENAME>CustomProjection-TrnCityHandling.xml</FILENAME>
+    </ITEMS_ROW>
+    <ITEMS_ROW>
+      <NAME>Company Founder</NAME>
+      <TYPE>CUSTOM_LU</TYPE>
+      <DESCRIPTION/>
+      <FILENAME>CustomLogicalUnit-TrnCompanyFounder.xml</FILENAME>
+    </ITEMS_ROW>
+    <ITEMS_ROW>
+      <NAME>TrnCityHandling</NAME>
+      <TYPE>CUSTOM_PROJCONFIG</TYPE>
+      <DESCRIPTION/>
+      <FILENAME>ProjectionConfiguration-TrnCityHandling.xml</FILENAME>
+    </ITEMS_ROW>
+    <ITEMS_ROW>
+      <NAME>TrnCityAreas</NAME>
+      <TYPE>AURENA_PAGE_GROUP</TYPE>
+      <DESCRIPTION>Trn City Areas</DESCRIPTION>
+      <FILENAME>AurenaPageGroup-ClientMetadata.client.TrnCityAreas.xml</FILENAME>
+    </ITEMS_ROW>
+    <ITEMS_ROW>
+      <NAME>TrnCompanyFounderPage</NAME>
+      <TYPE>AURENA_PAGE_GROUP</TYPE>
+      <DESCRIPTION>TrnCompany Founder Page</DESCRIPTION>
+      <FILENAME>AurenaPageGroup-ClientMetadata.client.TrnCompanyFounderPage.xml</FILENAME>
+    </ITEMS_ROW>
+  </ITEMS>
+  <ADDITIONAL_ITEMS/>
+</APPLICATION_CONFIGURATION>

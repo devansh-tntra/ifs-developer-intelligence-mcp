@@ -1,0 +1,27 @@
+--------------------------------------------------------------------------------
+--	File: Appsrv.upg
+--
+--	Purpose: Script to upgrade database objects up to current version.
+--
+--		The script is organized according to:
+--		[x.y.z]  (version to upgrade from)
+--		SQL-statements to upgrade from versions x.y.z to x1.y1.z1
+--		[x1.y1.z1] =(version to upgrade to)
+--		SQL-statements
+--		...
+--		[xn.yn.zn] (last line always states current version)
+--
+-- 	NOTE Folder separator '/' used for compatibility with Unix. Works in Windows.
+--------------------------------------------------------------------------------
+[4.0.0]
+[4.1.0]
+[5.0.0]
+[21.1.0]
+[21.2.0]
+[22.1.0]
+[22.2.0]
+[23.1.0]
+[23.2.0]
+[24.1.0]
+[24.2.0]
+[25.1.0]

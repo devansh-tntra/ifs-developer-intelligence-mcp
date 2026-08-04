@@ -1,0 +1,7 @@
+clear client cache -> https://app23r1tstXXX.academy.ifs.com/main/ifsapplications/projection/ClearCache?METHOD=CLEAR_PROJECTION_CACHE&VALUE=*
+
+Landing page URL -> https://app23r1tstXXX.academy.ifs.com/landing-page/
+
+Service document -> [https://#Root_Installed_Location#/main/ifsapplications/projection/v1/#PROJECTION_NAME#.svc]
+
+meta data document -> [https://#Root_Installed_Location#/main/ifsapplications/projection/v1/#PROJECTION_NAME#.svc/$metadata]

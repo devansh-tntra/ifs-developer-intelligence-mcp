@@ -1,0 +1,120 @@
+client ManageGeographies;
+component TRNENT;
+layer Core;
+projection EnterpriseHandling;
+
+--------------------------------- NAVIGATOR ---------------------------------
+navigator {
+   entry CreateCountryAssistantNavEntry parent TrnentNavigatorRoot.ManageGeographiesNavEntry at index 50 {
+      label = "Create Country Assistant";
+      assistant CreateCountryAssistant;
+   }
+
+   entry TrnCountryOverviewNavEntry parent TrnentNavigatorRoot.ManageGeographiesNavEntry at index 100 {
+      label = "Countries";
+      page TrnCountryOverview;
+   }
+
+   entry TrnCountryDetailsNavEntry parent TrnentNavigatorRoot.ManageGeographiesNavEntry at index 200 {
+      label = "Country Details";
+      page TrnCountryDetails;
+   }
+}
+-------------------------------- MAIN PAGES ---------------------------------
+page TrnCountryOverview {
+   label = "Countries";
+   list TrnCountryList using TrnCountries;
+}
+
+page TrnCountryDetails using TrnCountries {
+   label = "Country Details";
+   selector TrnCountryDetailsSelector;
+   group TrnCountryGroup bind TrnCountryDetailsSelector;
+   list TrnAreaList(Areas);
+}
+
+assistant CreateCountryAssistant using TrnVirtualCountries {
+   label = "Create Country Assistant";
+
+   steps {
+      step {
+         group TrnCountryVirtualGroup;
+         next command {
+            enabled = [CountryId != null and Country != null];
+
+         }
+      }
+      step {
+         list TrnAreaVirtualList(Areas);
+      }
+      final step {
+         description = "Countries & Areas Created";
+      }
+   }
+   finish command {
+      enabled = [component.CreateCountryAssistant.ActiveStep = 2 and not component.TrnAreaVirtualList.IsEmpty];
+      execute {
+         call CreateCoutriesAreas();
+      }
+   }
+}
+
+
+--------------------------------- COMMANDS ----------------------------------
+
+
+----------------------------- VISUAL COMPONENTS -----------------------------
+list TrnCountryList for TrnCountry {
+   field CountryId;
+   field Country;
+}
+
+group TrnCountryGroup for TrnCountry {
+   label = "Country Info";
+
+   field CountryId;
+   field Country;
+}
+
+list TrnAreaList for TrnArea {
+   label = "Areas-$ {
+            parent.CountryId
+         }
+          -$ {
+            parent.Country
+         }
+         ";
+
+   field CountryId;
+   field AreaId;
+   field Area;
+}
+
+selector TrnCountryDetailsSelector for TrnCountry {
+   label = "$ {
+            CountryId
+         }
+          -$ {
+            Country
+         }
+         ";
+   static CountryId;
+   static Country {
+      label = "";
+   }
+}
+
+// START: Visual Components for the CountryCreationAssistant
+
+group TrnCountryVirtualGroup for TrnCountryVirtual {
+   field CountryId;
+   field Country;
+}
+
+list TrnAreaVirtualList for TrnAreaVirtual {
+   field CountryId;
+   field AreaId;
+   field Area;
+}
+
+// END: Visual Components for the CountryCreationAssistant

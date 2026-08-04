@@ -1,0 +1,30 @@
+fragment TrnProductServiceUtil;
+component TRNINV;
+layer Core;
+description "Fragment for TrnProductService";
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+
+----------------------------- CLIENT FRAGMENTS ------------------------------
+
+
+--------------------------- PROJECTION FRAGMENTS ----------------------------
+@Override
+entity TrnProduct {
+   use attributes = Description, Price;
+   array InventoryProducts(CompanyId, ProductId) to TrnInventoryProduct(CompanyId, ProductId);
+}
+
+
+structure QueryProductsFinalStruct using TrnProduct {
+   nestedwithcrud = Read;
+   implementation = "utility";
+}
+
+
+structure ReceiveProductStruct using TrnProduct {
+   nestedwithcrud = Create;
+   implementation = "utility";
+}
+

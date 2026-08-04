@@ -1,0 +1,40 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCustomerOrder
+--  Component:    TRNORD
+--
+--  IFS Developer Studio Template Version 3.0
+--
+--  Date    Sign    History
+--  ------  ------  ---------------------------------------------------------
+-----------------------------------------------------------------------------
+
+layer Ext;
+
+-------------------- PUBLIC VIEW DEFINITIONS --------------------------------
+
+
+-------------------- PRIVATE VIEW DEFINITIONS -------------------------------
+VIEW Trn_Customer_Order_Det IS
+   Prompt     = 'Trn Customer Order Det'
+SELECT
+       company_id                     company_id,
+       branch_id                      branch_id,
+       order_id                       order_id,
+       order_date                     order_date,
+       delivery_date                  delivery_date,
+       discount                       discount,
+       comments                       comments,
+       customer_id                    customer_id,
+       NULL                           order_total,
+       Trn_Order_Del_Type_API.Decode(delivery_type) delivery_type,
+       delivery_type                  delivery_type_db,
+       wanted_delivery_date           wanted_delivery_date,
+       Trn_Customer_API.Get_Discount(company_id, customer_id) customer_discount,
+       rowstate                       objstate,
+       Trn_Customer_Order_API.Finite_State_Events__(rowstate)                     objevents,
+       Trn_Customer_Order_API.Finite_State_Decode__(rowstate)                         state,
+       rowkey                         objkey,
+       to_char(rowversion,'YYYYMMDDHH24MISS') objversion,
+       rowid                          objid
+FROM   trn_customer_order_tab;

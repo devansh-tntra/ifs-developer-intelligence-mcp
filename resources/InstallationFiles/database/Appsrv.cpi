@@ -1,0 +1,15 @@
+--------------------------------------------------------------------------------
+SET serverout ON
+exec Installation_SYS.Log_Time_Stamp('Appsrv','cpi','Started');
+SET serverout OFF
+--------------------------------------------------------------------------------
+SET VERIFY OFF
+SET FEEDBACK OFF
+--------------------------------------------------------------------------------
+PROMPT appsrv/UnitsOfMeasure.cpi
+START "appsrv/UnitsOfMeasure.cpi"
+--------------------------------------------------------------------------------
+SET serverout ON
+exec Installation_SYS.Log_Time_Stamp('Appsrv','cpi','Finished');
+SET serverout OFF
+--------------------------------------------------------------------------------

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:ifsworld-com:schemas:manage_products_query_products_request">
+    <soapenv:Header>
+        <fndcn:Message soapenv:mustUnderstand="1" xmlns:fndcn="urn:ifsworld-com:schemas:fndcn">
+           <fndcn:Type>HTTP_TEST</fndcn:Type>
+           <fndcn:Function>QUERY_PRODUCTS</fndcn:Function>
+           <fndcn:Sender>ABC</fndcn:Sender>
+           <fndcn:Receiver>IFS</fndcn:Receiver>
+           <fndcn:SentAt>2019-02-13T20:08:30+05:00</fndcn:SentAt>
+           <fndcn:ExpiresAt>2019-02-20T20:08:30+05:00</fndcn:ExpiresAt>
+        </fndcn:Message>
+   </soapenv:Header>
+   <soapenv:Body>
+      <urn:COMPANY_INFO>
+         <urn:COMPANY_ID>TCS</urn:COMPANY_ID>
+      </urn:COMPANY_INFO>
+   </soapenv:Body>
+</soapenv:Envelope>

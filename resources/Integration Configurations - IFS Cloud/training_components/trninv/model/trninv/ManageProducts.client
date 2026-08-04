@@ -1,0 +1,146 @@
+client ManageProducts;
+component TRNINV;
+layer Core;
+projection ProductHandling;
+
+--------------------------------- NAVIGATOR ---------------------------------
+
+navigator {
+   entry TrnUnitNavEntry parent TrninvNavigatorRoot.ManageProductsNavEntry at index 100 {
+      label = "Units";
+      page TrnUnit;
+   }
+   entry TrnBrandNavEntry parent TrninvNavigatorRoot.ManageProductsNavEntry at index 200 {
+      label = "Brands";
+      page TrnBrand;
+   }
+   entry TrnProductCategoryNavEntry parent TrninvNavigatorRoot.ManageProductsNavEntry at index 300 {
+      label = "Product Categories";
+      page TrnProductCategory;
+   }
+   entry TrnProductCategoryBrandNavEntry parent TrninvNavigatorRoot.ManageProductsNavEntry at index 400 {
+      label = "Brand Categories";
+      page TrnProductCategoryBrand;
+   }
+   entry TrnModelNavEntry parent TrninvNavigatorRoot.ManageProductsNavEntry at index 500 {
+      label = "Models";
+      page TrnModel;
+   }
+   entry TrnProductNavEntry parent TrninvNavigatorRoot.ManageProductsNavEntry at index 600 {
+      label = "Products";
+      page TrnProductsOverview;
+   }
+   entry TrnInventoryProductNavEntry parent TrninvNavigatorRoot.ManageInventoriesNavEntry at index 100 {
+      label = "Inventory Products";
+      page TrnInventoryProductsOverview;
+   }
+}
+
+-------------------------------- MAIN PAGES ---------------------------------
+
+page TrnUnit using TrnUnitSet {
+   list TrnUnitList;
+}
+
+page TrnBrand using TrnBrandSet {
+   list TrnBrandList;
+}
+
+page TrnModel using TrnModelSet {
+   list TrnModelList;
+}
+
+page TrnProductCategory using TrnProductCategorySet {
+   list TrnProductCategoryList;
+}
+
+page TrnProductCategoryBrand using TrnProductCategoryBrandSet {
+   list TrnProductCategoryBrandList;
+}
+
+page TrnProductsOverview using TrnProductSet {
+   list TrnProductList;
+}
+
+page TrnInventoryProductsOverview using TrnInventoryProductSet {
+   list TrnInventoryProductList {
+      details = TrnProduct(ProductId);
+   }
+}
+
+--------------------------------- COMMANDS ----------------------------------
+
+
+----------------------------- VISUAL COMPONENTS -----------------------------
+
+list TrnUnitList for TrnUnit {
+   label = "Units";
+   field Unit;
+   field Description;
+}
+
+list TrnBrandList for TrnBrand {
+   label = "Brands";
+   field BrandId;
+   field Name;
+   field Comments;
+}
+
+list TrnModelList for TrnModel {
+   label = "Models";
+   field BrandId;
+   field CategoryId;
+   field ModelId;
+   field Description;
+}
+
+list TrnProductCategoryList for TrnProdCategory {
+   label = "Product Categories";
+   field CategoryId;
+   field Name;
+   field Comments;
+}
+
+list TrnProductCategoryBrandList for TrnProdCategoryBrand {
+   label = "Brand Categories";
+   field BrandId;
+   field Brand;
+   field CategoryId;
+   field Category;
+}
+
+list TrnProductList for TrnProduct {
+   label = "Products";
+   field CompanyId;
+   field BrandId;
+   field CategoryId;
+   field ModelId;
+   field ProductId;
+   field Price;
+   field Comments;
+   field Unit;
+}
+
+list TrnInventoryProductList for TrnInventoryProduct {
+   card TrnInventoryProductCard;
+   label = "Product Inventories";
+   ---
+   field CompanyId;
+   field BranchId;
+   field InventoryId;
+   field ProductId;
+   field Quantity;
+   field ReorderLevel;
+   field ReservedQuantity;
+}
+
+card TrnInventoryProductCard for TrnInventoryProduct {
+   label = "Product Inventories";
+   field CompanyId;
+   field BranchId;
+   field InventoryId;
+   field ProductId;
+   field Quantity;
+   field ReorderLevel;
+   field ReservedQuantity;
+}

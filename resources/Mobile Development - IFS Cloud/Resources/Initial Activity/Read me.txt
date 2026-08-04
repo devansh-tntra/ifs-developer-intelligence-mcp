@@ -1,0 +1,5 @@
+Create your Own Client/App and Projection with your Name prefix
+Add below code one by one with an idea
+Deploy.
+
+This is initial code segments which you need to start the app with basics

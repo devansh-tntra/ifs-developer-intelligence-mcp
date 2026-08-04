@@ -1,0 +1,593 @@
+-----------------------------------------------------------------------------
+--  Module : TRNORD
+--
+--  File   : 20220125_TRNORD_DEPLOY.cdb
+--
+--  IFS Developer Studio Template Version 2.6
+--
+--  Date     Sign    History
+--  ------   ------  --------------------------------------------------
+--  220125   PRATLK  Initial Deployment of the component
+--  ------   ------  --------------------------------------------------
+-----------------------------------------------------------------------------
+
+SET SERVEROUTPUT ON
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   sequence_name_ VARCHAR2(30) := 'TRN_CUSTOMER_ID_SEQ';
+BEGIN
+   Database_SYS.Create_Sequence(sequence_name_, 'INCREMENT BY 1 START WITH 1000 NOCACHE', TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- TABLE DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'CUSTOMER_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'NAME', 'VARCHAR2(1000)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'CREDIT_LIMIT', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'DISCOUNT', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'COMMENTS', 'VARCHAR2(2000)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'ACTIVE', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'PREFERRED_INVENTORY_ID', 'NUMBER', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'INVENTORY_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Set_Table_Column(columns_, 'ROWTYPE', 'VARCHAR2(30)', 'N');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-----------------------------------------------------------------------------
+-------------------- INDEX DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_CUSTOMER_PK';
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'CUSTOMER_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_CUSTOMER_RK';
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   sequence_name_ VARCHAR2(30) := 'TRN_CUSTOMER_INVOICE_ID_SEQ';
+BEGIN
+   Database_SYS.Create_Sequence(sequence_name_, 'INCREMENT BY 1 START WITH 1000 NOCACHE', TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- TABLE DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_INVOICE_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'INVOICE_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'INVOICE_DATE', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'DUE_DATE', 'DATE', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'INVOICE_AMOUNT', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'COMMENTS', 'VARCHAR2(2000)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'UNPAID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'PAYMENT_TERMS', 'VARCHAR2(20)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'CUSTOMER_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ORDER_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Set_Table_Column(columns_, 'ROWSTATE', 'VARCHAR2(20)', 'N');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-----------------------------------------------------------------------------
+-------------------- INDEX DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_CUSTOMER_INVOICE_PK';
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_INVOICE_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID');
+   Database_SYS.Set_Table_Column(columns_, 'INVOICE_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_CUSTOMER_INVOICE_RK';
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_INVOICE_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- SEQUENCE DEFINITIONS -----------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   sequence_name_ VARCHAR2(30) := 'TRN_CUST_INVOICE_ITEM_ID_SEQ';
+BEGIN
+   Database_SYS.Create_Sequence(sequence_name_, 'INCREMENT BY 1 START WITH 1000 NOCACHE', TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- TABLE DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_INVOICE_ITEM_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'INVOICE_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ITEM_NO', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'DESCRIPTION', 'VARCHAR2(1000)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'PRICE', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'QUANTITY', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'AMOUNT', 'NUMBER', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'PRODUCT_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-----------------------------------------------------------------------------
+-------------------- INDEX DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_CUSTOMER_INVOICE_ITEM_PK';
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_INVOICE_ITEM_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID');
+   Database_SYS.Set_Table_Column(columns_, 'INVOICE_ID');
+   Database_SYS.Set_Table_Column(columns_, 'ITEM_NO');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_CUSTOMER_INVOICE_ITEM_RK';
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_INVOICE_ITEM_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- SEQUENCE DEFINITIONS -----------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   sequence_name_ VARCHAR2(30) := 'TRN_CUSTOMER_ORDER_ID_SEQ';
+BEGIN
+   Database_SYS.Create_Sequence(sequence_name_, 'INCREMENT BY 1 START WITH 1000 NOCACHE', TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   sequence_name_ VARCHAR2(30) := 'TRN_CUST_ORDER_ROW_NO_SEQ';
+BEGIN
+   Database_SYS.Create_Sequence(sequence_name_, 'INCREMENT BY 1 START WITH 1000 NOCACHE', TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- TABLE DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_ORDER_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ORDER_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ORDER_DATE', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'DELIVERY_DATE', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'DISCOUNT', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'COMMENTS', 'VARCHAR2(2000)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'CUSTOMER_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'DELIVERY_TYPE', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWSTATE', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-----------------------------------------------------------------------------
+-------------------- INDEX DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_CUSTOMER_ORDER_PK';
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_ORDER_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID');
+   Database_SYS.Set_Table_Column(columns_, 'ORDER_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_CUSTOMER_ORDER_RK';
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_ORDER_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- TABLE DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_ORDER_ITEM_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ORDER_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROW_NO', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'DESCRIPTION', 'VARCHAR2(1000)', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'PRICE', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'QUANTITY', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'AMOUNT', 'NUMBER', 'Y');
+   Database_SYS.Set_Table_Column(columns_, 'PRODUCT_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Set_Table_Column(columns_, 'ROWSTATE', 'VARCHAR2(20)', 'N');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-----------------------------------------------------------------------------
+-------------------- INDEX DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_CUSTOMER_ORDER_ITEM_PK';
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_ORDER_ITEM_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID');
+   Database_SYS.Set_Table_Column(columns_, 'ORDER_ID');
+   Database_SYS.Set_Table_Column(columns_, 'ROW_NO');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_CUSTOMER_ORDER_ITEM_RK';
+   table_name_ VARCHAR2(30) := 'TRN_CUSTOMER_ORDER_ITEM_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- SEQUENCE DEFINITIONS -----------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   sequence_name_ VARCHAR2(30) := 'TRN_CUSTOMER_COMM_ID_SEQ';
+BEGIN
+   Database_SYS.Create_Sequence(sequence_name_, 'INCREMENT BY 1 START WITH 1000 NOCACHE', TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- TABLE DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_EXT_CUST_COMM_METHOD_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'CUSTOMER_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'CUSTOMER_COMM_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ADDRESS', 'VARCHAR2(1000)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'COMMUNICATION_TYPE', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'DEFAULT_ADDRESS', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-----------------------------------------------------------------------------
+-------------------- INDEX DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_EXT_CUST_COMM_METHOD_PK';
+   table_name_ VARCHAR2(30) := 'TRN_EXT_CUST_COMM_METHOD_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'CUSTOMER_ID');
+   Database_SYS.Set_Table_Column(columns_, 'CUSTOMER_COMM_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_EXT_CUST_COMM_METHOD_RK';
+   table_name_ VARCHAR2(30) := 'TRN_EXT_CUST_COMM_METHOD_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- SEQUENCE DEFINITIONS -----------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   sequence_name_ VARCHAR2(30) := 'TRN_RESERVATION_ID_SEQ';
+BEGIN
+   Database_SYS.Create_Sequence(sequence_name_, 'INCREMENT BY 1 START WITH 1000 NOCACHE', TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- TABLE DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_RESERVATION_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'RESERVATION_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ORDER_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-----------------------------------------------------------------------------
+-------------------- INDEX DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_RESERVATION_PK';
+   table_name_ VARCHAR2(30) := 'TRN_RESERVATION_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'RESERVATION_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_RESERVATION_RK';
+   table_name_ VARCHAR2(30) := 'TRN_RESERVATION_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- SEQUENCE DEFINITIONS -----------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   sequence_name_ VARCHAR2(30) := 'TRN_RESERVATION_ITEM_ID_SEQ';
+BEGIN
+   Database_SYS.Create_Sequence(sequence_name_, 'INCREMENT BY 1 START WITH 1000 NOCACHE', TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+-----------------------------------------------------------------------------
+-------------------- TABLE DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   table_name_ VARCHAR2(30) := 'TRN_RESERVATION_ITEM_TAB';
+   columns_    Database_SYS.ColumnTabType;
+   column_     Database_SYS.ColRec;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'RESERVATION_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'RESERVATION_ITEM_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'QUANTITY', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'BRANCH_ID', 'VARCHAR2(20)', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'INVENTORY_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'PRODUCT_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ORDER_ID', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROW_NO', 'NUMBER', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWVERSION', 'DATE', 'N');
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY', 'VARCHAR2(50)', 'N', 'sys_guid()');
+   Database_SYS.Create_Or_Replace_Table(table_name_, columns_, '&IFSAPP_DATA', NULL, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-----------------------------------------------------------------------------
+-------------------- INDEX DEFINITIONS --------------------------------------
+-----------------------------------------------------------------------------
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_RESERVATION_ITEM_PK';
+   table_name_ VARCHAR2(30) := 'TRN_RESERVATION_ITEM_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'COMPANY_ID');
+   Database_SYS.Set_Table_Column(columns_, 'RESERVATION_ID');
+   Database_SYS.Set_Table_Column(columns_, 'RESERVATION_ITEM_ID');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'P', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+
+-- [IFS COMPLETE BLOCK DECLAREEND]
+DECLARE
+   index_name_ VARCHAR2(30) := 'TRN_RESERVATION_ITEM_RK';
+   table_name_ VARCHAR2(30) := 'TRN_RESERVATION_ITEM_TAB';
+   columns_    Database_SYS.ColumnTabType;
+BEGIN
+   Database_SYS.Reset_Column_Table(columns_);
+   Database_SYS.Set_Table_Column(columns_, 'ROWKEY');
+   Database_SYS.Create_Constraint(table_name_, index_name_, columns_, 'U', '&IFSAPP_INDEX', NULL, TRUE, TRUE);
+END;
+-- [END IFS COMPLETE BLOCK]
+/
+
+SET SERVEROUTPUT OFF

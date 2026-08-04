@@ -1,0 +1,111 @@
+
+
+SendCustomerInvoiceUtil.fragment
+=====================================
+
+
+@Override
+entity TrnCustomerInvoice {
+   use attributes = CustomerId, InvoiceAmount, PaymentTerms;
+   array InvoiceItems(CompanyId, BranchId, InvoiceId) to TrnCustomerInvoiceItem(CompanyId, BranchId, InvoiceId);
+}
+
+
+
+structure SendInvoicesStruct using TrnCustomerInvoice {
+   nestedwithcrud = ReadAndWrapWithJson;
+   implementation = "utility";
+}
+
+
+
+
+
+
+
+
+SendCustomerInvoiceUtil.plsql
+===================================
+
+
+
+
+FUNCTION Get_Send_Invoices_Struct_Arr___ (
+   company_id_ IN VARCHAR2,
+   customer_id_ IN NUMBER) RETURN Send_Invoices_Struct_Arr
+IS
+   return_arr_ Send_Invoices_Struct_Arr := Send_Invoices_Struct_Arr();
+   CURSOR get_attributes IS
+   SELECT company_id,
+   branch_id,
+   invoice_id,
+   invoice_amount,
+   payment_terms_db payment_terms,
+   customer_id
+   FROM TRN_CUSTOMER_INVOICE
+   WHERE company_id = company_id_
+   AND   customer_id = customer_id_;
+BEGIN
+   FOR rec_ IN get_attributes LOOP
+      return_arr_.extend;
+      return_arr_(return_arr_.last).company_id := rec_.company_id;
+      return_arr_(return_arr_.last).branch_id := rec_.branch_id;
+      return_arr_(return_arr_.last).invoice_id := rec_.invoice_id;
+      return_arr_(return_arr_.last).invoice_amount := rec_.invoice_amount;
+      return_arr_(return_arr_.last).payment_terms := rec_.payment_terms;
+      return_arr_(return_arr_.last).customer_id := rec_.customer_id;
+      return_arr_(return_arr_.last).invoice_items := Get_Send_Invoices_Struct_Trn_Customer_Invoice_Item_Arr___(rec_.company_id,rec_.branch_id,rec_.invoice_id);
+   END LOOP;
+   RETURN return_arr_;
+END Get_Send_Invoices_Struct_Arr___;
+
+
+
+
+PROCEDURE Send_Customer_Invoices (
+      company_id_       IN VARCHAR2,
+      customer_id_      IN NUMBER,
+      receiver_address_ IN VARCHAR2 )
+   IS
+      json_obj_         JSON_OBJECT_T;
+      json_clob_        CLOB;
+      msg_id_           NUMBER;
+      msg_rec_    Send_Invoices_Struct_Arr;
+   BEGIN   
+      msg_rec_ := Get_Send_Invoices_Struct_Arr___(company_id_,customer_id_);
+      json_obj_ := Send_Invoices_Struct_Arr_To_Json___(msg_rec_);
+      json_clob_ := json_obj_.to_clob;
+      
+      -- Sends the outbound msg in an asynchronous way
+      Plsqlap_Server_API.Post_Outbound_Message(json_clob_,
+                                               msg_id_,                                              
+                                               'IFS_ACADEMY', 
+                                               receiver_address_, 
+                                               message_type_ => 'APPLICATION_MESSAGE',                                               
+                                               message_function_ => 'SEND_CUSTOMER_INVOICES',
+                                               is_json_ => TRUE);  
+      
+   END Send_Customer_Invoices;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

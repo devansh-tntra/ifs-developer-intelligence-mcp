@@ -1,0 +1,65 @@
+client ManageCompanies;
+component TRNENT;
+layer Core;
+projection EnterpriseHandling;
+description "Client for Company data";
+
+--------------------------------- FRAGMENTS ---------------------------------
+
+----------------------------- NAVIGATOR ENTRIES -----------------------------
+entry TrnCompaniesNavEntry parent TrnentNavigatorRoot.ManageCompaniesNavEntry at index 100 {
+   label = "Companies";
+   page TrnCompanyPage;
+}
+
+
+-------------------------------- MAIN PAGES ---------------------------------
+page TrnCompanyPage using TrnCompanies {
+   label = "Companies";
+   list TrnCompanyList;
+}
+
+
+--------------------------------- COMMANDS ----------------------------------
+
+
+--------------------------------- SELECTORS ---------------------------------
+
+
+---------------------------------- GROUPS -----------------------------------
+
+
+----------------------------------- LISTS -----------------------------------
+list TrnCompanyList for TrnCompany {
+   field CompanyId;
+   field Name;
+   field CreationDate;
+   field Comments;
+}
+
+
+---------------------------------- DIALOGS ----------------------------------
+
+
+-------------------------------- SINGLETONS ---------------------------------
+
+
+---------------------------------- CHARTS -----------------------------------
+
+
+--------------------------------- CALENDERS ---------------------------------
+
+
+---------------------------------- SHEETS -----------------------------------
+
+
+----------------------------- STATE INDICATORS ------------------------------
+
+
+----------------------------------- TREES -----------------------------------
+
+
+---------------------------------- PLUGINS ----------------------------------
+
+
+------------------------------- IMAGE VIEWERS -------------------------------

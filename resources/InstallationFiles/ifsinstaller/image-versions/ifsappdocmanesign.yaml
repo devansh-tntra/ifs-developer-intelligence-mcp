@@ -1,0 +1,3 @@
+ifsappdocmanesign:
+  imageVersion: 25.1.0.0.1
+  imageName: ifs/ifsapp-docman-esign

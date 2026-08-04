@@ -1,0 +1,211 @@
+-----------------------------------------------------------------------------
+--  Module : TRNENT
+--
+--  Purpose: Insert default data
+--
+--  File   : trnent.INS
+--
+--  IFS/Design Template Version 2.3
+--
+--  Date       Sign   History
+--  ---------- ------ -------------------------------------------------------
+
+-----------------------------------------------------------------------------
+
+-- COUNTRY BASIC DATA
+
+INSERT INTO Trn_Country_Tab (country_id, country, rowversion)
+VALUES ('SE', 'Sweden', '21-APR-06');
+
+INSERT INTO Trn_Country_Tab (country_id, country, rowversion)
+VALUES ('LK', 'Sri Lanka', '14-FEB-06');
+
+INSERT INTO Trn_Country_Tab (country_id, country, rowversion)
+VALUES ('IN', 'India', '13-FEB-06');
+
+COMMIT;
+
+-- AREA BASIC DATA
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('LK', 'GAL', 'Galle', '14-FEB-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('SE', 'LKP', 'Linkoping', '14-FEB-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('SE', 'GBG', 'Gothenburg', '14-FEB-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('LK', 'COL', 'Colombo', '14-FEB-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('LK', 'KDY', 'Kandy', '14-FEB-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('SE', 'GTB', 'Goteborg', '26-APR-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('SE', 'STK', 'Stockholm', '26-APR-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('SE', 'MLM', 'Malmo', '26-APR-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('LK', 'KRG', 'Kurunagala', '26-APR-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('IN', 'MBI', 'Mumbai', '26-APR-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('IN', 'LKN', 'Lucknow', '26-APR-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('IN', 'DEL', 'New Delhi', '13-FEB-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('IN', 'CHE', 'Chennai', '13-FEB-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('IN', 'BAN', 'Bangalore', '13-FEB-06');
+
+INSERT INTO Trn_Area_Tab (country_id, area_id, area, rowversion)
+VALUES ('LK', 'MAT', 'Matara', '26-APR-06');
+
+COMMIT;
+
+-- COMPANY BASIC DATA
+
+INSERT INTO Trn_Company_Tab (company_id, name, comments,creation_date, rowversion)
+VALUES ('TCS', 'Teknoids Computer Spares', 'The Computer Warehouse', '25-FEB-82','14-FEB-06');
+
+INSERT INTO Trn_Company_Tab (company_id, name, comments,creation_date, rowversion)
+VALUES ('TNE', 'Teknoids Network Equipment', 'The Network Warehouse', '01-MAY-86','14-FEB-06');
+
+INSERT INTO Trn_Company_Tab (company_id, name, comments,creation_date, rowversion)
+VALUES ('TCE', 'Teknoids Consumer Electronics', 'The Consumer Electronic Warehouse', '25-AUG-91','26-APR-06');
+
+COMMIT;
+
+-- BRANCH BASIC DATA
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'COL-01', 'COL-01', 6, 'LK','COL','14-FEB-06');
+   
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'GAL-01', 'GAL-01', 6, 'LK','GAL','14-FEB-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'KDY-01', 'KDY-01', 6, 'LK','KDY','14-FEB-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'LKP-01', 'LKP-01', 2, 'SE','LKP','14-FEB-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'GBG-01', 'GBG-01', 2, 'SE','GBG','14-FEB-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'DEL-01', 'DEL-01', 6, 'IN','DEL','14-FEB-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'BAN-01', 'BAN-01', 6, 'IN','BAN','14-FEB-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'CHE-01', 'CHE-01', 6, 'IN','CHE','14-FEB-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'GTB-01', 'GTB-01', 5, 'SE','GTB','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'MLM-01', 'MLM-01', 3, 'SE','MLM','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'STK-01', 'STK-01', 5, 'SE','STK','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'MAT-01', 'MAT-01', 6, 'LK','MAT','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'KRG-01', 'KRG-01', 6, 'LK','KRG','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'LKN-01', 'LKN-01', 4, 'IN','LKN','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'MBI-01', 'MBI-01', 3, 'IN','MBI','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCS', 'GTB-02', 'GTB-02', 5, 'SE','GTB','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TNE', 'COL-01', 'COL-01', 6, 'LK','COL','14-FEB-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TNE', 'LKP-01', 'LKP-01', 6, 'SE','LKP','14-FEB-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TNE', 'DEL-01', 'DEL-01', 6, 'IN','DEL','14-FEB-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TNE', 'GBG-01', 'GBG-01', 6, 'SE','GBG','14-FEB-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TNE', 'KDY-02', 'KDY-02', 3, 'LK','KDY','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TNE', 'COL-02', 'COL-02', 5, 'LK','COL','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TNE', 'BAN-02', 'BAN-02', 4, 'IN','BAN','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TNE', 'MBI-02', 'MBI-02', 1, 'IN','MBI','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TNE', 'MLM-02', 'MLM-02', 4, 'SE','MLM','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCE', 'BAN-01', 'BAN-01',8, 'IN','BAN','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCE', 'LKN-03', 'LKN-03', 5, 'IN','LKN','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCE', 'STK-03', 'STK-03', 6, 'SE','STK','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCE', 'MAT-03', 'MAT-03', 4, 'LK','MAT','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCE', 'GTB-03', 'GTB-03', 2, 'SE','GTB','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCE', 'COL-03', 'COL-03', 5, 'LK','COL','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCE', 'MBI-01', 'MBI-01', 7, 'IN','MBI','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCE', 'KDY-03', 'KDY-03', 5, 'LK','KDY','26-APR-06');
+
+INSERT INTO Trn_Branch_Tab (company_id, branch_id, name, time_offset,country_id,area_id, rowversion)
+VALUES ('TCE', 'MLM-03', 'MLM-03', 5, 'SE','MLM','26-APR-06');
+
+
+COMMIT;
+
+-- USER PROFILE BASIC DATA
+
+INSERT INTO User_Profile_Entry_Sys_TAB (USER_NAME, ENTRY_CODE, ENTRY_VALUE)
+VALUES (USER, 'COMPANY_ID','TCS');
+
+INSERT INTO User_Profile_Entry_Sys_TAB (USER_NAME, ENTRY_CODE, ENTRY_VALUE)
+VALUES (USER, 'COMPANY_ID','TNE');
+
+INSERT INTO User_Profile_Entry_Sys_TAB (USER_NAME, ENTRY_CODE, ENTRY_VALUE)
+VALUES (USER, 'COMPANY_ID','TCE');
+
+INSERT INTO User_Profile_Sys_TAB (USER_NAME, ENTRY_CODE, DEFAULT_VALUE, ROWVERSION )
+VALUES (USER, 'COMPANY_ID', 'TCS', SYSDATE);
+
+COMMIT;

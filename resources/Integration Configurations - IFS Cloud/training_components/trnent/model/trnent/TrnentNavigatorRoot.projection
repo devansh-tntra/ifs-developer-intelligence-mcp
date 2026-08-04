@@ -1,0 +1,10 @@
+projection TrnentNavigatorRoot;
+component TRNENT;
+layer Core;
+description "Controls TRNENT Navigator Root entries";
+category Users;
+
+----------------------------- MAIN ENTRY POINTS -----------------------------
+
+
+------------------------------ ENTITY DETAILS -------------------------------

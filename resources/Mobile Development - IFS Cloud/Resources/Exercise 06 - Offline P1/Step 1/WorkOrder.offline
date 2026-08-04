@@ -1,0 +1,53 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: WorkOrder
+--  Component:    TRNMWO
+--
+--  IFS Developer Studio Template Version 3.0
+--
+--  Date    Sign    History
+--  ------  ------  ---------------------------------------------------------
+-----------------------------------------------------------------------------
+
+layer Core;
+
+----------------------------- ENTITY PROCEDURES -----------------------------
+
+@Override
+procedure EntityPrepare<TrnWorkOrder> {
+   execute {
+      super(Record) into Record;
+      set Record.Description = "Generated Description for offline";
+      return Record;
+   }
+}
+
+@Override
+procedure EntityInsert<TrnWorkOrder> {
+   variable SysDate Date;
+   execute {
+      call DateTime.Date() into SysDate;
+      if[Record.CreationDate > SysDate] {
+         error("APPCREATEIONDATEERR: Creation Date of the Work Order Cannot Be later than the current Date.", "Record.CreationDate");
+      }
+      super(Record);
+   }
+}
+
+@Override
+procedure EntityUpdate<TrnWorkOrder> {
+   variable SysDate Date;
+   execute {
+      call DateTime.Date() into SysDate;
+      if [Record.CreationDate > SysDate] {
+         error("APPCREATIONDATEERR: Creation Date of the Work Order cannot be later than the current date.", "Record.CreationDate");
+      }
+      super(Record);
+   }
+}
+
+
+---------------------------- FUNCTION PROCEDURES ----------------------------
+
+
+----------------------------- ACTION PROCEDURES -----------------------------

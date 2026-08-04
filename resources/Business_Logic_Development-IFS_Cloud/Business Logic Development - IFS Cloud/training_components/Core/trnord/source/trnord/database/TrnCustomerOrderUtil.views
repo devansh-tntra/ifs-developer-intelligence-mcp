@@ -1,0 +1,73 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnCustomerOrderUtil
+--  Component:    TRNORD
+--
+--  IFS Developer Studio Template Version 3.0
+--
+--  Date    Sign    History
+--  ------  ------  ---------------------------------------------------------
+-----------------------------------------------------------------------------
+
+layer Core;
+
+-------------------- PUBLIC VIEW DEFINITIONS --------------------------------
+
+
+-------------------- PRIVATE VIEW DEFINITIONS -------------------------------
+
+   
+VIEW TRN_ORDER_INVOICE_TOTALS IS
+PROMPT = 'Order Invoice Totals'
+company_id.Flags ='A----'
+company_id.Prompt = 'Company Id'
+company_id.Datatype = 'STRING(20)'
+branch_id.Flags = 'A----'
+branch_id.Datatype='STRING(20)'
+branch_id.Prompt='Branch Id' 
+country.Flags = 'A----'
+country.Datatype = 'STRING(1000)'
+country.Prompt = 'Country'
+area.Flags = 'A----'
+area.Datatype = 'STRING(1000)'
+area.Prompt = 'Area'
+order_total.Flags = 'A----'
+order_total.Datatype = 'NUMBER'
+order_total.Prompt = 'Order Total'
+
+SELECT a.company_id company_id,
+       a.branch_id branch_id,
+       d.country country,
+       e.area area,
+       a.Order_total Order_total,
+       b.Invoice_total Invoice_total
+FROM (SELECT b.company_id,
+              b.branch_id,
+              SUM(b.amount) Order_total
+       FROM trn_customer_order_tab a,
+            trn_customer_order_item_tab b
+       WHERE a.company_id = b.company_id
+       AND a.branch_id = b.branch_id
+       AND a.order_id = b.order_id
+       AND TO_CHAR(a.order_date, 'yyyy') = TO_CHAR(SYSDATE, 'yyyy')
+       GROUP BY b.company_id, b.branch_id) a,
+     (SELECT b.company_id,
+               b.branch_id,
+               SUM(b.amount) Invoice_total
+        FROM trn_customer_invoice_tab a,
+             trn_customer_invoice_item_tab b
+        WHERE a.company_id = b.company_id
+        AND a.branch_id = b.branch_id
+        AND a.invoice_id = b.invoice_id
+        AND TO_CHAR(a.invoice_date, 'yyyy') = TO_CHAR(SYSDATE, 'yyyy')
+        GROUP BY b.company_id, b.branch_id) b,
+     trn_branch_tab c,
+     trn_country_tab d,
+     trn_area_tab e
+WHERE a.company_id = c.company_id
+AND a.branch_id = c.branch_id
+AND b.company_id = c.company_id
+AND b.branch_id = c.branch_id
+AND c.country_id = d.country_id
+AND c.country_id = e.country_id
+AND c.area_id = e.area_id;

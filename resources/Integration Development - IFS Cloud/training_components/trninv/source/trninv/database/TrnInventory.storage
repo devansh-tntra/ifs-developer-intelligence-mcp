@@ -1,0 +1,20 @@
+-----------------------------------------------------------------------------
+--
+--  Logical unit: TrnInventory
+--  Component:    TRNINV
+--
+--  IFS Developer Studio Template Version 3.0
+--
+--  Date    Sign    History
+--  ------  ------  ---------------------------------------------------------
+-----------------------------------------------------------------------------
+
+
+layer Core;
+
+-------------------- TABLE DEFINITIONS --------------------------------------
+
+
+-------------------- OTHER DEFINITIONS --------------------------------------
+
+SEQUENCE Trn_Inventory_Id_SEQ IS INCREMENT BY 1 START WITH 10000 NOCACHE;

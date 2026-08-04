@@ -1,0 +1,3 @@
+ifsapppowerbisvc:
+  imageVersion: 25.1.0.202506032022.0 
+  imageName: ifs/ifsapp-powerbi-svc
